@@ -63,7 +63,7 @@ function OptionCard({ icon: Icon, title, desc, selected, onClick }) {
   );
 }
 
-export function ScreenCoachProfileEdit({ nav, resetNav, toast, coachPackages, savePackage, removePackage, biometric, setBiometric, coachMedia = [], coachAvailableNow, setCoachAvailableNow }) {
+export function ScreenCoachProfileEdit({ nav, resetNav, params = {}, toast, coachPackages, savePackage, removePackage, biometric, setBiometric, coachMedia = [], coachAvailableNow, setCoachAvailableNow }) {
   const { darkMode, coachOnboarding, coachProfile, updateCoachOnboarding, isHandleTaken, pushNotification } = useApp();
   const { isDesktop } = useResponsive();
   const C = darkMode ? CD : CL;
@@ -176,7 +176,7 @@ export function ScreenCoachProfileEdit({ nav, resetNav, toast, coachPackages, sa
   const [newPw, setNewPw] = useState("");
   const [confirmPw, setConfirmPw] = useState("");
   const pwdOk = passwordValid(newPw) && newPw === confirmPw;
-  const [tab, setTab] = useState(params.presetTab || params.tab || "profile");
+  const [tab, setTab] = useState(params?.presetTab || params?.tab || "profile");
   useEffect(() => {
     if (params?.tab) setTab(params.tab);
     else if (params?.presetTab) setTab(params.presetTab);
