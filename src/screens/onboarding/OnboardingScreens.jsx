@@ -89,9 +89,9 @@ export function ScreenSplash({ nav }) {
   // Splash is purely branding + loading — it establishes the brand while the
   // app "warms up", then hands off automatically. No auth actions live here.
   useEffect(() => {
-    const t = setTimeout(() => nav("get-started"), 1600);
+    const t = setTimeout(() => nav("get-started"), 1200);
     return () => clearTimeout(t);
-  }, [nav]);
+  }, []);
 
   return (
     <div style={{ height: "100vh", minHeight: "100vh", background: C.white, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: 28, textAlign: "center" }}>

@@ -8,27 +8,29 @@
     <link rel="icon" type="image/png" href="/Favicon-white.png" media="(prefers-color-scheme: dark)" />
     <link rel="icon" id="dynamic-favicon" type="image/png" href="/Favicon-dark.png" />
     <script>
-      (function() {
-        var matcher = window.matchMedia('(prefers-color-scheme: dark)');
-        function updateFavicon() {
-          var favicon = document.getElementById('dynamic-favicon');
-          if (favicon) {
-            favicon.href = matcher.matches ? '/Favicon-white.png' : '/Favicon-dark.png';
+      try {
+        var matcher = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+        if (matcher) {
+          var updateFavicon = function() {
+            var favicon = document.getElementById('dynamic-favicon');
+            if (favicon) {
+              favicon.href = matcher.matches ? '/Favicon-white.png' : '/Favicon-dark.png';
+            }
+          };
+          updateFavicon();
+          if (matcher.addEventListener) {
+            matcher.addEventListener('change', updateFavicon);
+          } else if (matcher.addListener) {
+            matcher.addListener(updateFavicon);
           }
         }
-        updateFavicon();
-        if (matcher.addEventListener) {
-          matcher.addEventListener('change', updateFavicon);
-        } else if (matcher.addListener) {
-          matcher.addListener(updateFavicon);
-        }
-      })();
+      } catch (e) {}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>CoachNivo — Responsive Web Portal</title>
     <meta name="description" content="CoachNivo web portal - find, book and manage sports coaching sessions across desktop, tablet and mobile." />
-    <script type="module" crossorigin src="/assets/index-6sJ5-Abz.js"></script>
+    <script type="module" crossorigin src="/assets/index-y0LL-xCo.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/lucide-Cp9VcJna.js">
     <link rel="modulepreload" crossorigin href="/assets/react--jd2VInr.js">
     <link rel="stylesheet" crossorigin href="/assets/index-96Gj_39W.css">
