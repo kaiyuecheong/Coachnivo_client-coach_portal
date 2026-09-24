@@ -1,0 +1,623 @@
+/* =========================================================================
+   CoachNivo Web Portal — Base Styles
+   -------------------------------------------------------------------------
+   Replaces the mobile prototype stylesheet. The prototype's `.cl-phone-screen`
+   rules (device simulation, touch-cursor, phone-scroll locking) are REMOVED;
+   this sheet is a real portal base that scrolls normally at the page level.
+   Root custom properties mirror JS tokens in src/theme/theme.js.
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+  /* ---------- Primary palette (dark fill) ---------- */
+  --cl-primary: #0A1C2D;
+  --cl-primary-color: #0A1C2D;
+
+  /* ---------- Brand palette ---------- */
+  --cl-brand-color: #EC5728;
+  --cl-secondary: #EC5728;
+  --cl-accent: #F38460;
+  --cl-surface: #FDF3EF;
+
+  /* ---------- Neutral tokens (black / gray anchored on #0A1C2D) ---------- */
+  --cl-jet: #0A1C2D;
+  --cl-jet-soft: #1B3147;
+  --cl-slate: #64748B;
+  --cl-slate-light: #94A3B8;
+  --cl-border: #E2E8F0;
+  --cl-white: #FFFFFF;
+  --cl-black: #0A1C2D;
+
+  /* ---------- Brand semantic (sunset orange) ---------- */
+  --cl-brand: #EC5728;
+  --cl-brand-tint: #FDECE6;
+  --cl-on-brand: #FFFFFF;
+  --cl-fog: #F1F5F9;
+  --cl-page-bg: #FEFEFE;
+
+  /* ---------- Functional tokens ---------- */
+  --cl-success: #1E9E5A;
+  --cl-success-tint: #E9F9EF;
+  --cl-warn-tint: #FFF7ED;
+  --cl-warn-strong: #D97706;
+  --cl-strong: #D44416;
+  --cl-strong-tint: #FDE8E1;
+  --cl-error: #DC2626;
+  --cl-error-tint: #FEE2E2;
+  --cl-danger: #D64545;
+  --cl-danger-tint: #FDECEC;
+  --cl-danger-border: #F3D2D2;
+  --cl-danger-border-soft: #E8A5A5;
+  --cl-info: #2563EB;
+  --cl-live: #22C55E;
+  --cl-on-dark: #CBD5E1;
+  --cl-on-dark-muted: #94A3B8;
+  --cl-on-dark-faint: #64748B;
+  --cl-on-dark-divider: #1E3A54;
+
+  /* ---------- Layout tokens ---------- */
+  --cl-page-gutter: clamp(16px, 3vw, 32px);
+  --cl-content-max: 1280px;
+  --cl-radius-card: 18px;
+  --cl-radius-input: 12px;
+
+  /* ---------- Typography scale (fluid) ---------- */
+  --cl-text-micro: 12px;
+  --cl-text-tiny: 12px;
+  --cl-text-caption: 14px;
+  --cl-text-caption-lg: 14px;
+  --cl-text-label: 14px;
+  --cl-text-label-lg: 16px;
+  --cl-text-support: 12.5px;
+  --cl-text-body: 13px;
+  --cl-text-body-lg: 13.5px;
+  --cl-text-subtitle: clamp(14px, calc(14px + (100vw - 360px) * 0.001613), 16px);
+  --cl-text-subtitle-lg: clamp(15px, calc(15px + (100vw - 360px) * 0.001613), 17px);
+  --cl-text-title: clamp(16px, calc(16px + (100vw - 360px) * 0.001613), 18px);
+  --cl-text-title-lg: clamp(17px, calc(17px + (100vw - 360px) * 0.001613), 19px);
+  --cl-text-heading: clamp(18px, calc(18px + (100vw - 360px) * 0.002419), 21px);
+  --cl-text-heading-lg: clamp(20px, calc(20px + (100vw - 360px) * 0.002419), 23px);
+  --cl-text-display: clamp(22px, calc(22px + (100vw - 360px) * 0.003226), 26px);
+  --cl-text-display-lg: clamp(24px, calc(24px + (100vw - 360px) * 0.003226), 28px);
+  --cl-text-hero: clamp(26px, calc(26px + (100vw - 360px) * 0.004839), 32px);
+  --cl-text-hero-lg: clamp(32px, calc(32px + (100vw - 360px) * 0.006452), 40px);
+
+  /* ---------- Font families ---------- */
+  --cl-font-display: 'Outfit', sans-serif;
+  --cl-font-body: 'Inter', sans-serif;
+}
+
+/* =========================================================================
+   DARK MODE — activated via data-theme="dark" on <html>
+   ========================================================================= */
+[data-theme="dark"] {
+  color-scheme: dark;
+  /* ---------- Primary palette ---------- */
+  --cl-primary: #06121E;
+  --cl-primary-color: #06121E;
+
+  /* ---------- Brand palette ---------- */
+  --cl-brand-color: #EC5728;
+  --cl-secondary: #F38460;
+  --cl-accent: #EC5728;
+  --cl-surface: #0B1B2B;
+
+  /* ---------- Neutral tokens (inverted for dark bg with #06121E / #0B1B2B) ---------- */
+  --cl-jet: #F1F5F9;
+  --cl-jet-soft: #E2E8F0;
+  --cl-slate: #94A3B8;
+  --cl-slate-light: #64748B;
+  --cl-border: #16304A;
+  --cl-white: #0B1B2B;
+  --cl-black: #FFFFFF;
+
+  /* ---------- Brand semantic (adjusted for dark bg) ---------- */
+  --cl-brand: #EC5728;
+  --cl-brand-tint: #361B13;
+  --cl-on-brand: #FFFFFF;
+  --cl-fog: #122538;
+  --cl-page-bg: #06121E;
+  --cl-card-bg: #0B1B2B;
+
+  /* ---------- Functional tokens ---------- */
+  --cl-success: #4CAF50;
+  --cl-success-tint: #0A2518;
+  --cl-warn-tint: #2A1D05;
+  --cl-warn-strong: #FBBF24;
+  --cl-strong: #EC5728;
+  --cl-strong-tint: #2B160E;
+  --cl-error: #EF4444;
+  --cl-error-tint: #2D1010;
+  --cl-danger: #EF4444;
+  --cl-danger-tint: #2D1010;
+  --cl-danger-border: #401818;
+  --cl-danger-border-soft: #552020;
+  --cl-info: #60A5FA;
+  --cl-live: #4ADE80;
+  --cl-on-dark: #CBD5E1;
+  --cl-on-dark-muted: #94A3B8;
+  --cl-on-dark-faint: #64748B;
+  --cl-on-dark-divider: #16304A;
+}
+
+/* ---------- Desktop typography scale ----------
+   Enforces a strict minimum of 14pt (14px) for all text on desktop viewports,
+   16pt (16px) for body copy, and 16pt (16px) for tab labels. */
+@media (min-width: 1024px) {
+  :root {
+    --cl-text-micro: 14px;
+    --cl-text-tiny: 14px;
+    --cl-text-caption: 14px;
+    --cl-text-caption-lg: 14px;
+    --cl-text-label: 14px;
+    --cl-text-label-lg: 16px;
+    --cl-text-support: 14px;
+    --cl-text-body: 16px;
+    --cl-text-body-lg: 16px;
+  }
+}
+
+/* ---------- Reset ---------- */
+html, body, #root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html { height: 100%; }
+
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--cl-font-body);
+  background: var(--cl-page-bg, #FEFEFE);
+  color: var(--cl-jet);
+}
+
+* { box-sizing: border-box; }
+
+button, input, textarea, select { font-family: inherit; }
+button, select { color: inherit; }
+input::placeholder, textarea::placeholder { color: var(--cl-slate-light); opacity: 1; }
+
+img { max-width: 100%; display: block; }
+
+/* =========================================================================
+   INTERACTION & ACCESSIBILITY
+   ========================================================================= */
+
+/* Visible, brand-colored focus for keyboard users */
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--cl-secondary) 55%, transparent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: rgba(241, 90, 41, 0.22);
+}
+
+/* =========================================================================
+   ACTIVE FIELD STATE
+   -------------------------------------------------------------------------
+   Focused fields show ONLY a primary-colour outline — no fill, no fill tint,
+   no glow. Applies to bordered wrappers (.cl-input) and bare inputs/selects.
+   Browser autofill fills are neutralised so the field stays flat on focus.
+   ========================================================================= */
+.cl-input {
+  transition: border-color 0.16s ease;
+}
+.cl-input:focus-within {
+  border-color: var(--cl-secondary) !important;
+  box-shadow: none !important;
+}
+
+/* Bare <input>/<select>/<textarea> — outline only, no fill. */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--cl-secondary) !important;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Neutralise the browser autofill background so fields remain unfilled. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--cl-jet);
+  -webkit-box-shadow: 0 0 0 1000px transparent inset;
+  box-shadow: 0 0 0 1000px transparent inset;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Registration form padding (desktop): the OnboardingFrame supplies 40px and
+   neutralises each screen's own horizontal padding + TopBar so the back arrow
+   stays aligned with the fields. Mobile screens keep their native padding. */
+[data-onboarding-frame] > div .cl-topbar,
+[data-onboarding-frame] > div .cl-hide-scrollbar {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* No tap-highlight flash on touch devices */
+* { -webkit-tap-highlight-color: transparent; }
+
+button { cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* Skip-to-content convenience for keyboard users */
+.cl-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: 0 0 12px 0;
+  background: var(--cl-jet);
+  color: var(--cl-white);
+  font-weight: 600;
+}
+.cl-skip-link:focus-visible { left: 0; }
+
+/* =========================================================================
+   LAYOUT UTILITIES (media-query driven — paired with Phase 5 primitives)
+   ========================================================================= */
+
+/* Page column with responsive gutters and an optional max width. */
+.cl-page {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--cl-page-gutter);
+}
+
+.cl-page--narrow { max-width: var(--cl-content-max); }
+
+/* Responsive card grid (CSS auto-fit; phases 11–14 switch screens onto it). */
+.cl-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  gap: clamp(12px, 2vw, 24px);
+}
+
+.cl-card-grid--dense {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: 12px;
+}
+
+/* Hide scrollbars but keep scrolling (chat panes, chip rows). */
+.cl-hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.cl-hide-scrollbar::-webkit-scrollbar { display: none; width: 0; height: 0; }
+
+/* Horizontal swipe rows (mobile tier) that relax into grids on hover devices. */
+.cl-swipe-row {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+}
+.cl-swipe-row > * { scroll-snap-align: start; flex-shrink: 0; }
+
+@media (hover: hover) and (pointer: fine) {
+  .cl-swipe-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    overflow: visible;
+    scroll-snap-type: none;
+    overscroll-behavior-x: auto;
+  }
+  .cl-swipe-row > * { flex-shrink: 1; scroll-snap-align: none; }
+}
+
+/* =========================================================================
+   BUTTON & CLICKABLE ELEMENT MICRO-INTERACTIONS
+   -------------------------------------------------------------------------
+   Subtle 1–2px lift, slightly stronger shadow, and smooth background/border
+   transitions on buttons and clickable coach cards only.
+   Search bars and static inputs are explicitly non-interactive/flat.
+   ========================================================================= */
+
+/* Explicit action buttons */
+.cl-btn:not(.cl-chip),
+button.cl-btn:not(.cl-chip),
+button[type="submit"] {
+  cursor: pointer;
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.18s ease,
+              border-color 0.18s ease,
+              color 0.18s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cl-btn:not(.cl-chip):not(:disabled):hover,
+  button.cl-btn:not(.cl-chip):not(:disabled):hover,
+  button[type="submit"]:not(:disabled):hover {
+    background-color: var(--cl-brand, #EC5728) !important;
+    border-color: var(--cl-brand, #EC5728) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 12px rgba(236, 87, 40, 0.28) !important;
+  }
+  .cl-btn:not(.cl-chip):not(:disabled):hover svg,
+  button.cl-btn:not(.cl-chip):not(:disabled):hover svg,
+  button[type="submit"]:not(:disabled):hover svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+  }
+}
+
+.cl-btn:not(:disabled):active,
+button.cl-btn:not(:disabled):active,
+button[type="submit"]:not(:disabled):active {
+  transform: scale(0.975) translateY(0) !important;
+  filter: brightness(0.93) !important;
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Arrow buttons, circular navigation & floating action buttons: White fill, orange on hover/active */
+.cl-arrow-btn,
+.cl-nav-arrow,
+.cl-floating-action-btn {
+  cursor: pointer;
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.18s ease,
+              border-color 0.18s ease,
+              color 0.18s ease,
+              box-shadow 0.18s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cl-arrow-btn:hover,
+  .cl-nav-arrow:hover,
+  .cl-floating-action-btn:hover {
+    background-color: var(--cl-brand, #EC5728) !important;
+    border-color: var(--cl-brand, #EC5728) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 6px 18px -2px rgba(236, 87, 40, 0.4) !important;
+    transform: translateY(-1.5px);
+  }
+  .cl-arrow-btn:hover svg,
+  .cl-nav-arrow:hover svg,
+  .cl-floating-action-btn:hover svg {
+    color: #FFFFFF !important;
+    stroke: #FFFFFF !important;
+  }
+}
+
+.cl-arrow-btn:active,
+.cl-nav-arrow:active,
+.cl-floating-action-btn:active {
+  transform: scale(0.94) translateY(0) !important;
+  background-color: var(--cl-brand, #EC5728) !important;
+  border-color: var(--cl-brand, #EC5728) !important;
+  color: #FFFFFF !important;
+  filter: brightness(0.92);
+}
+
+.cl-arrow-btn:active svg,
+.cl-nav-arrow:active svg,
+.cl-floating-action-btn:active svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Clickable Coach Cards & Interactive Cards: 1-2px lift, subtle shadow only on hover */
+.cl-card {
+  box-shadow: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.18s ease,
+              background-color 0.18s ease;
+}
+
+.cl-card[data-interactive="true"],
+.cl-card[role="button"],
+.cl-card--interactive {
+  cursor: pointer;
+  box-shadow: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cl-card[data-interactive="true"]:hover,
+  .cl-card[role="button"]:hover,
+  .cl-card--interactive:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--cl-secondary) 45%, var(--cl-border));
+    box-shadow: 0 4px 12px 0 rgba(22, 24, 29, 0.05), 0 1px 3px 0 rgba(22, 24, 29, 0.02);
+  }
+}
+
+.cl-card[data-interactive="true"]:active,
+.cl-card[role="button"]:active,
+.cl-card--interactive:active {
+  transform: scale(0.985) translateY(0) !important;
+  box-shadow: 0 2px 6px -2px rgba(22, 24, 29, 0.04) !important;
+}
+
+/* Search bar & Static Inputs: NEVER lift, transform or shadow on hover */
+.cl-input,
+.cl-input *,
+.cl-search-bar,
+.cl-search-bar *,
+input,
+textarea,
+select,
+.cl-search-trigger,
+.cl-search-trigger * {
+  transform: none !important;
+  filter: none !important;
+}
+
+/* =========================================================================
+   PHASE 9 — RESPONSIVE PAGE & FORM UTILITIES
+   -------------------------------------------------------------------------
+   Class-level breakpoint helpers paired with the Phase 5 layout primitives.
+   Used by the phase 10–16 screen refactors. Mobile-first; each class adds
+   desktop behavior at the matching tier.
+   ========================================================================= */
+
+/* Detail-page grid: sidebar rail + main column on desktop, stacked below. */
+.cl-detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 24px);
+  align-items: stretch;
+}
+@media (min-width: 1024px) {
+  .cl-detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+    align-items: start;
+  }
+  .cl-detail-grid > .cl-rail {
+    position: sticky;
+    top: 24px;
+  }
+}
+
+/* Two-column rail (wide) variant used by message threads + setup forms. */
+.cl-detail-grid--wide {
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+}
+
+/* Centered form column for auth / onboarding / singles forms. */
+.cl-center-form {
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+/* Vertical space so fixed/floating bottom action bars never cover content.
+   Screens using BottomTabs add this on the mobile tier only. */
+.cl-tab-clearance {
+  padding-bottom: 112px;
+}
+@media (min-width: 1024px) {
+  .cl-tab-clearance { padding-bottom: 0; }
+}
+
+/* Fixed overlay backdrop used with sheets that are NOT portaled. */
+.cl-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  background: rgba(22, 24, 29, 0.45);
+  backdrop-filter: blur(3px);
+  animation: clBackdropIn 0.2s ease;
+}
+
+/* Onboarding / auth page background — soft brand wash that reads as a
+   "branded shell" on desktop without touching the app palette. */
+.cl-auth-bg {
+  background:
+    radial-gradient(circle at 12% 8%, color-mix(in srgb, var(--cl-secondary) 12%, transparent) 0%, transparent 42%),
+    radial-gradient(circle at 88% 92%, color-mix(in srgb, var(--cl-secondary) 10%, transparent) 0%, transparent 46%),
+    var(--cl-fog);
+}
+
+@media (min-width: 1024px) {
+  .cl-auth-bg {
+    background:
+      radial-gradient(circle at 15% 12%, color-mix(in srgb, var(--cl-secondary) 14%, transparent) 0%, transparent 40%),
+      radial-gradient(circle at 85% 88%, color-mix(in srgb, var(--cl-secondary) 12%, transparent) 0%, transparent 44%),
+      linear-gradient(180deg, var(--cl-fog) 0%, color-mix(in srgb, var(--cl-fog) 60%, var(--cl-surface) 40%) 100%);
+  }
+}
+
+/* Fluid type utilities — same semantic steps as the JS T_FLUID scale. */
+.cl-t-micro { font-size: var(--cl-text-micro); }
+.cl-t-caption { font-size: var(--cl-text-caption); }
+.cl-t-body { font-size: var(--cl-text-body); }
+.cl-t-body-lg { font-size: var(--cl-text-body-lg); }
+.cl-t-label { font-size: var(--cl-text-label); }
+.cl-t-label-lg { font-size: var(--cl-text-label-lg); }
+.cl-t-support { font-size: var(--cl-text-support); }
+
+/* =========================================================================
+   ONBOARDING FORM PADDING (desktop registration)
+   -------------------------------------------------------------------------
+   The onboarding frame owns a 32px form padding. The mobile-authored screens
+   inside it carry their own 18px gutter, so we zero that inside the frame —
+   for both the scroll body and the TopBar — keeping fields and the back
+   arrow aligned at 32px. Mobile (no frame) is untouched.
+   ========================================================================= */
+.cl-onboard-body .cl-hide-scrollbar,
+.cl-onboard-body .cl-topbar {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.cl-t-title { font-size: var(--cl-text-title); }
+.cl-t-title-lg { font-size: var(--cl-text-title-lg); }
+.cl-t-heading { font-size: var(--cl-text-heading); }
+.cl-t-display { font-size: var(--cl-text-display); }
+
+/* Viewport-safe scroll container for app-style screens inside the portal. */
+.cl-screen-scroll {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+.cl-screen-scroll--page {
+  min-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+/* =========================================================================
+   PHASE 17/18 — DESKTOP POINTER & ACCESSIBILITY REFINEMENTS
+   -------------------------------------------------------------------------
+   On hover-capable devices scroll areas get slim visible scrollbars (mobile
+   keeps the hidden-scrollbar feel); interactive rows/links get hover +
+   focus-visible affordances.
+   ========================================================================= */
+@media (hover: hover) and (pointer: fine) {
+  .cl-hide-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--cl-slate) 40%, transparent) transparent;
+  }
+  .cl-hide-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    display: block;
+  }
+  .cl-hide-scrollbar::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--cl-slate) 35%, transparent);
+    border-radius: 999px;
+  }
+  .cl-hide-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--cl-slate) 55%, transparent);
+  }
+  .cl-hide-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* Modal-like full screens (e.g. "You're officially booked") — keep the scroll
+   area for safety but never show a scrollbar, on any device/tier. */
+.cl-modal-screen {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.cl-modal-screen::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Data-table row hover / focus (desktop dashboards, bookings, history). */
+.cl-table-row {
+  transition: background 0.12s ease;
+}
+.cl-table-row:hover,
+.cl-table-row:focus-visible {
+  background: var(--cl-fog);
+}
