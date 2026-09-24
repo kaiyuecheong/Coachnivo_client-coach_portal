@@ -370,6 +370,9 @@ export function ScreenCoachProfile({ nav, goBack, params = {}, favorites = [], t
   const pub = getPublicName(coach, "public");
   const { getReply } = useReviewActions();
   const [tab, setTab] = useState(params.tab || "packages");
+  useEffect(() => {
+    if (params?.tab) setTab(params.tab);
+  }, [params?.tab]);
   const [selectedPkgId, setSelectedPkgId] = useState(params.openSchedule ? params.packageId : null);
   const [packageSheetStep, setPackageSheetStep] = useState(params.openSchedule ? 2 : 1);
   const [reviewPage, setReviewPage] = useState(1);

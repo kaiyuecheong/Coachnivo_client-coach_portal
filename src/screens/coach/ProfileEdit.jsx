@@ -176,7 +176,11 @@ export function ScreenCoachProfileEdit({ nav, resetNav, toast, coachPackages, sa
   const [newPw, setNewPw] = useState("");
   const [confirmPw, setConfirmPw] = useState("");
   const pwdOk = passwordValid(newPw) && newPw === confirmPw;
-  const [tab, setTab] = useState("profile");
+  const [tab, setTab] = useState(params.presetTab || params.tab || "profile");
+  useEffect(() => {
+    if (params?.tab) setTab(params.tab);
+    else if (params?.presetTab) setTab(params.presetTab);
+  }, [params?.tab, params?.presetTab]);
   const [deleteStep, setDeleteStep] = useState("confirm");
   const [deleteCode, setDeleteCode] = useState(["", "", "", "", "", ""]);
   const [deleteError, setDeleteError] = useState(false);

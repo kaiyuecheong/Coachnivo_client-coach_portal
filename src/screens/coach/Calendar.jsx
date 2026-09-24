@@ -117,13 +117,17 @@ function parseCalendarBadge(dateStr) {
 }
 
 export function ScreenCoachCalendar({
-  nav, toast, coachPackages = [], availabilityBlocks = [], setAvailabilityBlocks, coachBookings = [],
+  nav, toast, coachPackages = [], availabilityBlocks = [], setAvailabilityBlocks, coachBookings = [], params = {},
 }) {
   const { darkMode } = useApp();
   const C = darkMode ? CD : CL;
   const { isDesktop, isTablet } = useResponsive();
 
-  const [section, setSection] = useState("schedule"); // "schedule" | "availability"
+  const [section, setSection] = useState(params.presetTab || params.tab || params.section || "schedule"); // "schedule" | "availability"
+  useEffect(() => {
+    const target = params?.presetTab || params?.tab || params?.section;
+    if (target) setSection(target);
+  }, [params?.presetTab, params?.tab, params?.section]);
   const [view, setView] = useState("list"); // "list" | "calendar"
   const [calMode, setCalMode] = useState("month"); // "month" | "week"
   const [synced, setSynced] = useState(true);

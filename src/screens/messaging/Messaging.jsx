@@ -798,7 +798,7 @@ export function ChatConversationPane({
 
       {/* Bottom Composer */}
       {blocked ? (
-        <div style={{ padding: isDesktop ? "14px 24px 20px" : "14px 18px 22px", borderTop: `1px solid ${C.border}`, background: C.white }}>
+        <div style={{ padding: isDesktop ? "14px 24px 20px" : "14px 18px 22px", background: C.white }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, background: C.fog, borderRadius: 12, padding: "12px 16px", fontSize: T.labelLg, color: C.slate, lineHeight: 1.5, ...fBody }}>
             <Ban size={16} color={C.danger} style={{ flexShrink: 0 }} />
             <span style={{ flex: 1 }}>You blocked {otherName}.</span>
@@ -813,7 +813,7 @@ export function ChatConversationPane({
           padding: isDesktop ? "12px 24px 18px" : "8px 12px",
           paddingBottom: isDesktop ? 18 : "max(24px, env(safe-area-inset-bottom))",
           display: "flex", alignItems: "center", gap: 8,
-          borderTop: `1px solid ${C.border}`, background: C.white, flexShrink: 0,
+          background: C.white, flexShrink: 0,
         }}>
           <input ref={fileInputRef} type="file" accept="image/*,application/pdf,video/*" onChange={handleAttachmentPick} style={{ display: "none" }} />
           <div

@@ -698,42 +698,42 @@ export function ScreenVerifyEmail({ nav, params, toast, role }) {
   return (
     <div style={{ height: "100%", display: "flex", flexDirection: "column" }}>
       <TopBar title="" onBack={changeEmail} />
-      <div style={{ flex: 1, overflowY: "auto", padding: "16px 18px 24px" }} className="cl-hide-scrollbar">
+      <div style={{ flex: 1, overflowY: "auto", padding: "16px 18px 24px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }} className="cl-hide-scrollbar">
         {phase === "success" ? (
-          <>
+          <div style={{ width: "100%", maxWidth: 360, margin: "0 auto" }}>
             <div style={{ textAlign: "center", marginTop: 44 }}>
               <div style={{ width: 84, height: 84, borderRadius: 26, background: C.successTint, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
                 <CheckCircle2 size={40} color={C.success} />
               </div>
-              <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Your email is verified</div>
-              <div style={{ fontSize: T.support, color: C.slate, marginTop: 8, lineHeight: 1.6, ...fBody }}>
+              <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, textAlign: "center", ...fDisplay }}>Your email is verified</div>
+              <div style={{ fontSize: T.support, color: C.slate, marginTop: 8, lineHeight: 1.6, textAlign: "center", ...fBody }}>
                 Thanks for confirming - let's continue setting up your account.
               </div>
             </div>
             <div style={{ marginTop: 28 }}>
               <Btn full onClick={continueAfterVerify}>Continue</Btn>
             </div>
-          </>
+          </div>
         ) : (
-          <>
+          <div style={{ width: "100%", maxWidth: 360, margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div style={{ width: 52, height: 52, borderRadius: 16, background: phase === "error" ? C.dangerTint : C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
               {phase === "error" ? <XCircle size={22} color={C.danger} /> : <Mail size={22} color={C.brand} />}
             </div>
-            <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Verify your email<RequiredMark /></div>
-            <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 24, lineHeight: 1.55, ...fBody }}>
+            <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, textAlign: "center", ...fDisplay }}>Verify your email<RequiredMark /></div>
+            <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 24, lineHeight: 1.55, textAlign: "center", ...fBody }}>
               We've sent a verification code to <span style={{ color: C.jet, fontWeight: 600 }}>{email}</span>. Enter it below to activate your account.
             </div>
 
             {resent && phase === "code" && (
-              <div style={{ display: "flex", alignItems: "center", gap: 8, background: C.successTint, borderRadius: 12, padding: "10px 12px", marginBottom: 14 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: C.successTint, borderRadius: 12, padding: "10px 12px", marginBottom: 14, width: "100%", boxSizing: "border-box" }}>
                 <CheckCircle2 size={14} color={C.success} style={{ flexShrink: 0 }} />
                 <span style={{ fontSize: T.labelLg, color: C.success, fontWeight: 600, ...fBody }}>A new code has been sent</span>
               </div>
             )}
 
             {phase === "error" && (
-              <div style={{ background: C.dangerTint, border: `1px solid ${C.dangerBorder}`, borderRadius: 12, padding: "12px 14px", marginBottom: 14 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ background: C.dangerTint, border: `1px solid ${C.dangerBorder}`, borderRadius: 12, padding: "12px 14px", marginBottom: 14, width: "100%", boxSizing: "border-box", textAlign: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
                   <XCircle size={15} color={C.danger} style={{ flexShrink: 0 }} />
                   <span style={{ fontSize: T.body, fontWeight: 700, color: C.danger, ...fBody }}>Invalid or expired code</span>
                 </div>
@@ -743,7 +743,7 @@ export function ScreenVerifyEmail({ nav, params, toast, role }) {
               </div>
             )}
 
-            <div style={{ display: "flex", gap: 8, justifyContent: "flex-start" }}>
+            <div style={{ display: "flex", gap: 8, width: "100%", justifyContent: "space-between", boxSizing: "border-box" }}>
               {digits.map((d, i) => (
                 <input
                   key={i}
@@ -757,15 +757,15 @@ export function ScreenVerifyEmail({ nav, params, toast, role }) {
                   inputMode="numeric"
                   maxLength={1}
                   style={{
-                    flex: "0 1 60px", minWidth: 0, aspectRatio: "1 / 1", height: "auto", textAlign: "center", fontSize: T.headingLg, fontWeight: 700,
+                    flex: 1, minWidth: 0, aspectRatio: "1 / 1", height: "auto", textAlign: "center", fontSize: T.headingLg, fontWeight: 700,
                     border: `1.5px solid ${phase === "error" ? C.dangerBorderSoft : d ? C.brand : C.border}`,
-                    borderRadius: 13, outline: "none", color: C.jet, boxSizing: "border-box", ...fDisplay,
+                    borderRadius: 13, outline: "none", color: C.jet, boxSizing: "border-box", background: C.white, ...fDisplay,
                   }}
                 />
               ))}
             </div>
 
-            <div style={{ marginTop: 24 }}>
+            <div style={{ marginTop: 24, width: "100%" }}>
               <Btn full disabled={!canVerify} onClick={verify}>Verify email</Btn>
             </div>
 
@@ -790,7 +790,7 @@ export function ScreenVerifyEmail({ nav, params, toast, role }) {
                 Wrong email? <span style={{ color: C.brand, fontWeight: 600 }}>Change email</span>
               </button>
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>

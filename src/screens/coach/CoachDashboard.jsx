@@ -9,6 +9,7 @@ import {
   CornerUpLeft,
   Flag,
   Clock,
+  ChevronRight,
 } from "lucide-react";
 import { CL, CD, fDisplay, fBody, T } from "../../theme/theme";
 import { REVIEWS, CONFIG } from "../../data/mockData";
@@ -392,390 +393,1023 @@ export function ScreenCoachDashboard({
             <div style={{ marginTop: 18, marginBottom: 10 }}><SectionLabel>Upcoming sessions</SectionLabel></div>
             <BookingCardSkeleton rows={2} />
           </>
-        ) : (
-          <>
-        {/* Pending Requests */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginTop: isDesktop ? 32 : 22,
-            marginBottom: isDesktop ? 16 : 10,
-          }}
-        >
-          <SectionLabel style={{ marginBottom: 0 }}>Pending requests</SectionLabel>
-
-          <button
-            onClick={() => nav("coach-bookings")}
-            style={{
-              minHeight: 44,
-              padding: "0 4px",
-              background: "none",
-              border: "none",
-              color: C.brand,
-              fontSize: isDesktop ? 15 : T.label,
-              fontWeight: 600,
-              cursor: "pointer",
-              ...fBody,
-            }}
-          >
-            See all
-          </button>
-        </div>
-
-        {pendingRequests.length === 0 ? (
+        ) : isDesktop ? (
+          /* ── Structured Desktop Layout (Zero unnecessary sliders) ── */
           <div
             style={{
-              fontSize: T.labelLg,
-              color: C.slateLight,
-              marginBottom: 6,
-              ...fBody,
+              display: "grid",
+              gridTemplateColumns: "minmax(0, 1.6fr) minmax(0, 1fr)",
+              gap: 24,
+              alignItems: "start",
             }}
           >
-            No active booking requests right now.
-          </div>
-        ) : (
-          <CardSlider perView={isDesktop ? 3 : isTablet ? 2 : 1.15} gap={16}>
-            {pendingRequests.map((b, i) => {
-              const cn = clientNameFor(b);
-              return (
-                <Card
-                  key={b.id}
-                  style={{
-                    height: "100%",
-                    padding: isDesktop ? 24 : 16,
-                    borderRadius: isDesktop ? 20 : 16,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    cursor: "pointer",
-                  }}
-                  onClick={() =>
-                    nav("coach-booking-detail", {
-                      id: b.id,
-                    })
-                  }
-                >
-                  <div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 12,
-                        marginBottom: 12,
-                      }}
-                    >
-                      <Avatar name={cn.name} size={isDesktop ? 48 : 40} />
-                      <div style={{ flex: 1, minWidth: 0 }}>
+            {/* Left Column: Core Operations & Schedule */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 24, minWidth: 0 }}>
+              {/* 1. Pending Booking Requests */}
+              <Card style={{ padding: 24, borderRadius: 20 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                      Pending requests
+                    </h2>
+                    {pendingRequests.length > 0 && (
+                      <Badge tone="orange">{pendingRequests.length} action required</Badge>
+                    )}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => nav("coach-bookings")}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: C.brand,
+                      fontSize: 14,
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 4,
+                      padding: 0,
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    <span>See all bookings</span>
+                    <ChevronRight size={14} />
+                  </button>
+                </div>
+
+                {pendingRequests.length === 0 ? (
+                  <div
+                    style={{
+                      padding: "28px 16px",
+                      textAlign: "center",
+                      background: C.fog,
+                      borderRadius: 14,
+                      border: `1px dashed ${C.border}`,
+                    }}
+                  >
+                    <Check size={24} color={C.success} style={{ margin: "0 auto 8px" }} />
+                    <div style={{ fontSize: 15, fontWeight: 600, color: C.jet, fontFamily: "'Inter', sans-serif" }}>
+                      No pending requests
+                    </div>
+                    <div style={{ fontSize: 14, color: C.slate, marginTop: 3, fontFamily: "'Inter', sans-serif" }}>
+                      You're completely up to date with client bookings.
+                    </div>
+                  </div>
+                ) : (
+                  <CardSlider perView={3} gap={14}>
+                    {pendingRequests.map((b) => {
+                      const cn = clientNameFor(b);
+                      return (
                         <div
+                          key={b.id}
                           style={{
-                            fontSize: isDesktop ? 18 : T.bodyLg,
-                            fontWeight: 600,
-                            color: C.jet,
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
-                            ...fDisplay,
+                            background: darkMode ? "#1A222D" : C.white,
+                            border: `1px solid ${C.border}`,
+                            borderRadius: 16,
+                            padding: 16,
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "space-between",
+                            height: "100%",
+                            boxSizing: "border-box",
+                            boxShadow: "0 1px 4px rgba(0,0,0,0.02)",
                           }}
                         >
-                          {cn.name}
+                          <div>
+                            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, marginBottom: 8 }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                                <Avatar name={cn.name} size={38} />
+                                <div style={{ minWidth: 0 }}>
+                                  <div style={{ fontSize: 15, fontWeight: 700, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontFamily: "'Outfit', sans-serif" }}>
+                                    {cn.name}
+                                  </div>
+                                  {cn.handle && <HandleTag handle={cn.handle} size={10.5} color={C.slateLight} />}
+                                </div>
+                              </div>
+                              <div style={{ fontSize: 17, fontWeight: 800, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                                ${b.price}
+                              </div>
+                            </div>
+
+                            <div style={{ fontSize: 14, fontWeight: 600, color: C.brand, marginTop: 4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontFamily: "'Inter', sans-serif" }}>
+                              {b.service}
+                            </div>
+                            <div style={{ fontSize: 13, color: C.slate, marginTop: 3, display: "flex", alignItems: "center", gap: 4, fontFamily: "'Inter', sans-serif" }}>
+                              <Clock size={12} color={C.slateLight} />
+                              <span>{b.date} · {b.time}</span>
+                            </div>
+                          </div>
+
+                          <div style={{ display: "flex", gap: 6, marginTop: 14, paddingTop: 12, borderTop: `1px solid ${C.border}` }}>
+                            <Btn
+                              size="sm"
+                              variant="outline"
+                              disabled={!!respondingId}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                respondWithFeedback(b.id, BOOKING_STATUS.DECLINED, "Booking declined");
+                              }}
+                              style={{ flex: 1, padding: "0 10px", minHeight: 38 }}
+                            >
+                              Decline
+                            </Btn>
+                            <Btn
+                              size="sm"
+                              loading={respondingId === b.id}
+                              loadingText="…"
+                              disabled={!!respondingId && respondingId !== b.id}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                respondWithFeedback(b.id, BOOKING_STATUS.AWAITING_PAYMENT, "Booking accepted");
+                              }}
+                              style={{ flex: 1.2, padding: "0 10px", minHeight: 38 }}
+                            >
+                              Accept
+                            </Btn>
+                          </div>
                         </div>
-                        {cn.handle && <HandleTag handle={cn.handle} size={11} color={C.slateLight} />}
-                      </div>
-                    </div>
+                      );
+                    })}
+                  </CardSlider>
+                )}
+              </Card>
 
-                    <div
-                      style={{
-                        fontSize: isDesktop ? 15 : T.body,
-                        fontWeight: 600,
-                        color: C.brand,
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                        ...fBody,
-                      }}
-                    >
-                      {b.service}
-                    </div>
-
-                    <div style={{ fontSize: isDesktop ? 14 : T.captionLg, color: C.slate, marginTop: 4, ...fBody }}>
-                      {b.date} · {b.time}
-                    </div>
-
-                    <div
-                      style={{
-                        fontSize: isDesktop ? 22 : T.subtitle,
-                        fontWeight: 700,
-                        color: C.jet,
-                        marginTop: 8,
-                        ...fDisplay,
-                      }}
-                    >
-                      ${b.price}
+              {/* Awaiting Client Payment (Dedicated Container) */}
+              {awaitingPayment.length > 0 && (
+                <Card style={{ padding: 24, borderRadius: 20 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                        Awaiting client payment
+                      </h2>
+                      <Badge tone="orange">{awaitingPayment.length} reserved</Badge>
                     </div>
                   </div>
 
-                  <div
-                    style={{
-                      display: "flex",
-                      gap: 8,
-                      justifyContent: "flex-start",
-                      marginTop: 16,
-                      paddingTop: 14,
-                      borderTop: `1px solid ${C.border}`,
-                      alignItems: "center",
-                    }}
-                  >
-                    <Btn
-                      size={isDesktop ? "md" : "sm"}
-                      variant="outline"
-                      disabled={!!respondingId}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        respondWithFeedback(
-                          b.id,
-                          BOOKING_STATUS.DECLINED,
-                          "Booking declined"
-                        );
-                      }}
-                    >
-                      Decline
-                    </Btn>
-
-                    <Btn
-                      size={isDesktop ? "md" : "sm"}
-                      loading={respondingId === b.id}
-                      loadingText="Accepting…"
-                      disabled={!!respondingId && respondingId !== b.id}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        respondWithFeedback(
-                          b.id,
-                          BOOKING_STATUS.AWAITING_PAYMENT,
-                          "Booking accepted"
-                        );
-                      }}
-                    >
-                      Accept
-                    </Btn>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {awaitingPayment.map((b) => {
+                      const cn = clientNameFor(b);
+                      return (
+                        <div
+                          key={b.id}
+                          onClick={() => nav("booking-awaiting-payment", { id: b.id })}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            padding: "14px 16px",
+                            borderRadius: 14,
+                            background: C.strongTint,
+                            border: `1px solid ${C.border}`,
+                            cursor: "pointer",
+                            gap: 12,
+                          }}
+                          className="cl-table-row"
+                        >
+                          <div style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0 }}>
+                            <Avatar name={cn.name} size={38} />
+                            <div style={{ minWidth: 0 }}>
+                              <div style={{ fontSize: 15, fontWeight: 700, color: C.jet, fontFamily: "'Inter', sans-serif" }}>
+                                {cn.name} <span style={{ fontWeight: 400, color: C.slate }}>· {b.service}</span>
+                              </div>
+                              <div style={{ fontSize: 13.5, color: C.slate, marginTop: 2, fontFamily: "'Inter', sans-serif" }}>
+                                {b.date} · ${b.price}
+                              </div>
+                            </div>
+                          </div>
+                          <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+                            <span style={{ fontSize: 13.5, fontWeight: 600, color: C.strong, display: "flex", alignItems: "center", gap: 4, fontFamily: "'Inter', sans-serif" }}>
+                              <Clock size={14} />
+                              Reserved
+                            </span>
+                            <ChevronRight size={16} color={C.slate} />
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </Card>
-              );
-            })}
-          </CardSlider>
-        )}
+              )}
 
-        {awaitingPayment.length > 0 && (
-          <>
-            <div style={{ marginTop: isDesktop ? 32 : 22, marginBottom: isDesktop ? 16 : 10 }}><SectionLabel style={{ marginBottom: 0 }}>Waiting for payment</SectionLabel></div>
-            <CardSlider perView={isDesktop ? 3 : isTablet ? 2 : 1.15} gap={16}>
-              {awaitingPayment.map((b) => {
-                const cn = clientNameFor(b);
-                return (
-                  <Card
-                    key={b.id}
-                    onClick={() => nav("booking-awaiting-payment", { id: b.id })}
+              {/* 2. Upcoming Schedule & Sessions */}
+              <Card style={{ padding: 24, borderRadius: 20 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                      Upcoming schedule
+                    </h2>
+                    <Badge tone="neutral">{upcoming.length} confirmed</Badge>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => nav("coach-calendar")}
                     style={{
-                      height: "100%",
-                      padding: isDesktop ? 24 : 16,
-                      borderRadius: isDesktop ? 20 : 16,
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
+                      background: "none",
+                      border: "none",
+                      color: C.brand,
+                      fontSize: 14,
+                      fontWeight: 600,
                       cursor: "pointer",
-                    }}
-                  >
-                    <div>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 12 }}>
-                        <Avatar name={cn.name} size={isDesktop ? 48 : 38} />
-                        <StatusPill status={b.status} perspective="coach" />
-                      </div>
-                      <div style={{ fontSize: isDesktop ? 18 : T.body, fontWeight: 700, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>{cn.name}</div>
-                      <div style={{ fontSize: isDesktop ? 15 : T.captionLg, color: C.brand, fontWeight: 600, marginTop: 3, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>{b.service}</div>
-                      <div style={{ fontSize: isDesktop ? 13.5 : T.caption, color: C.slate, marginTop: 2, ...fBody }}>{b.date}</div>
-                    </div>
-                    <div style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 16, padding: isDesktop ? "10px 12px" : "8px 10px", borderRadius: 10, background: C.strongTint }}>
-                      <Clock size={15} color={C.strong} style={{ flexShrink: 0 }} />
-                      <span style={{ flex: 1, fontSize: isDesktop ? 13 : T.label, color: C.slate, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>Reserved until {b.paymentDeadline || "tomorrow, 6:00pm"}</span>
-                    </div>
-                  </Card>
-                );
-              })}
-            </CardSlider>
-          </>
-        )}
-
-        {/* Upcoming Sessions */}
-        <div
-          style={{
-            marginTop: isDesktop ? 32 : 22,
-            marginBottom: isDesktop ? 16 : 10,
-          }}
-        >
-          <SectionLabel style={{ marginBottom: 0 }}>Upcoming sessions</SectionLabel>
-        </div>
-
-        {upcoming.length === 0 ? (
-          <div
-            style={{
-              fontSize: T.labelLg,
-              color: C.slateLight,
-              ...fBody,
-            }}
-          >
-            Nothing scheduled yet.
-          </div>
-        ) : (
-          <CardSlider perView={isDesktop ? 3 : isTablet ? 2 : 1.15} gap={16}>
-            {upcoming.map((b, i) => {
-              const cn = clientNameFor(b);
-              return (
-                <Card
-                  key={b.id}
-                  style={{
-                    height: "100%",
-                    padding: isDesktop ? 24 : 16,
-                    borderRadius: isDesktop ? 20 : 16,
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => nav("coach-session-detail", { id: b.id })}
-                >
-                  <div>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 12 }}>
-                      <Avatar name={cn.name} size={isDesktop ? 48 : 38} />
-                      <StatusPill status={b.status} perspective="coach" />
-                    </div>
-                    <div style={{ display: "flex", alignItems: "baseline", gap: 6, flexWrap: "wrap" }}>
-                      <span style={{ fontSize: isDesktop ? 18 : T.body, fontWeight: 650, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>{cn.name}</span>
-                    </div>
-                    {cn.handle && <HandleTag handle={cn.handle} size={11} color={C.slateLight} />}
-                    <div style={{ fontSize: isDesktop ? 15 : T.captionLg, color: C.brand, fontWeight: 600, marginTop: 4, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>
-                      {b.service || "Coaching Session"}
-                    </div>
-                  </div>
-                  <div style={{ fontSize: isDesktop ? 13.5 : T.captionLg, color: C.slate, marginTop: 14, paddingTop: 10, borderTop: `1px solid ${C.border}`, ...fBody }}>
-                    {b.date} · {b.time}
-                  </div>
-                </Card>
-              );
-            })}
-          </CardSlider>
-        )}
-          </>
-        )}
-
-        {/* Recent Reviews */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginTop: isDesktop ? 32 : 22,
-            marginBottom: isDesktop ? 16 : 10,
-          }}
-        >
-          <SectionLabel style={{ marginBottom: 0 }}>Recent reviews</SectionLabel>
-
-          <button
-            onClick={() => nav("coach-reviews")}
-            style={{
-              background: "none",
-              border: "none",
-              color: C.brand,
-              fontSize: isDesktop ? 15 : T.label,
-              fontWeight: 600,
-              cursor: "pointer",
-              ...fBody,
-            }}
-          >
-            See all
-          </button>
-        </div>
-
-        <CardSlider perView={isDesktop ? 3 : isTablet ? 2 : 1.15} gap={16}>
-          {REVIEWS.map((r) => {
-            const reply = getReply(r.id);
-            const dispute = getDispute(r.id);
-            return (
-              <Card
-                key={r.id}
-                style={{
-                  height: "100%",
-                  padding: isDesktop ? 24 : 16,
-                  borderRadius: isDesktop ? 20 : 16,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <div>
-                  <div
-                    style={{
                       display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "flex-start",
-                      gap: 6,
+                      alignItems: "center",
+                      gap: 4,
+                      padding: 0,
+                      fontFamily: "'Inter', sans-serif",
                     }}
                   >
-                    <div style={{ minWidth: 0 }}>
-                      <div style={{ fontSize: isDesktop ? 16 : T.body, fontWeight: 600, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>{r.name}</div>
-                      {r.handle && <HandleTag handle={r.handle} size={10.5} color={C.slateLight} />}
-                    </div>
-
-                    <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: isDesktop ? 14 : T.labelLg, fontWeight: 700, color: C.jet, flexShrink: 0, ...fBody }}>
-                      <Star size={13} fill={C.brand} color={C.brand} />
-                      {r.rating.toFixed(1)}
-                    </span>
-                  </div>
-
-                  <p
-                    style={{
-                      fontSize: isDesktop ? 14 : T.labelLg,
-                      color: C.slate,
-                      marginTop: 10,
-                      lineHeight: 1.5,
-                      display: "-webkit-box",
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                      ...fBody,
-                    }}
-                  >
-                    {r.text}
-                  </p>
-
-                  {dispute && (
-                    <div style={{ marginTop: 10 }}>
-                      <Badge tone="orange" icon={Clock}>Dispute pending</Badge>
-                    </div>
-                  )}
-
-                  {reply && (
-                    <div style={{ marginTop: 10, background: C.fog, borderRadius: 10, padding: isDesktop ? "10px 12px" : "8px 10px" }}>
-                      <div style={{ fontSize: 11.5, fontWeight: 700, color: C.brand, ...fBody }}>Your reply</div>
-                      <p style={{ fontSize: 12.5, color: C.jet, marginTop: 3, lineHeight: 1.4, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", ...fBody }}>{reply.text}</p>
-                    </div>
-                  )}
+                    <span>Open calendar</span>
+                    <ChevronRight size={14} />
+                  </button>
                 </div>
 
-                <div style={{ display: "flex", gap: 8, marginTop: 14, paddingTop: 12, borderTop: `1px solid ${C.border}`, flexWrap: "wrap" }}>
-                  <Btn size="sm" variant="secondary" icon={CornerUpLeft} onClick={() => openReply(r)}>
-                    {reply ? "Edit reply" : "Reply"}
-                  </Btn>
-                  {!dispute && (
-                    <Btn size="sm" variant="outline" icon={Flag} onClick={() => openDispute(r)}>
-                      Report
+                {upcoming.length === 0 ? (
+                  <div
+                    style={{
+                      padding: "32px 16px",
+                      textAlign: "center",
+                      background: C.fog,
+                      borderRadius: 14,
+                      border: `1px dashed ${C.border}`,
+                    }}
+                  >
+                    <Calendar size={26} color={C.slateLight} style={{ margin: "0 auto 8px" }} />
+                    <div style={{ fontSize: 15, fontWeight: 600, color: C.jet, fontFamily: "'Inter', sans-serif" }}>
+                      No upcoming sessions scheduled
+                    </div>
+                    <div style={{ fontSize: 14, color: C.slate, marginTop: 3, marginBottom: 14, fontFamily: "'Inter', sans-serif" }}>
+                      Keep your calendar availability updated so clients can book slots.
+                    </div>
+                    <Btn size="sm" variant="outline" onClick={() => nav("coach-calendar")}>
+                      Manage availability
                     </Btn>
-                  )}
+                  </div>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                    {upcoming.map((b) => {
+                      const cn = clientNameFor(b);
+                      return (
+                        <div
+                          key={b.id}
+                          onClick={() => nav("coach-session-detail", { id: b.id })}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            padding: "14px 16px",
+                            borderRadius: 14,
+                            background: C.white,
+                            border: `1px solid ${C.border}`,
+                            cursor: "pointer",
+                            gap: 14,
+                          }}
+                          className="cl-table-row"
+                        >
+                          <div style={{ display: "flex", alignItems: "center", gap: 14, minWidth: 0 }}>
+                            {/* Date / Time pill */}
+                            <div
+                              style={{
+                                padding: "8px 12px",
+                                borderRadius: 10,
+                                background: C.fog,
+                                textAlign: "center",
+                                minWidth: 80,
+                                flexShrink: 0,
+                              }}
+                            >
+                              <div style={{ fontSize: 14, fontWeight: 700, color: C.jet, lineHeight: 1.1, fontFamily: "'Outfit', sans-serif" }}>
+                                {b.date.split(" ")[0]} {b.date.split(" ")[1]}
+                              </div>
+                              <div style={{ fontSize: 12, color: C.slate, marginTop: 2, fontFamily: "'Inter', sans-serif" }}>
+                                {b.time}
+                              </div>
+                            </div>
+
+                            <Avatar name={cn.name} size={40} />
+
+                            <div style={{ minWidth: 0 }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                                <span style={{ fontSize: 15, fontWeight: 700, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontFamily: "'Inter', sans-serif" }}>
+                                  {cn.name}
+                                </span>
+                                {cn.handle && <HandleTag handle={cn.handle} size={11} color={C.slateLight} />}
+                              </div>
+                              <div style={{ fontSize: 14, color: C.brand, fontWeight: 600, marginTop: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", fontFamily: "'Inter', sans-serif" }}>
+                                {b.service || "Coaching Session"}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+                            <StatusPill status={b.status} perspective="coach" />
+                            <ChevronRight size={16} color={C.slateLight} />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </Card>
+            </div>
+
+            {/* Right Column: Shortcuts, Earnings Breakdown & Recent Reviews */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 24, minWidth: 0 }}>
+              {/* Widget 1: Quick Actions & Management Shortcuts */}
+              <Card style={{ padding: 22, borderRadius: 20 }}>
+                <h2 style={{ margin: "0 0 14px", fontSize: 17, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                  Quick management
+                </h2>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {[
+                    { label: "Availability & Calendar", desc: "Manage weekly slots & holidays", icon: Calendar, action: () => nav("coach-calendar", { tab: "availability", section: "availability" }) },
+                    { label: "Packages & Pricing", desc: "Edit services, rates & tiers", icon: Banknote, action: () => nav("coach-profile-edit", { tab: "business" }) },
+                    { label: "Client Messages", desc: unreadCount > 0 ? `${unreadCount} unread message${unreadCount > 1 ? "s" : ""}` : "Chat & session coordination", icon: MessageCircle, badge: unreadCount > 0 ? unreadCount : null, action: () => nav("coach-messages") },
+                    { label: "Public Profile Preview", desc: "See how clients view your page", icon: Star, action: () => nav("coach-profile", { preview: true, tab: "reviews" }) },
+                  ].map((item, idx) => {
+                    const Icon = item.icon;
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={item.action}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          padding: "10px 12px",
+                          borderRadius: 12,
+                          border: `1px solid ${C.border}`,
+                          background: C.white,
+                          cursor: "pointer",
+                          textAlign: "left",
+                          gap: 10,
+                        }}
+                        className="cl-table-row"
+                      >
+                        <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+                          <div
+                            style={{
+                              width: 34,
+                              height: 34,
+                              borderRadius: 10,
+                              background: C.fog,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              color: C.brand,
+                              flexShrink: 0,
+                            }}
+                          >
+                            <Icon size={16} />
+                          </div>
+                          <div style={{ minWidth: 0 }}>
+                            <div style={{ fontSize: 14.5, fontWeight: 650, color: C.jet, fontFamily: "'Inter', sans-serif" }}>
+                              {item.label}
+                            </div>
+                            <div style={{ fontSize: 12.5, color: C.slate, marginTop: 1, fontFamily: "'Inter', sans-serif", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                              {item.desc}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+                          {item.badge && (
+                            <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 7px", borderRadius: 99, background: C.brand, color: "#FFFFFF" }}>
+                              {item.badge}
+                            </span>
+                          )}
+                          <ChevronRight size={14} color={C.slateLight} />
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
               </Card>
-            );
-          })}
-        </CardSlider>
+
+              {/* Widget 2: Earnings & Automated Payout Summary (Moved above Client feedback) */}
+              <Card style={{ padding: 22, borderRadius: 20 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                  <Banknote size={18} color={C.brand} />
+                  <h2 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                    Payout breakdown
+                  </h2>
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, color: C.slate, fontFamily: "'Inter', sans-serif" }}>
+                    <span>Projected this week</span>
+                    <span style={{ fontWeight: 700, color: C.jet }}>${earningsThisWeek}</span>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, color: C.slate, fontFamily: "'Inter', sans-serif" }}>
+                    <span>Completed revenue</span>
+                    <span style={{ fontWeight: 700, color: C.jet }}>${grossPaid}</span>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, color: C.slate, fontFamily: "'Inter', sans-serif" }}>
+                    <span>Platform commission ({Math.round(CONFIG.commissionRate * 100)}%)</span>
+                    <span style={{ fontWeight: 600, color: C.slateLight }}>-${commission}</span>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: C.slate, fontFamily: "'Inter', sans-serif" }}>
+                  <Clock size={14} color={C.brand} style={{ flexShrink: 0 }} />
+                  <span>Next automated transfer: <strong>Friday</strong></span>
+                </div>
+              </Card>
+
+              {/* Widget 3: Recent Reviews */}
+              <Card style={{ padding: 22, borderRadius: 20 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <h2 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                      Client feedback
+                    </h2>
+                    <Badge tone="orange">{ratingAvg} ★</Badge>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => nav("coach-reviews")}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: C.brand,
+                      fontSize: 14,
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      padding: 0,
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    See all
+                  </button>
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {REVIEWS.slice(0, 3).map((r) => {
+                    const reply = getReply(r.id);
+                    const dispute = getDispute(r.id);
+                    return (
+                      <div
+                        key={r.id}
+                        style={{
+                          padding: 14,
+                          borderRadius: 14,
+                          background: C.white,
+                          border: `1px solid ${C.border}`,
+                          boxShadow: "0 1px 4px rgba(0,0,0,0.02)",
+                        }}
+                      >
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
+                          <div>
+                            <div style={{ fontSize: 14.5, fontWeight: 700, color: C.jet, fontFamily: "'Inter', sans-serif" }}>
+                              {r.name}
+                            </div>
+                            {r.handle && <HandleTag handle={r.handle} size={10} color={C.slateLight} />}
+                          </div>
+                          <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 14, fontWeight: 700, color: C.jet, fontFamily: "'Inter', sans-serif" }}>
+                            <Star size={13} fill={C.brand} color={C.brand} />
+                            {r.rating.toFixed(1)}
+                          </span>
+                        </div>
+
+                        <p
+                          style={{
+                            fontSize: 14,
+                            color: C.slate,
+                            margin: "8px 0 0",
+                            lineHeight: 1.45,
+                            display: "-webkit-box",
+                            WebkitLineClamp: 2,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            fontFamily: "'Inter', sans-serif",
+                          }}
+                        >
+                          "{r.text}"
+                        </p>
+
+                        {reply && (
+                          <div style={{ marginTop: 8, background: C.white, borderRadius: 8, padding: "6px 10px", border: `1px solid ${C.border}` }}>
+                            <div style={{ fontSize: 11.5, fontWeight: 700, color: C.brand, fontFamily: "'Inter', sans-serif" }}>Your reply</div>
+                            <p style={{ fontSize: 12.5, color: C.jet, margin: "2px 0 0", lineHeight: 1.35, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", fontFamily: "'Inter', sans-serif" }}>{reply.text}</p>
+                          </div>
+                        )}
+
+                        <div style={{ display: "flex", gap: 8, marginTop: 10, paddingTop: 8, borderTop: `1px solid ${C.border}` }}>
+                          <Btn size="sm" variant="secondary" icon={CornerUpLeft} onClick={() => openReply(r)}>
+                            {reply ? "Edit reply" : "Reply"}
+                          </Btn>
+                          {!dispute && (
+                            <Btn size="sm" variant="outline" icon={Flag} onClick={() => openDispute(r)}>
+                              Report
+                            </Btn>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Card>
+            </div>
+          </div>
+        ) : (
+          /* ── Mobile / Tablet View (Touch-optimized based on desktop design) ── */
+          <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+            {/* 1. Pending Booking Requests */}
+            <Card style={{ padding: 16, borderRadius: 18 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
+                    Pending requests
+                  </h2>
+                  {pendingRequests.length > 0 && (
+                    <Badge tone="orange">{pendingRequests.length}</Badge>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => nav("coach-bookings")}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: C.brand,
+                    fontSize: 13,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 3,
+                    padding: 0,
+                    ...fBody,
+                  }}
+                >
+                  <span>See all</span>
+                  <ChevronRight size={13} />
+                </button>
+              </div>
+
+              {pendingRequests.length === 0 ? (
+                <div
+                  style={{
+                    padding: "20px 14px",
+                    textAlign: "center",
+                    background: C.fog,
+                    borderRadius: 12,
+                    border: `1px dashed ${C.border}`,
+                  }}
+                >
+                  <Check size={20} color={C.success} style={{ margin: "0 auto 6px" }} />
+                  <div style={{ fontSize: 14, fontWeight: 600, color: C.jet, ...fBody }}>
+                    No pending requests
+                  </div>
+                  <div style={{ fontSize: 12, color: C.slate, marginTop: 2, ...fBody }}>
+                    You're completely up to date with client bookings.
+                  </div>
+                </div>
+              ) : (
+                <CardSlider perView={isTablet ? 2 : 1.12} gap={12}>
+                  {pendingRequests.map((b) => {
+                    const cn = clientNameFor(b);
+                    return (
+                      <div
+                        key={b.id}
+                        style={{
+                          background: darkMode ? "#1A222D" : C.white,
+                          border: `1px solid ${C.border}`,
+                          borderRadius: 14,
+                          padding: 14,
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-between",
+                          height: "100%",
+                          boxSizing: "border-box",
+                        }}
+                      >
+                        <div>
+                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8, marginBottom: 8 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                              <Avatar name={cn.name} size={36} />
+                              <div style={{ minWidth: 0 }}>
+                                <div style={{ fontSize: 14.5, fontWeight: 700, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fDisplay }}>
+                                  {cn.name}
+                                </div>
+                                {cn.handle && <HandleTag handle={cn.handle} size={10} color={C.slateLight} />}
+                              </div>
+                            </div>
+                            <div style={{ fontSize: 16, fontWeight: 800, color: C.jet, ...fDisplay }}>
+                              ${b.price}
+                            </div>
+                          </div>
+
+                          <div style={{ fontSize: 13.5, fontWeight: 600, color: C.brand, marginTop: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>
+                            {b.service}
+                          </div>
+                          <div style={{ fontSize: 12.5, color: C.slate, marginTop: 2, display: "flex", alignItems: "center", gap: 4, ...fBody }}>
+                            <Clock size={12} color={C.slateLight} />
+                            <span>{b.date} · {b.time}</span>
+                          </div>
+                        </div>
+
+                        <div style={{ display: "flex", gap: 6, marginTop: 12, paddingTop: 10, borderTop: `1px solid ${C.border}` }}>
+                          <Btn
+                            size="sm"
+                            variant="outline"
+                            disabled={!!respondingId}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              respondWithFeedback(b.id, BOOKING_STATUS.DECLINED, "Booking declined");
+                            }}
+                            style={{ flex: 1, minHeight: 36, padding: "0 8px" }}
+                          >
+                            Decline
+                          </Btn>
+                          <Btn
+                            size="sm"
+                            loading={respondingId === b.id}
+                            loadingText="…"
+                            disabled={!!respondingId && respondingId !== b.id}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              respondWithFeedback(b.id, BOOKING_STATUS.AWAITING_PAYMENT, "Booking accepted");
+                            }}
+                            style={{ flex: 1.2, minHeight: 36, padding: "0 8px" }}
+                          >
+                            Accept
+                          </Btn>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </CardSlider>
+              )}
+            </Card>
+
+            {/* Awaiting Client Payment (Dedicated Container - Mobile) */}
+            {awaitingPayment.length > 0 && (
+              <Card style={{ padding: 16, borderRadius: 18 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
+                      Awaiting client payment
+                    </h2>
+                    <Badge tone="orange">{awaitingPayment.length}</Badge>
+                  </div>
+                </div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {awaitingPayment.map((b) => {
+                    const cn = clientNameFor(b);
+                    return (
+                      <div
+                        key={b.id}
+                        onClick={() => nav("booking-awaiting-payment", { id: b.id })}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          padding: "10px 12px",
+                          borderRadius: 12,
+                          background: C.strongTint,
+                          border: `1px solid ${C.border}`,
+                          cursor: "pointer",
+                          gap: 10,
+                        }}
+                      >
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
+                          <Avatar name={cn.name} size={32} />
+                          <div style={{ minWidth: 0 }}>
+                            <div style={{ fontSize: 13.5, fontWeight: 700, color: C.jet, ...fBody }}>
+                              {cn.name} <span style={{ fontWeight: 400, color: C.slate }}>· {b.service}</span>
+                            </div>
+                            <div style={{ fontSize: 12, color: C.slate, marginTop: 1, ...fBody }}>
+                              {b.date} · ${b.price}
+                            </div>
+                          </div>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+                          <span style={{ fontSize: 11.5, fontWeight: 600, color: C.strong, display: "flex", alignItems: "center", gap: 3, ...fBody }}>
+                            <Clock size={11} />
+                            Reserved
+                          </span>
+                          <ChevronRight size={13} color={C.slate} />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </Card>
+            )}
+
+            {/* 2. Upcoming Schedule */}
+            <Card style={{ padding: 16, borderRadius: 18 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
+                    Upcoming schedule
+                  </h2>
+                  <Badge tone="neutral">{upcoming.length}</Badge>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => nav("coach-calendar")}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: C.brand,
+                    fontSize: 13,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 3,
+                    padding: 0,
+                    ...fBody,
+                  }}
+                >
+                  <span>Calendar</span>
+                  <ChevronRight size={13} />
+                </button>
+              </div>
+
+              {upcoming.length === 0 ? (
+                <div
+                  style={{
+                    padding: "20px 14px",
+                    textAlign: "center",
+                    background: C.fog,
+                    borderRadius: 12,
+                    border: `1px dashed ${C.border}`,
+                  }}
+                >
+                  <Calendar size={22} color={C.slateLight} style={{ margin: "0 auto 6px" }} />
+                  <div style={{ fontSize: 14, fontWeight: 600, color: C.jet, ...fBody }}>
+                    No upcoming sessions
+                  </div>
+                  <div style={{ fontSize: 12, color: C.slate, marginTop: 2, marginBottom: 10, ...fBody }}>
+                    Keep your calendar open for bookings.
+                  </div>
+                  <Btn size="sm" variant="outline" onClick={() => nav("coach-calendar")}>
+                    Manage availability
+                  </Btn>
+                </div>
+              ) : (
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {upcoming.slice(0, 5).map((b) => {
+                    const cn = clientNameFor(b);
+                    return (
+                      <div
+                        key={b.id}
+                        onClick={() => nav("coach-session-detail", { id: b.id })}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                          padding: "10px 12px",
+                          borderRadius: 12,
+                          background: C.white,
+                          border: `1px solid ${C.border}`,
+                          cursor: "pointer",
+                          gap: 10,
+                        }}
+                      >
+                        <div style={{ display: "flex", alignItems: "center", gap: 10, minWidth: 0 }}>
+                          <div
+                            style={{
+                              padding: "6px 8px",
+                              borderRadius: 8,
+                              background: C.fog,
+                              textAlign: "center",
+                              minWidth: 54,
+                              flexShrink: 0,
+                            }}
+                          >
+                            <div style={{ fontSize: 12, fontWeight: 700, color: C.jet, lineHeight: 1.1, ...fDisplay }}>
+                              {b.date.split(" ")[0]} {b.date.split(" ")[1]}
+                            </div>
+                            <div style={{ fontSize: 10.5, color: C.slate, marginTop: 1, ...fBody }}>
+                              {b.time}
+                            </div>
+                          </div>
+
+                          <Avatar name={cn.name} size={34} />
+
+                          <div style={{ minWidth: 0 }}>
+                            <div style={{ fontSize: 13.5, fontWeight: 700, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>
+                              {cn.name}
+                            </div>
+                            <div style={{ fontSize: 12, color: C.brand, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>
+                              {b.service || "Coaching Session"}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+                          <StatusPill status={b.status} perspective="coach" />
+                          <ChevronRight size={14} color={C.slateLight} />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </Card>
+
+            {/* 3. Quick Management Shortcuts */}
+            <Card style={{ padding: 16, borderRadius: 18 }}>
+              <h2 style={{ margin: "0 0 12px", fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
+                Quick management
+              </h2>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                {[
+                  { label: "Calendar", desc: "Slots & holidays", icon: Calendar, action: () => nav("coach-calendar", { tab: "availability", section: "availability" }) },
+                  { label: "Packages", desc: "Pricing & tiers", icon: Banknote, action: () => nav("coach-profile-edit", { tab: "business" }) },
+                  { label: "Messages", desc: unreadCount > 0 ? `${unreadCount} unread` : "Client chat", icon: MessageCircle, badge: unreadCount > 0 ? unreadCount : null, action: () => nav("coach-messages") },
+                  { label: "Profile", desc: "Public preview", icon: Star, action: () => nav("coach-profile", { preview: true, tab: "reviews" }) },
+                ].map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={item.action}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        padding: "12px 10px",
+                        borderRadius: 12,
+                        border: `1px solid ${C.border}`,
+                        background: C.white,
+                        cursor: "pointer",
+                        textAlign: "left",
+                        gap: 6,
+                        position: "relative",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: 30,
+                          height: 30,
+                          borderRadius: 8,
+                          background: C.fog,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          color: C.brand,
+                          flexShrink: 0,
+                        }}
+                      >
+                        <Icon size={15} />
+                      </div>
+                      <div style={{ width: "100%" }}>
+                        <div style={{ fontSize: 13.5, fontWeight: 700, color: C.jet, display: "flex", alignItems: "center", justifyContent: "space-between", ...fBody }}>
+                          <span>{item.label}</span>
+                          {item.badge && (
+                            <span style={{ fontSize: 10, fontWeight: 800, padding: "1px 5px", borderRadius: 99, background: C.brand, color: "#FFFFFF" }}>
+                              {item.badge}
+                            </span>
+                          )}
+                        </div>
+                        <div style={{ fontSize: 11.5, color: C.slate, marginTop: 1, ...fBody }}>
+                          {item.desc}
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </Card>
+
+            {/* 4. Payout Breakdown (Moved above Client Feedback on Mobile) */}
+            <Card style={{ padding: 16, borderRadius: 18 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                <Banknote size={17} color={C.brand} />
+                <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
+                  Payout breakdown
+                </h2>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13.5, color: C.slate, ...fBody }}>
+                  <span>Projected this week</span>
+                  <span style={{ fontWeight: 700, color: C.jet }}>${earningsThisWeek}</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13.5, color: C.slate, ...fBody }}>
+                  <span>Completed revenue</span>
+                  <span style={{ fontWeight: 700, color: C.jet }}>${grossPaid}</span>
+                </div>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13.5, color: C.slate, ...fBody }}>
+                  <span>Platform commission ({Math.round(CONFIG.commissionRate * 100)}%)</span>
+                  <span style={{ fontWeight: 600, color: C.slateLight }}>-${commission}</span>
+                </div>
+              </div>
+
+              <div style={{ marginTop: 12, paddingTop: 10, borderTop: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 6, fontSize: 12.5, color: C.slate, ...fBody }}>
+                <Clock size={13} color={C.brand} style={{ flexShrink: 0 }} />
+                <span>Next automated transfer: <strong>Friday</strong></span>
+              </div>
+            </Card>
+
+            {/* 5. Client Feedback (White background cards) */}
+            <Card style={{ padding: 16, borderRadius: 18 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                  <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
+                    Client feedback
+                  </h2>
+                  <Badge tone="orange">{ratingAvg} ★</Badge>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => nav("coach-reviews")}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: C.brand,
+                    fontSize: 13,
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    padding: 0,
+                    ...fBody,
+                  }}
+                >
+                  See all
+                </button>
+              </div>
+
+              <CardSlider perView={isTablet ? 2 : 1.12} gap={12}>
+                {REVIEWS.map((r) => {
+                  const reply = getReply(r.id);
+                  const dispute = getDispute(r.id);
+                  return (
+                    <div
+                      key={r.id}
+                      style={{
+                        padding: 14,
+                        borderRadius: 14,
+                        background: C.white,
+                        border: `1px solid ${C.border}`,
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        height: "100%",
+                        boxSizing: "border-box",
+                        boxShadow: "0 1px 4px rgba(0,0,0,0.02)",
+                      }}
+                    >
+                      <div>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 6 }}>
+                          <div style={{ minWidth: 0 }}>
+                            <div style={{ fontSize: 14, fontWeight: 700, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fBody }}>
+                              {r.name}
+                            </div>
+                            {r.handle && <HandleTag handle={r.handle} size={10} color={C.slateLight} />}
+                          </div>
+                          <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 13, fontWeight: 700, color: C.jet, flexShrink: 0, ...fBody }}>
+                            <Star size={12} fill={C.brand} color={C.brand} />
+                            {r.rating.toFixed(1)}
+                          </span>
+                        </div>
+
+                        <p
+                          style={{
+                            fontSize: 13,
+                            color: C.slate,
+                            margin: "8px 0 0",
+                            lineHeight: 1.4,
+                            display: "-webkit-box",
+                            WebkitLineClamp: 3,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            ...fBody,
+                          }}
+                        >
+                          "{r.text}"
+                        </p>
+
+                        {reply && (
+                          <div style={{ marginTop: 8, background: C.fog, borderRadius: 8, padding: "6px 8px" }}>
+                            <div style={{ fontSize: 11, fontWeight: 700, color: C.brand, ...fBody }}>Your reply</div>
+                            <p style={{ fontSize: 12, color: C.jet, margin: "2px 0 0", lineHeight: 1.3, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", ...fBody }}>{reply.text}</p>
+                          </div>
+                        )}
+                      </div>
+
+                      <div style={{ display: "flex", gap: 6, marginTop: 10, paddingTop: 8, borderTop: `1px solid ${C.border}` }}>
+                        <Btn size="sm" variant="secondary" icon={CornerUpLeft} onClick={() => openReply(r)} style={{ minHeight: 34, padding: "0 10px" }}>
+                          {reply ? "Edit" : "Reply"}
+                        </Btn>
+                        {!dispute && (
+                          <Btn size="sm" variant="outline" icon={Flag} onClick={() => openDispute(r)} style={{ minHeight: 34, padding: "0 10px" }}>
+                            Report
+                          </Btn>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </CardSlider>
+            </Card>
+          </div>
+        )}
       </div>
 
       {/* Reply to Review Sheet */}

@@ -54,8 +54,15 @@ export function ScreenSupport({ nav, params = {}, role }) {
   );
 
   const chatContent = (
-    <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-      <div style={{ flex: 1, overflowY: "auto", padding: isDesktop ? "6px 0" : "6px 18px" }} className="cl-hide-scrollbar">
+    <div style={{ flex: 1, display: "flex", flexDirection: "column", overflow: "hidden", height: "100%" }}>
+      <div
+        style={{
+          flex: 1,
+          overflowY: "auto",
+          padding: isDesktop ? "32px 64px 16px 40px" : "6px 18px",
+        }}
+        className="cl-hide-scrollbar"
+      >
         <div style={{ display: "flex", justifyContent: "flex-start", marginBottom: 10 }}>
           <div style={{ maxWidth: "80%", background: C.fog, borderRadius: 16, borderBottomLeftRadius: 4, padding: "10px 13px", fontSize: T.body, color: C.jet, lineHeight: 1.5, animation: "clSlideUp .3s ease", ...fBody }}>
             Hi Sarah 👋 I'm the CoachNivo support assistant. I can see your account details{params.bookingContext ? " and this booking" : params.faqTopic === "verification" ? " and your verification application" : " and recent booking"} already - what can I help with?
@@ -74,10 +81,61 @@ export function ScreenSupport({ nav, params = {}, role }) {
           </div>
         </div>
       </div>
-      <div style={{ padding: isDesktop ? "12px 0 max(16px, env(safe-area-inset-bottom))" : "12px 18px", paddingBottom: isDesktop ? undefined : "max(28px, env(safe-area-inset-bottom))", display: "flex", gap: 8, borderTop: `1px solid ${C.border}`, background: C.white }}>
-        <input name="support-message" autoComplete="off" aria-label="Describe your issue" placeholder="Describe your issue…" style={{ flex: 1, border: `1.5px solid ${C.border}`, borderRadius: 13, padding: "11px 13px", fontSize: T.bodyLg, outline: "none", color: C.jet, background: C.white, ...fBody }} />
-        <button style={{ width: 38, height: 38, borderRadius: 99, background: C.black, border: "none", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", boxShadow: "0 4px 12px -3px rgba(0,0,0,.28)" }}>
-          <Send size={15} color={C.white} />
+      <div
+        style={{
+          width: "100%",
+          boxSizing: "border-box",
+          padding: isDesktop ? "12px 64px 18px 40px" : "8px 12px",
+          paddingBottom: isDesktop ? 18 : "max(24px, env(safe-area-inset-bottom))",
+          display: "flex",
+          alignItems: "center",
+          gap: 8,
+          background: C.white,
+          flexShrink: 0,
+        }}
+      >
+        <div
+          className="cl-input"
+          style={{
+            flex: "1 1 0",
+            minWidth: 0,
+            height: 46,
+            boxSizing: "border-box",
+            display: "flex",
+            alignItems: "center",
+            border: `1.5px solid ${C.border}`,
+            borderRadius: 14,
+            padding: "0 14px",
+            background: C.white,
+            transition: "border-color .15s ease",
+          }}
+        >
+          <input
+            name="support-message"
+            autoComplete="off"
+            aria-label="Describe your issue"
+            placeholder="Describe your issue…"
+            style={{ flex: 1, minWidth: 0, border: "none", outline: "none", background: "transparent", fontSize: T.bodyLg, color: C.jet, ...fBody }}
+          />
+        </div>
+        <button
+          type="button"
+          aria-label="Send message"
+          style={{
+            width: 46,
+            height: 46,
+            borderRadius: 14,
+            background: C.black,
+            border: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            boxShadow: "0 4px 12px -3px rgba(0,0,0,.28)",
+            flexShrink: 0,
+          }}
+        >
+          <Send size={16} color={C.white} />
         </button>
       </div>
     </div>
@@ -88,9 +146,27 @@ export function ScreenSupport({ nav, params = {}, role }) {
       <TopBar title="Support" onBack={() => nav(backTarget, params.backParams || {})} />
 
       {isDesktop ? (
-        <div style={{ flex: 1, minHeight: 0, display: "flex", width: "100%", padding: "32px 64px 32px", gap: 32, boxSizing: "border-box" }}>
-          <nav aria-label="Support sections" style={{ width: 220, flexShrink: 0, display: "flex", flexDirection: "column", gap: 4 }}>
-            <div style={{ fontSize: T.caption, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".06em", color: C.slateLight, marginBottom: 6, ...fBody }}>Help centre</div>
+        <div style={{ flex: 1, minHeight: 0, display: "flex", width: "100%", overflow: "hidden", boxSizing: "border-box" }}>
+          <nav
+            aria-label="Support sections"
+            style={{
+              width: 280,
+              minWidth: 240,
+              maxWidth: 320,
+              flexShrink: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+              padding: "32px 24px 32px 64px",
+              borderRight: `1px solid ${C.border}`,
+              boxSizing: "border-box",
+              height: "100%",
+              overflowY: "auto",
+            }}
+          >
+            <div style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".06em", color: C.slateLight, marginBottom: 8, ...fBody }}>
+              Help centre
+            </div>
             {TABS.map((t) => {
               const active = tab === t.value;
               return (
@@ -99,14 +175,38 @@ export function ScreenSupport({ nav, params = {}, role }) {
                   type="button"
                   onClick={() => setTab(t.value)}
                   aria-current={active ? "page" : undefined}
-                  style={{ textAlign: "left", minHeight: 44, padding: "0 14px", borderRadius: 11, border: "none", cursor: "pointer", background: active ? C.brandTint : "transparent", color: active ? C.brandIcon : C.slate, fontWeight: active ? 700 : 500, fontSize: T.body, ...fBody }}
+                  style={{
+                    textAlign: "left",
+                    minHeight: 46,
+                    padding: "0 16px",
+                    borderRadius: 12,
+                    border: "none",
+                    cursor: "pointer",
+                    background: active ? C.brandTint : "transparent",
+                    color: active ? C.brandIcon : C.slate,
+                    fontWeight: active ? 700 : 500,
+                    fontSize: 16,
+                    transition: "background .15s ease, color .15s ease",
+                    ...fBody,
+                  }}
                 >
                   {t.label}
                 </button>
               );
             })}
           </nav>
-          <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column" }}>
+          <div
+            style={{
+              flex: 1,
+              minWidth: 0,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              padding: tab === "faq" ? "32px 64px 32px 40px" : "0",
+              boxSizing: "border-box",
+              overflow: "hidden",
+            }}
+          >
             {tab === "faq" ? faqContent : chatContent}
           </div>
         </div>

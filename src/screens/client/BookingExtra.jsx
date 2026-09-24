@@ -862,7 +862,7 @@ export function ScreenBookingMessage({ nav, params, toast }) {
         ))}
       </div>
 
-      <div style={{ padding: "12px 18px", paddingBottom: "max(28px, env(safe-area-inset-bottom))", borderTop: `1px solid ${C.border}`, background: C.white, display: "flex", gap: 10, flexShrink: 0 }}>
+      <div style={{ padding: "12px 18px", paddingBottom: "max(28px, env(safe-area-inset-bottom))", background: C.white, display: "flex", gap: 10, flexShrink: 0 }}>
         <div style={{ flex: 1, display: "flex", alignItems: "center", gap: 8, border: `1.5px solid ${C.border}`, borderRadius: 999, padding: "10px 14px", background: C.white }}>
           <input
             name="coach-response"

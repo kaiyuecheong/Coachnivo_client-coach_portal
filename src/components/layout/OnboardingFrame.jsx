@@ -12,10 +12,10 @@ import { BrandLogo } from "../ui/Primitives";
    padding, the form sits at 32px from the card edge on desktop while the
    top bar / footers (which share the same 18px) stay aligned with the form.
    ========================================================================= */
-function FrameScroll({ children }) {
+function FrameScroll({ children, hasRail }) {
   return (
     <div data-onboarding-frame style={{ position: "relative", flex: 1, minWidth: 0, minHeight: 0, overflow: "hidden" }}>
-      <div style={{ height: "100%", overflowY: "auto", padding: "0 40px" }} className="cl-hide-scrollbar">{children}</div>
+      <div style={{ height: "100%", overflowY: "auto", padding: hasRail ? "0 40px" : "0 4px" }} className="cl-hide-scrollbar">{children}</div>
     </div>
   );
 }
@@ -118,7 +118,7 @@ export function OnboardingFrame({ step = 0, total = 0, label, steps, children })
         }}>
           <div style={{ flex: 1, minHeight: 0, display: "flex", padding: "24px 32px" }}>
             {hasRail && <StepRail step={step} total={total} steps={steps} />}
-            <FrameScroll>{children}</FrameScroll>
+            <FrameScroll hasRail={hasRail}>{children}</FrameScroll>
           </div>
         </div>
       </div>
