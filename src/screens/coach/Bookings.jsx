@@ -3,7 +3,7 @@ import {
   ClipboardList, Info, MessagesSquare, MessageCircle,
   ChevronLeft, ChevronRight, CalendarX2, BellRing, CalendarClock,
   CheckCircle2, Banknote, LifeBuoy, LockKeyhole, Scale, BadgeDollarSign, Clock, PlayCircle,
-  Calendar as CalendarIcon, CalendarDays, Sparkles, ArrowRight,
+  Calendar as CalendarIcon, CalendarDays, Sparkles, ArrowRight, X, ShieldCheck,
 } from "lucide-react";
 import { CL, CD, fDisplay, fBody, T } from "../../theme/theme";
 import { CLIENT_PROFILES, BOOKING_ENQUIRY_MESSAGES, CONFIG } from "../../data/mockData";
