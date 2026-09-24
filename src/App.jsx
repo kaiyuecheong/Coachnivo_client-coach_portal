@@ -462,7 +462,7 @@ function PortalShell() {
         alignItems: "center",
         justifyContent: "space-between",
         gap: 12,
-        padding: "0 64px",
+        padding: "0 64px 0 14px",
         boxSizing: "border-box",
         flexShrink: 0,
       }}
