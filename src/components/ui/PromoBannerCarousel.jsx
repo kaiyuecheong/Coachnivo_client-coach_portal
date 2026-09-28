@@ -224,7 +224,7 @@ export function PromoBannerCarousel({ banners = [], onSelectBanner, style }) {
                     background: `color-mix(in srgb, ${C.brandColor} 90%, ${CL.black})`,
                     color: CL.white,
                     fontSize: T.micro,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     letterSpacing: ".35px",
                     textTransform: "uppercase",
                     ...fBody,
@@ -262,7 +262,7 @@ export function PromoBannerCarousel({ banners = [], onSelectBanner, style }) {
                     display: "block",
                     color: CL.white,
                     fontSize: isDesktop ? 22 : T.titleLg,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     lineHeight: 1.15,
                     letterSpacing: "-.2px",
                     ...oneLine,
@@ -287,7 +287,7 @@ export function PromoBannerCarousel({ banners = [], onSelectBanner, style }) {
                 </span>
 
                 <span style={{ minHeight: 36, marginTop: 6, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
-                  <span style={{ minWidth: 0, color: CL.white, fontSize: isDesktop ? T.bodyLg : T.labelLg, fontWeight: 800, ...oneLine, ...fDisplay }}>
+                  <span style={{ minWidth: 0, color: CL.white, fontSize: isDesktop ? T.bodyLg : T.labelLg, fontWeight: 700, ...oneLine, ...fDisplay }}>
                     {banner.priceTag}
                   </span>
                   <span

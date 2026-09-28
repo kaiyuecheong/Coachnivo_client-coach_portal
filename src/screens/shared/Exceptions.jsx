@@ -326,7 +326,7 @@ function OutcomeCard({ dispute, role, booking }) {
           {favourable ? <CheckCircle2 size={21} color={C.success} /> : <Scale size={20} color={C.slate} />}
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: T.title, fontWeight: 750, color: C.jet, ...fDisplay }}>{title}</div>
+          <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>{title}</div>
           <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.55, marginTop: 5, ...fBody }}>{body}</div>
         </div>
       </div>
@@ -364,7 +364,7 @@ export function ScreenDisputeStatus({ nav, params, role: appRole, bookings = [],
           <div style={{ width: 66, height: 66, borderRadius: 22, margin: "0 auto 14px", background: resolved ? C.successTint : C.brandTint, display: "flex", alignItems: "center", justifyContent: "center" }}>
             {resolved ? <CheckCircle2 size={30} color={C.success} /> : <Scale size={28} color={C.brand} />}
           </div>
-          <div style={{ fontSize: T.display, fontWeight: 750, color: C.jet, ...fDisplay }}>{status.title}</div>
+          <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, ...fDisplay }}>{status.title}</div>
           <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.6, margin: "7px auto 0", maxWidth: 320, ...fBody }}>
             {resolved ? dispute.decisionNote : dispute.supportNote}
           </div>
@@ -469,9 +469,9 @@ export function ScreenAdditionalChargeCreate({
               <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "flex-start" }}>
                 <div>
                   <Badge tone="orange">Payment request</Badge>
-                  <div style={{ fontSize: T.titleLg, fontWeight: 750, color: C.jet, marginTop: 10, ...fDisplay }}>{reason}</div>
+                  <div style={{ fontSize: T.titleLg, fontWeight: 700, color: C.jet, marginTop: 10, ...fDisplay }}>{reason}</div>
                 </div>
-                <div style={{ fontSize: T.display, fontWeight: 750, color: C.jet, ...fDisplay }}>${Number(amount).toFixed(2)}</div>
+                <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, ...fDisplay }}>${Number(amount).toFixed(2)}</div>
               </div>
               <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.65, marginTop: 13, ...fBody }}>{note}</div>
               <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${C.border}` }}>
@@ -522,7 +522,7 @@ export function ScreenAdditionalChargeReview({
             <div style={{ width: 66, height: 66, borderRadius: 22, margin: "0 auto 14px", background: paid ? C.successTint : C.brandTint, display: "flex", alignItems: "center", justifyContent: "center" }}>
               {paid ? <CheckCircle2 size={30} color={C.success} /> : <BadgeDollarSign size={29} color={C.brand} />}
             </div>
-            <div style={{ fontSize: T.display, fontWeight: 750, color: C.jet, ...fDisplay }}>{paid ? "Payment complete" : role === "coach" ? "Request sent to the client" : `${person} requested ${finalPayment ? "a final payment" : "an additional payment"}`}</div>
+            <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, ...fDisplay }}>{paid ? "Payment complete" : role === "coach" ? "Request sent to the client" : `${person} requested ${finalPayment ? "a final payment" : "an additional payment"}`}</div>
             <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.6, marginTop: 7, ...fBody }}>{paid ? "The updated receipt is ready and both sides have been notified." : role === "coach" ? "They can pay, ask a question, or dispute the request. No automatic charge will occur." : "Review the explanation and evidence before you decide. You won’t be charged automatically."}</div>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 13 }}>
@@ -530,9 +530,9 @@ export function ScreenAdditionalChargeReview({
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
                 <div>
                   <div style={{ fontSize: T.captionLg, fontWeight: 700, color: C.slate, textTransform: "uppercase", letterSpacing: ".04em", ...fBody }}>{finalPayment ? "Final session cost" : "Additional cost"}</div>
-                  <div style={{ fontSize: T.titleLg, fontWeight: 750, color: C.jet, marginTop: 5, ...fDisplay }}>{charge.reason}</div>
+                  <div style={{ fontSize: T.titleLg, fontWeight: 700, color: C.jet, marginTop: 5, ...fDisplay }}>{charge.reason}</div>
                 </div>
-                <div style={{ fontSize: T.hero, fontWeight: 750, color: C.jet, ...fDisplay }}>${Number(charge.amount).toFixed(2)}</div>
+                <div style={{ fontSize: T.hero, fontWeight: 700, color: C.jet, ...fDisplay }}>${Number(charge.amount).toFixed(2)}</div>
               </div>
               <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.65, marginTop: 13, ...fBody }}>{charge.note}</div>
               <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${C.border}` }}>
@@ -668,7 +668,7 @@ export function ScreenAdditionalChargePayment({
                 <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, marginTop: 5, ...fDisplay }}>{charge.reason}</div>
                 <div style={{ fontSize: T.captionLg, color: C.slate, marginTop: 4, lineHeight: 1.45, ...fBody }}>{booking.coachName} · {booking.service}</div>
               </div>
-              <div style={{ fontSize: T.headingLg, fontWeight: 800, color: C.jet, ...fDisplay }}>${amount.toFixed(2)}</div>
+              <div style={{ fontSize: T.headingLg, fontWeight: 700, color: C.jet, ...fDisplay }}>${amount.toFixed(2)}</div>
             </div>
           </Card>
 
@@ -711,7 +711,7 @@ export function ScreenAdditionalChargePayment({
         <div style={{ maxWidth: isDesktop ? 600 : undefined, margin: isDesktop ? "0 auto" : undefined }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
             <span style={{ fontSize: T.labelLg, color: C.slate, ...fBody }}>Total</span>
-            <span style={{ fontSize: T.titleLg, fontWeight: 800, color: C.jet, ...fDisplay }}>${amount.toFixed(2)}</span>
+            <span style={{ fontSize: T.titleLg, fontWeight: 700, color: C.jet, ...fDisplay }}>${amount.toFixed(2)}</span>
           </div>
           <Btn full loading={processing} loadingText="Processing securely…" disabled={!pending || offline} icon={LockKeyhole} onClick={confirmPayment}>Pay ${amount.toFixed(2)}</Btn>
         </div>

@@ -403,7 +403,7 @@ export function ScreenCoachCalendar({
               border: darkMode ? `1px solid ${C.border}` : "none",
             }}>
               <div style={{ fontSize: isDesktop ? 16 : T.captionLg, color: darkMode ? C.slate : C.onDarkMuted, ...fBody }}>Confirmed schedule</div>
-              <div style={{ fontSize: isDesktop ? 52 : T.hero, fontWeight: 800, color: darkMode ? C.jet : C.white, marginTop: 4, lineHeight: 1.05, ...fDisplay }}>
+              <div style={{ fontSize: isDesktop ? 52 : T.hero, fontWeight: 700, color: darkMode ? C.jet : C.white, marginTop: 4, lineHeight: 1.05, ...fDisplay }}>
                 {scheduledSessions.length}
               </div>
               <div style={{ fontSize: isDesktop ? 16 : T.captionLg, color: darkMode ? C.slateLight : C.onDark, marginTop: 4, ...fBody }}>
@@ -432,7 +432,7 @@ export function ScreenCoachCalendar({
                       data-interactive="true"
                       style={{
                         marginBottom: isDesktop ? 0 : 10,
-                        padding: isDesktop ? 20 : 16,
+                        padding: isDesktop ? 24 : 16,
                         borderRadius: 18,
                         cursor: "pointer",
                       }}
@@ -440,8 +440,8 @@ export function ScreenCoachCalendar({
                       <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, flex: 1 }}>
                           <div style={{ width: 48, height: 50, borderRadius: 12, background: C.brandTint, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flexShrink: 0, padding: "2px" }}>
-                            <span style={{ fontSize: 10, fontWeight: 800, color: C.brand, textTransform: "uppercase", letterSpacing: 0.4, lineHeight: 1, ...fBody }}>{badge.weekday}</span>
-                            <span style={{ fontSize: 18, fontWeight: 800, color: C.jet, marginTop: 2, lineHeight: 1, ...fDisplay }}>{badge.dayNumber}</span>
+                            <span style={{ fontSize: 10, fontWeight: 700, color: C.brand, textTransform: "uppercase", letterSpacing: 0.4, lineHeight: 1, ...fBody }}>{badge.weekday}</span>
+                            <span style={{ fontSize: 18, fontWeight: 700, color: C.jet, marginTop: 2, lineHeight: 1, ...fDisplay }}>{badge.dayNumber}</span>
                           </div>
                           <Avatar name={booking.clientName} size={38} />
                           <div style={{ flex: 1, minWidth: 0 }}>
@@ -518,7 +518,7 @@ export function ScreenCoachCalendar({
                     >
                       <ChevronLeft size={16} color={C.jet} />
                     </button>
-                    <span style={{ fontSize: isDesktop ? 17.5 : 16, fontWeight: 750, color: C.jet, ...fDisplay }}>
+                    <span style={{ fontSize: isDesktop ? 17.5 : 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
                       {headerLabel}
                     </span>
                     <button
@@ -771,7 +771,7 @@ export function ScreenCoachCalendar({
                                           ...fBody,
                                         }}
                                       >
-                                        <span style={{ fontWeight: 800, flexShrink: 0 }}>{b.time?.split(" ")[0]}</span>
+                                        <span style={{ fontWeight: 700, flexShrink: 0 }}>{b.time?.split(" ")[0]}</span>
                                         <span style={{ color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                                           {b.clientName}
                                         </span>
@@ -779,7 +779,7 @@ export function ScreenCoachCalendar({
                                     ))}
 
                                     {totalEvents > 2 && (
-                                      <span style={{ fontSize: 9, fontWeight: 750, color: C.slate, paddingLeft: 2 }}>
+                                      <span style={{ fontSize: 9, fontWeight: 700, color: C.slate, paddingLeft: 2 }}>
                                         +{totalEvents - 2} more
                                       </span>
                                     )}
@@ -974,7 +974,7 @@ export function ScreenCoachCalendar({
                 {/* Day Header */}
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10 }}>
                   <div>
-                    <h3 style={{ fontSize: 18, fontWeight: 750, color: C.jet, margin: 0, ...fDisplay }}>
+                    <h3 style={{ fontSize: 18, fontWeight: 700, color: C.jet, margin: 0, ...fDisplay }}>
                       {selectedDate.toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long" })}
                     </h3>
                     <div style={{ fontSize: 12.5, color: C.slate, marginTop: 2, ...fBody }}>
@@ -1139,7 +1139,7 @@ export function ScreenCoachCalendar({
              LIST VIEW (All weekly slots & exceptions)
              ========================================================================= */
           <>
-            <Card style={{ marginBottom: 16, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <Card style={{ marginBottom: 16, padding: isDesktop ? 24 : 16, borderRadius: isDesktop ? 18 : 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <CalendarIcon size={17} color={C.jet} />
                 <div>
@@ -1159,7 +1159,7 @@ export function ScreenCoachCalendar({
             )}
 
             {availabilityBlocks.map((b) => (
-              <Card key={b.id} style={{ marginBottom: 10, padding: 16 }}>
+              <Card key={b.id} style={{ marginBottom: 10, padding: isDesktop ? 24 : 16, borderRadius: isDesktop ? 18 : 14 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                   <div>
                     <div style={{ fontSize: T.body, fontWeight: 700, color: C.jet, ...fBody }}>{b.days.join(", ")}</div>
@@ -1204,7 +1204,7 @@ export function ScreenCoachCalendar({
               )}
 
               {exceptions.map((ex) => (
-                <Card key={ex.id} style={{ marginBottom: 10, display: "flex", justifyContent: "space-between", alignItems: "center", padding: "14px 16px" }}>
+                <Card key={ex.id} style={{ marginBottom: 10, display: "flex", justifyContent: "space-between", alignItems: "center", padding: isDesktop ? 24 : "14px 16px", borderRadius: isDesktop ? 18 : 14 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                     <Ban size={16} color={C.danger} />
                     <div>

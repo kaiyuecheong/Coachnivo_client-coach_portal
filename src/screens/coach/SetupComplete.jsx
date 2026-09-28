@@ -21,7 +21,7 @@ export function ScreenCoachSetupComplete({ resetNav, setReachedDashboardAfterVer
         }}>
           <PartyPopper size={32} color={C.brand} />
         </div>
-        <div style={{ fontSize: T.display, fontWeight: 600, color: C.jet, ...fDisplay }}>You're All Set!</div>
+        <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, ...fDisplay }}>You're All Set!</div>
         <div style={{ fontSize: T.bodyLg, color: C.slate, marginTop: 10, lineHeight: 1.6, maxWidth: 300, marginLeft: "auto", marginRight: "auto", ...fBody }}>
           Congratulations! Your setup is complete and you're ready to go. You can now manage your services, bookings, availability, and earnings from your dashboard.
         </div>

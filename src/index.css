@@ -363,7 +363,31 @@ button[type="submit"]:not(:disabled):active {
   box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.18) !important;
 }
 
-/* Arrow buttons, circular navigation & floating action buttons: White fill, orange on hover/active */
+/* Modal backdrop / scrim overlays: Must never change background on hover */
+.cl-backdrop,
+button.cl-backdrop,
+.cl-scrim,
+button.cl-scrim {
+  background: rgba(22, 24, 29, 0.50) !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  cursor: default !important;
+}
+.cl-backdrop:hover,
+button.cl-backdrop:hover,
+.cl-backdrop:active,
+button.cl-backdrop:active {
+  background: rgba(22, 24, 29, 0.50) !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Close buttons, arrow buttons, circular navigation & floating action buttons: Brand fill on hover/active */
+.cl-close-btn,
+.cl-dialog-close,
+.cl-modal-close,
 .cl-arrow-btn,
 .cl-nav-arrow,
 .cl-floating-action-btn {
@@ -376,15 +400,21 @@ button[type="submit"]:not(:disabled):active {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .cl-close-btn:hover,
+  .cl-dialog-close:hover,
+  .cl-modal-close:hover,
   .cl-arrow-btn:hover,
   .cl-nav-arrow:hover,
   .cl-floating-action-btn:hover {
     background-color: var(--cl-brand, #EC5728) !important;
     border-color: var(--cl-brand, #EC5728) !important;
     color: #FFFFFF !important;
-    box-shadow: 0 6px 18px -2px rgba(236, 87, 40, 0.4) !important;
-    transform: translateY(-1.5px);
+    box-shadow: 0 4px 14px -2px rgba(236, 87, 40, 0.4) !important;
+    transform: translateY(-1px);
   }
+  .cl-close-btn:hover svg,
+  .cl-dialog-close:hover svg,
+  .cl-modal-close:hover svg,
   .cl-arrow-btn:hover svg,
   .cl-nav-arrow:hover svg,
   .cl-floating-action-btn:hover svg {
@@ -393,6 +423,9 @@ button[type="submit"]:not(:disabled):active {
   }
 }
 
+.cl-close-btn:active,
+.cl-dialog-close:active,
+.cl-modal-close:active,
 .cl-arrow-btn:active,
 .cl-nav-arrow:active,
 .cl-floating-action-btn:active {
@@ -403,6 +436,9 @@ button[type="submit"]:not(:disabled):active {
   filter: brightness(0.92);
 }
 
+.cl-close-btn:active svg,
+.cl-dialog-close:active svg,
+.cl-modal-close:active svg,
 .cl-arrow-btn:active svg,
 .cl-nav-arrow:active svg,
 .cl-floating-action-btn:active svg {

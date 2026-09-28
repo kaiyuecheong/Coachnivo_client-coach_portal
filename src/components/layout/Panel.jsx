@@ -33,6 +33,7 @@ export function Panel({
       {withBackdrop && (
         <button
           type="button"
+          className="cl-backdrop"
           aria-label="Dismiss panel"
           onClick={close}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none", background: "rgba(22,24,29,.40)", backdropFilter: "blur(2px)", WebkitBackdropFilter: "blur(2px)", animation: "clBackdropIn .2s ease", cursor: "default", touchAction: "none" }}
@@ -70,9 +71,10 @@ export function Panel({
           </div>
           <button
             type="button"
+            className="cl-close-btn"
             onClick={close}
             aria-label="Close panel"
-            style={{ width: 34, height: 34, flexShrink: 0, borderRadius: 99, background: darkMode ? "transparent" : C.fog, border: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.slate }}
+            style={{ width: 34, height: 34, flexShrink: 0, borderRadius: 99, background: C.fog, border: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.slate }}
           >
             <X size={16} />
           </button>

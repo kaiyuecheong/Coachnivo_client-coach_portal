@@ -309,7 +309,7 @@ export function CoachMapView({ coaches = [], radiusKm = null, activeFilterCount 
           <SlidersHorizontal size={15} aria-hidden="true" />
           <span style={{ fontSize: T.labelLg, fontWeight: 700, ...fBody }}>Filters</span>
           {activeFilterCount > 0 && (
-            <span aria-label={`${activeFilterCount} active filter categories`} style={{ minWidth: 20, height: 20, padding: "0 5px", borderRadius: 7, background: C.brand, color: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontSize: T.micro, fontWeight: 800, ...fBody }}>{activeFilterCount}</span>
+            <span aria-label={`${activeFilterCount} active filter categories`} style={{ minWidth: 20, height: 20, padding: "0 5px", borderRadius: 7, background: C.brand, color: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontSize: T.micro, fontWeight: 700, ...fBody }}>{activeFilterCount}</span>
           )}
         </button>
       )}

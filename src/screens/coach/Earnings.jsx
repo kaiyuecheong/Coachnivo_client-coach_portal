@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Banknote, Percent, Wallet, ChevronRight } from "lucide-react";
+import { Banknote, Percent, Wallet, ChevronRight, User, Landmark, Hash, FileText } from "lucide-react";
 import { CL, CD, fDisplay, fBody, T } from "../../theme/theme";
 import { useApp } from "../../context/AppContext";
 import { CONFIG } from "../../data/mockData";
-import { Card, Badge, SectionLabel, Row, TopBar, StatSkeleton, BookingCardSkeleton, Skeleton } from "../../components/ui/Primitives";
+import {
+  Card, Badge, SectionLabel, Row, TopBar, StatSkeleton,
+  BookingCardSkeleton, Skeleton, BottomSheet, Btn, FormSection, RequiredMark,
+} from "../../components/ui/Primitives";
 import { getBookingClientName } from "../../utils/name";
 import { withClientMeta } from "../../data/users";
 import { BOOKING_STATUS, PAYOUT_STATUS } from "../../data/bookings";
@@ -11,11 +14,51 @@ import { useResponsive } from "../../theme/responsive";
 
 const STAT_LIMIT = 8;
 
-export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
-  const { darkMode } = useApp();
+export function ScreenCoachEarnings({ nav, goBack, coachBookings, toast }) {
+  const { darkMode, toast: appToast, coachPayoutMethod, setCoachPayoutMethod } = useApp();
+  const showToast = toast || appToast;
   const C = darkMode ? CD : CL;
   const { isDesktop } = useResponsive();
   const [loading, setLoading] = useState(true);
+  const [payoutModalOpen, setPayoutModalOpen] = useState(false);
+  const [draftPayout, setDraftPayout] = useState({
+    accountHolder: coachPayoutMethod?.accountHolder || "Noah Kelly",
+    bankName: coachPayoutMethod?.bankName || "Commonwealth Bank",
+    accountNumber: coachPayoutMethod?.accountNumber || "10202210",
+    routingNumber: coachPayoutMethod?.routingNumber || "062000",
+    taxInfo: coachPayoutMethod?.taxInfo || "",
+  });
+
+  const handleOpenPayoutModal = () => {
+    setDraftPayout({
+      accountHolder: coachPayoutMethod?.accountHolder || "Noah Kelly",
+      bankName: coachPayoutMethod?.bankName || "Commonwealth Bank",
+      accountNumber: coachPayoutMethod?.accountNumber || "10202210",
+      routingNumber: coachPayoutMethod?.routingNumber || "062000",
+      taxInfo: coachPayoutMethod?.taxInfo || "",
+    });
+    setPayoutModalOpen(true);
+  };
+
+  const canSavePayout = draftPayout.accountHolder.trim().length > 0
+    && draftPayout.bankName.trim().length > 0
+    && draftPayout.accountNumber.trim().length > 0
+    && draftPayout.routingNumber.trim().length > 0;
+
+  const handleSavePayout = () => {
+    if (!canSavePayout) return;
+    setCoachPayoutMethod?.(draftPayout);
+    showToast?.("Payout method updated");
+    setPayoutModalOpen(false);
+  };
+
+  const labelStyle = { fontSize: isDesktop ? 14 : T.labelLg, fontWeight: 700, color: C.jet, marginBottom: 6, ...fBody };
+  const fieldWrapStyle = {
+    display: "flex", alignItems: "center", gap: 8, border: `1.5px solid ${C.border}`,
+    borderRadius: 13, padding: isDesktop ? "10px 12px" : "11px 13px", boxSizing: "border-box", background: C.white,
+  };
+  const fieldInputStyle = { border: "none", outline: "none", flex: 1, fontSize: isDesktop ? 15 : T.bodyLg, minWidth: 0, color: C.jet, background: "transparent", ...fBody };
+
   const completed = coachBookings.filter((b) => b.status === BOOKING_STATUS.COMPLETED);
 
   useEffect(() => { const t = setTimeout(() => setLoading(false), 800); return () => clearTimeout(t); }, []);
@@ -32,7 +75,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
 
   const stat = (value, label) => (
     <div key={label} style={{ flex: 1, minWidth: 0, background: C.fog, borderRadius: 14, padding: "10px 12px" }}>
-      <div style={{ fontSize: T.titleLg, fontWeight: 800, color: C.jet, lineHeight: 1.1, ...fDisplay }}>{value}</div>
+      <div style={{ fontSize: T.titleLg, fontWeight: 700, color: C.jet, lineHeight: 1.1, ...fDisplay }}>{value}</div>
       <div style={{ fontSize: T.caption, color: C.slateLight, marginTop: 3, ...fBody }}>{label}</div>
     </div>
   );
@@ -94,7 +137,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                 <div
                   style={{
                     fontSize: isDesktop ? 44 : 28,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     color: darkMode ? C.jet : C.white,
                     marginTop: 6,
                     lineHeight: 1.05,
@@ -126,7 +169,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                 <div
                   style={{
                     fontSize: isDesktop ? 44 : 28,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     color: C.jet,
                     marginTop: 6,
                     lineHeight: 1.05,
@@ -156,7 +199,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                 <div
                   style={{
                     fontSize: isDesktop ? 44 : 24,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     color: C.jet,
                     marginTop: 6,
                     lineHeight: 1.05,
@@ -186,7 +229,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                 <div
                   style={{
                     fontSize: isDesktop ? 44 : 24,
-                    fontWeight: 800,
+                    fontWeight: 700,
                     color: C.jet,
                     marginTop: 6,
                     lineHeight: 1.05,
@@ -209,7 +252,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                 marginBottom: isDesktop ? 24 : 16,
               }}
             >
-              <div style={{ fontSize: isDesktop ? 16 : T.subtitle, fontWeight: 700, color: C.jet, marginBottom: isDesktop ? 16 : 12, ...fDisplay }}>
+              <div style={{ fontSize: isDesktop ? 20 : 17, fontWeight: 700, color: C.jet, letterSpacing: "-0.01em", marginBottom: isDesktop ? 16 : 12, ...fDisplay }}>
                 Earnings breakdown
               </div>
               <Row label="Gross earnings" value={`$${gross}`} />
@@ -227,7 +270,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                 }}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: isDesktop ? 16 : 12 }}>
-                  <span style={{ fontSize: isDesktop ? 17 : T.subtitle, fontWeight: 700, color: C.jet, ...fDisplay }}>Payout flow</span>
+                  <span style={{ fontSize: isDesktop ? 20 : 17, fontWeight: 700, color: C.jet, letterSpacing: "-0.01em", ...fDisplay }}>Payout flow</span>
                   <span style={{ fontSize: isDesktop ? 13.5 : T.caption, color: C.slateLight, ...fBody }}>net per completed session</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "flex-end", gap: 8, height: isDesktop ? 96 : 78 }}>
@@ -274,7 +317,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                       key={b.id}
                       onClick={() => nav("funds-release-status", { bookingId: b.id, role: "coach", backTo: "coach-earnings" })}
                       style={{
-                        padding: isDesktop ? "20px 32px" : 14,
+                        padding: isDesktop ? 24 : 14,
                         borderRadius: isDesktop ? 18 : 14,
                         marginBottom: 10,
                         display: "flex",
@@ -298,7 +341,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
             <SectionLabel>Payout method</SectionLabel>
             <Card
               ariaLabel="Edit payout method"
-              onClick={() => nav("coach-payout-setup", { mode: "edit" })}
+              onClick={handleOpenPayoutModal}
               style={{
                 padding: isDesktop ? 32 : 16,
                 borderRadius: isDesktop ? 22 : 16,
@@ -312,8 +355,12 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                 <Wallet size={20} color={C.brand} />
               </div>
               <div>
-                <div style={{ fontSize: isDesktop ? 16 : T.body, color: C.jet, fontWeight: 600, ...fBody }}>Bank account ···· 2210</div>
-                <div style={{ fontSize: isDesktop ? 13 : T.caption, color: C.slate, marginTop: 2, ...fBody }}>Direct deposit · Active</div>
+                <div style={{ fontSize: isDesktop ? 16 : T.body, color: C.jet, fontWeight: 700, ...fBody }}>
+                  {coachPayoutMethod?.bankName || "Bank account"} ···· {coachPayoutMethod?.accountNumber ? coachPayoutMethod.accountNumber.slice(-4) : "2210"}
+                </div>
+                <div style={{ fontSize: isDesktop ? 13 : T.caption, color: C.slate, marginTop: 2, ...fBody }}>
+                  Direct deposit · Active
+                </div>
               </div>
               <ChevronRight size={18} color={C.slateLight} style={{ marginLeft: "auto" }} />
             </Card>
@@ -322,7 +369,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
               <SectionLabel>Recent transactions</SectionLabel>
               {completed.length > STAT_LIMIT && (
-                <button type="button" onClick={() => nav("coach-history")} style={{ minHeight: 44, padding: "0 4px", background: "transparent", border: "none", color: C.brand, fontWeight: 600, fontSize: isDesktop ? 14 : T.label, cursor: "pointer", ...fBody }}>
+                <button type="button" onClick={() => nav("coach-history")} style={{ minHeight: 44, padding: "0 4px", background: "transparent", border: "none", color: C.brand, fontWeight: 700, fontSize: isDesktop ? 14 : T.label, cursor: "pointer", ...fBody }}>
                   View all
                 </button>
               )}
@@ -336,7 +383,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                   key={b.id}
                   onClick={() => nav("funds-release-status", { bookingId: b.id, role: "coach", backTo: "coach-earnings" })}
                   style={{
-                    padding: isDesktop ? "20px 32px" : 14,
+                    padding: isDesktop ? 24 : 14,
                     borderRadius: isDesktop ? 18 : 14,
                     marginBottom: 10,
                     display: "flex",
@@ -346,7 +393,7 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
                   }}
                 >
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: isDesktop ? 16 : T.body, fontWeight: 600, color: C.jet, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", ...fBody }}>{b.service}</div>
+                    <div style={{ fontSize: isDesktop ? 16 : T.body, fontWeight: 700, color: C.jet, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", ...fBody }}>{b.service}</div>
                     <div style={{ fontSize: isDesktop ? 13.5 : T.captionLg, color: C.slate, marginTop: 2, ...fBody }}>{b.date} · {getBookingClientName(withClientMeta(b)).name}</div>
                     <div style={{ marginTop: 6 }}><Badge tone="orange">{b.payoutStatus === PAYOUT_STATUS.RELEASED ? "Payout released" : "Processing"}</Badge></div>
                   </div>
@@ -360,6 +407,111 @@ export function ScreenCoachEarnings({ nav, goBack, coachBookings }) {
           </>
         )}
       </div>
+
+      {/* Edit Payout Method Popup Modal */}
+      <BottomSheet
+        open={payoutModalOpen}
+        onClose={() => setPayoutModalOpen(false)}
+        title="Edit payout method"
+        maxWidth={540}
+        footer={
+          <div style={{ display: "flex", gap: 10, width: "100%" }}>
+            <Btn
+              variant="outline"
+              onClick={() => setPayoutModalOpen(false)}
+              style={{ flex: 1 }}
+            >
+              Cancel
+            </Btn>
+            <Btn
+              disabled={!canSavePayout}
+              onClick={handleSavePayout}
+              style={{ flex: 1.5 }}
+            >
+              Save changes
+            </Btn>
+          </div>
+        }
+      >
+        <div style={{ display: "flex", flexDirection: "column", gap: 16, paddingTop: 4 }}>
+          <div style={{ fontSize: isDesktop ? 14 : T.body, color: C.slate, lineHeight: 1.5, ...fBody }}>
+            Keep your payout details current so future earnings reach the right account.
+          </div>
+
+          <FormSection icon={Landmark} label="Bank details" hint="Where we'll send your earnings.">
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              <div>
+                <div style={labelStyle}>Account holder name<RequiredMark /></div>
+                <div className="cl-input" style={fieldWrapStyle}>
+                  <User size={16} color={C.slateLight} />
+                  <input
+                    value={draftPayout.accountHolder}
+                    onChange={(e) => setDraftPayout((prev) => ({ ...prev, accountHolder: e.target.value }))}
+                    placeholder="e.g. Noah Kelly"
+                    style={fieldInputStyle}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div style={labelStyle}>Bank name<RequiredMark /></div>
+                <div className="cl-input" style={fieldWrapStyle}>
+                  <Landmark size={16} color={C.slateLight} />
+                  <input
+                    value={draftPayout.bankName}
+                    onChange={(e) => setDraftPayout((prev) => ({ ...prev, bankName: e.target.value }))}
+                    placeholder="e.g. Commonwealth Bank"
+                    style={fieldInputStyle}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div style={labelStyle}>Account number<RequiredMark /></div>
+                <div className="cl-input" style={fieldWrapStyle}>
+                  <Hash size={16} color={C.slateLight} />
+                  <input
+                    value={draftPayout.accountNumber}
+                    onChange={(e) => setDraftPayout((prev) => ({ ...prev, accountNumber: e.target.value.replace(/[^0-9]/g, "") }))}
+                    placeholder="e.g. 10202210"
+                    inputMode="numeric"
+                    style={fieldInputStyle}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <div style={labelStyle}>BSB / Routing number<RequiredMark /></div>
+                <div className="cl-input" style={fieldWrapStyle}>
+                  <Hash size={16} color={C.slateLight} />
+                  <input
+                    value={draftPayout.routingNumber}
+                    onChange={(e) => setDraftPayout((prev) => ({ ...prev, routingNumber: e.target.value.replace(/[^0-9]/g, "") }))}
+                    placeholder="e.g. 062-000"
+                    inputMode="numeric"
+                    style={fieldInputStyle}
+                  />
+                </div>
+              </div>
+            </div>
+          </FormSection>
+
+          <FormSection icon={FileText} label="Tax information (optional)" hint="Only required in some regions — leave blank if not applicable.">
+            <div>
+              <div style={labelStyle}>Tax identification (if required)</div>
+              <div className="cl-input" style={fieldWrapStyle}>
+                <FileText size={16} color={C.slateLight} />
+                <input
+                  value={draftPayout.taxInfo}
+                  onChange={(e) => setDraftPayout((prev) => ({ ...prev, taxInfo: e.target.value }))}
+                  placeholder="e.g. ABN or Tax File Number"
+                  style={fieldInputStyle}
+                />
+              </div>
+            </div>
+          </FormSection>
+        </div>
+      </BottomSheet>
     </div>
   );
 }

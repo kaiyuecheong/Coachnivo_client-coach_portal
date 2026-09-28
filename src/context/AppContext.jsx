@@ -93,6 +93,15 @@ export function AppProvider({ children }) {
   const [coachMedia, setCoachMedia] = useState(() => getCoachMedia(COACHES[1].id));
   const [availabilityBlocks, setAvailabilityBlocks] = useState(INITIAL_AVAILABILITY_BLOCKS);
   const [coachAvailableNow, setCoachAvailableNow] = useState(true);
+  const [coachPayoutMethod, setCoachPayoutMethod] = useState(() =>
+    loadStored("coachnivo_coach_payout_method", {
+      accountHolder: "Noah Kelly",
+      bankName: "Commonwealth Bank",
+      accountNumber: "10202210",
+      routingNumber: "062000",
+      taxInfo: "",
+    })
+  );
 
   // ---- Business bookings (shared session lifecycle keeps an empty pool;
   //      business marketplace is excluded from the portal) ----
@@ -118,6 +127,7 @@ export function AppProvider({ children }) {
   useEffect(() => { saveStored(STORAGE_KEYS.favorites, favorites); }, [favorites]);
   useEffect(() => { saveStored(STORAGE_KEYS.clientFilters, clientFilters); }, [clientFilters]);
   useEffect(() => { saveStored(STORAGE_KEYS.discoveryPrefs, discoveryPrefs); }, [discoveryPrefs]);
+  useEffect(() => { saveStored("coachnivo_coach_payout_method", coachPayoutMethod); }, [coachPayoutMethod]);
 
   useEffect(() => { screenRef.current = screen; }, [screen]);
   useEffect(() => { paramsRef.current = params; }, [params]);
@@ -1087,6 +1097,7 @@ export function AppProvider({ children }) {
     coachMedia, addMedia, removeMedia,
     availabilityBlocks, setAvailabilityBlocks,
     coachAvailableNow, setCoachAvailableNow,
+    coachPayoutMethod, setCoachPayoutMethod,
     addCoachRole: () => setHasCoachRole(true),
     // Verification & admin
     submitVerification, verificationQueue, decideVerification, simulateVerificationDecision, disputes, resolveDispute,

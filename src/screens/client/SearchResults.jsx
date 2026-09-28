@@ -77,7 +77,7 @@ function CoachResult({ coach, onOpen }) {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 4, fontSize: T.labelLg, fontWeight: 700, color: C.jet, ...fBody }}>
             <Star size={12} color={C.brand} fill={C.brand} aria-hidden="true" /> {coach.rating.toFixed(1)}
           </div>
-          <div style={{ marginTop: 7, fontSize: T.body, fontWeight: 800, color: C.jet, ...fDisplay }}>${coach.packages?.[0]?.price || 0}</div>
+          <div style={{ marginTop: 7, fontSize: T.body, fontWeight: 700, color: C.jet, ...fDisplay }}>${coach.packages?.[0]?.price || 0}</div>
           <div style={{ marginTop: 1, fontSize: T.micro, color: C.slateLight, ...fBody }}>from</div>
         </div>
       </div>
@@ -107,7 +107,7 @@ function PackageResult({ result, onOpen }) {
           </div>
         </div>
         <div style={{ flexShrink: 0, textAlign: "right" }}>
-          <div style={{ fontSize: T.title, fontWeight: 800, color: C.jet, ...fDisplay }}>${result.price}</div>
+          <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>${result.price}</div>
           <ChevronRight size={16} color={C.slateLight} aria-hidden="true" style={{ marginTop: 8 }} />
         </div>
       </div>

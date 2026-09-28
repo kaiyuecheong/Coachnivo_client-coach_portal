@@ -184,7 +184,7 @@ export function ScreenGetStarted({ nav }) {
         <div
           style={{
             fontSize: isDesktop ? 56 : 38,
-            fontWeight: 800,
+            fontWeight: 700,
             lineHeight: 1.1,
             letterSpacing: "-0.02em",
             marginTop: 4,
@@ -263,7 +263,7 @@ function RoleOption({ role, title, body, icon: Icon, onClick, C }) {
         <Icon size={22} color={C.brand} />
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontWeight: 600, color: C.jet, fontSize: T.subtitleLg, marginBottom: 3, ...fDisplay }}>{title}</div>
+        <div style={{ fontWeight: 700, color: C.jet, fontSize: T.subtitleLg, marginBottom: 3, ...fDisplay }}>{title}</div>
         <div style={{ fontSize: T.labelLg, color: C.slate, lineHeight: 1.45, ...fBody }}>{body}</div>
       </div>
       <ChevronRight size={18} color={C.slateLight} style={{ flexShrink: 0 }} />
@@ -284,7 +284,7 @@ export function ScreenRoleSelect({ nav, setRole }) {
     <div style={{ height: "100%", display: "flex", flexDirection: "column", background: C.white }}>
       <TopBar title="" onBack={() => nav("get-started")} />
       <div style={{ flex: 1, overflowY: "auto", padding: "14px 18px 24px" }} className="cl-hide-scrollbar">
-        <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, marginTop: 18, ...fDisplay }}>What brings you to CoachNivo?</div>
+        <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, marginTop: 18, ...fDisplay }}>What brings you to CoachNivo?</div>
         <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 22, ...fBody }}>
           You can add a coaching profile later from the same account.
         </div>
@@ -398,7 +398,7 @@ export function ScreenAuth({ nav, resetNav, params, role, toast, biometric, upda
     <div style={{ height: "100%", display: "flex", flexDirection: "column", overflowX: "hidden" }}>
       <TopBar title="" onBack={() => nav(params?.backTo || "role-select")} />
       <div style={{ flex: 1, minWidth: 0, overflowY: "auto", overflowX: "hidden", padding: "16px 18px 24px" }} className="cl-hide-scrollbar">
-      <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>{mode === "signup" ? "Create your account" : "Welcome back"}</div>
+      <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>{mode === "signup" ? "Create your account" : "Welcome back"}</div>
       <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 20, ...fBody }}>
         {mode === "signup"
           ? (role === "coach" || role === "businessCoach" ? "Signing up as a Coach." : role === "business" ? "Signing up as a Business." : "Signing up as a Client.")
@@ -510,7 +510,7 @@ export function ScreenForgotPassword({ nav, params, role, toast }) {
       <div style={{ width: 52, height: 52, borderRadius: 16, background: C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
         <Lock size={22} color={C.brand} />
       </div>
-      <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Forgot your password?</div>
+      <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Forgot your password?</div>
       <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 24, lineHeight: 1.55, ...fBody }}>
         Enter the email on your {effectiveRole === "coach" ? "coach" : effectiveRole === "business" ? "business" : "client"} account and we'll send you a 6-digit code to reset it.
       </div>
@@ -554,7 +554,7 @@ export function ScreenResetCode({ nav, params, toast }) {
       <div style={{ width: 52, height: 52, borderRadius: 16, background: C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
         <Smartphone size={22} color={C.brand} />
       </div>
-      <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Enter the code<RequiredMark /></div>
+      <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Enter the code<RequiredMark /></div>
       <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 26, lineHeight: 1.55, ...fBody }}>
         We sent a 6-digit code to <span style={{ color: C.jet, fontWeight: 600 }}>{email || "your email"}</span>.
       </div>
@@ -616,7 +616,7 @@ export function ScreenResetPassword({ nav, params, toast }) {
       <div style={{ width: 52, height: 52, borderRadius: 16, background: C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
         <Check size={22} color={C.brand} />
       </div>
-      <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Set a new password</div>
+      <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Set a new password</div>
       <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 22, lineHeight: 1.55, ...fBody }}>
         Choose a new password for your account.
       </div>
@@ -705,7 +705,7 @@ export function ScreenVerifyEmail({ nav, params, toast, role }) {
               <div style={{ width: 84, height: 84, borderRadius: 26, background: C.successTint, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
                 <CheckCircle2 size={40} color={C.success} />
               </div>
-              <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, textAlign: "center", ...fDisplay }}>Your email is verified</div>
+              <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, textAlign: "center", ...fDisplay }}>Your email is verified</div>
               <div style={{ fontSize: T.support, color: C.slate, marginTop: 8, lineHeight: 1.6, textAlign: "center", ...fBody }}>
                 Thanks for confirming - let's continue setting up your account.
               </div>
@@ -719,7 +719,7 @@ export function ScreenVerifyEmail({ nav, params, toast, role }) {
             <div style={{ width: 52, height: 52, borderRadius: 16, background: phase === "error" ? C.dangerTint : C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
               {phase === "error" ? <XCircle size={22} color={C.danger} /> : <Mail size={22} color={C.brand} />}
             </div>
-            <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, textAlign: "center", ...fDisplay }}>Verify your email<RequiredMark /></div>
+            <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, textAlign: "center", ...fDisplay }}>Verify your email<RequiredMark /></div>
             <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 24, lineHeight: 1.55, textAlign: "center", ...fBody }}>
               We've sent a verification code to <span style={{ color: C.jet, fontWeight: 600 }}>{email}</span>. Enter it below to activate your account.
             </div>
@@ -901,7 +901,7 @@ export function ScreenVerifyPhone({ nav, params, toast, role, updateClientIdenti
               <div style={{ width: 84, height: 84, borderRadius: 26, background: C.successTint, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
                 <CheckCircle2 size={40} color={C.success} />
               </div>
-              <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Your phone is verified</div>
+              <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Your phone is verified</div>
               <div style={{ fontSize: T.support, color: C.slate, marginTop: 8, lineHeight: 1.6, ...fBody }}>
                 Your number is ready for secure sign-in, recovery and important session updates.
               </div>
@@ -913,7 +913,7 @@ export function ScreenVerifyPhone({ nav, params, toast, role, updateClientIdenti
             <div style={{ width: 52, height: 52, borderRadius: 16, background: C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
               <Smartphone size={23} color={C.brand} />
             </div>
-            <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Add your phone number</div>
+            <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Add your phone number</div>
             <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 24, lineHeight: 1.55, ...fBody }}>
               We’ll verify this number for account recovery and important booking updates.
             </div>
@@ -925,7 +925,7 @@ export function ScreenVerifyPhone({ nav, params, toast, role, updateClientIdenti
             <div style={{ width: 52, height: 52, borderRadius: 16, background: phase === "error" ? C.dangerTint : C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
               {phase === "error" ? <XCircle size={23} color={C.danger} /> : <Smartphone size={23} color={C.brand} />}
             </div>
-            <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Verify your phone<RequiredMark /></div>
+            <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Verify your phone<RequiredMark /></div>
             <div style={{ fontSize: T.support, color: C.slate, marginTop: 6, marginBottom: 24, lineHeight: 1.55, ...fBody }}>
               Enter the six-digit code sent to <span style={{ color: C.jet, fontWeight: 600 }}>{phone}</span>.
             </div>
@@ -1023,7 +1023,7 @@ export function ScreenCoachInfo({ nav, params, coachOnboarding, updateCoachOnboa
       <TopBar title="" onBack={() => nav("auth", { mode: "signup", next: "coach-info", invitation: params?.invitation, backTo: params?.backTo })} />
       <div style={{ flex: 1, overflowY: "auto", padding: "16px 18px 24px" }} className="cl-hide-scrollbar">
 
-        <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Coach information</div>
+        <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Coach information</div>
         <div style={{ fontSize: T.support, color: C.slate, marginTop: 8, marginBottom: 20, lineHeight: 1.55, ...fBody }}>
           This is what clients see first - your photo, name and story help them decide if you're the right coach for them.
         </div>
@@ -1117,7 +1117,7 @@ export function ScreenCoachExpertise({ nav, params, coachOnboarding, updateCoach
       <TopBar title="" onBack={() => nav("coach-info", params?.invitation ? { invitation: true, backTo: params?.backTo } : {})} />
       <div style={{ flex: 1, overflowY: "auto", padding: "16px 18px 24px" }} className="cl-hide-scrollbar">
 
-        <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Coaching expertise</div>
+        <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Coaching expertise</div>
         <div style={{ fontSize: T.support, color: C.slate, marginTop: 8, marginBottom: 20, lineHeight: 1.55, ...fBody }}>
           Help clients find you by sharing the sports, formats and skill levels you coach.
         </div>
@@ -1213,7 +1213,7 @@ export function ScreenVerification({ nav, toast, submitVerification, coachOnboar
       <TopBar title="" onBack={() => nav("coach-expertise", params?.invitation ? { invitation: true, backTo: params?.backTo } : {})} />
       <div style={{ flex: 1, overflowY: "auto", padding: "16px 18px 24px" }} className="cl-hide-scrollbar">
 
-        <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Get verified</div>
+        <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Get verified</div>
         <div style={{ fontSize: T.support, color: C.slate, marginTop: 8, marginBottom: 18, lineHeight: 1.55, ...fBody }}>
           {resubmitting ? "Update the two documents highlighted by our review team. Your approved selfie and accreditation stay on file." : "Verification builds trust with clients and unlocks bookings. Most reviews complete within 2 business days."}
         </div>
@@ -1434,7 +1434,7 @@ export function ScreenVerificationPending({ nav, params, role, verificationStatu
         }}>
           {approved ? <CheckCircle2 size={28} color={C.success} /> : <ClipboardList size={28} color={C.brand} />}
         </div>
-        <div style={{ fontSize: T.headingLg, fontWeight: 600, color: C.jet, ...fDisplay }}>
+        <div style={{ fontSize: T.headingLg, fontWeight: 700, color: C.jet, ...fDisplay }}>
           {approved ? "Your application has been successfully verified" : "Verification submitted"}
         </div>
         <div style={{ fontSize: T.support, color: C.slate, marginTop: 8, lineHeight: 1.6, maxWidth: 300, marginLeft: "auto", marginRight: "auto", ...fBody }}>

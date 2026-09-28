@@ -177,14 +177,14 @@ function PackageBookingSheet({
           <div style={{ padding: 16, borderRadius: 18, background: C.brandTint, border: `1px solid ${C.border}`, marginBottom: 18 }}>
             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16 }}>
               <div style={{ minWidth: 0 }}>
-                <h2 style={{ margin: "0 0 0", fontSize: T.headingLg, lineHeight: 1.2, fontWeight: 800, color: C.jet, ...fDisplay }}>{pkg.name}</h2>
+                <h2 style={{ margin: "0 0 0", fontSize: T.headingLg, lineHeight: 1.2, fontWeight: 700, color: C.jet, ...fDisplay }}>{pkg.name}</h2>
                 <div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 5, fontSize: T.labelLg, color: C.slate, ...fBody }}>
                   <SportIcon sport={pkg.sport || coach.sport} size={13} color={C.brand} />
                   {pkg.sport || coach.sport} · {typeLabel}
                 </div>
               </div>
               <div style={{ flexShrink: 0, textAlign: "right" }}>
-                <div style={{ fontSize: T.display, fontWeight: 800, color: C.brand, ...fDisplay }}>${pkg.price}</div>
+                <div style={{ fontSize: T.display, fontWeight: 700, color: C.brand, ...fDisplay }}>${pkg.price}</div>
                 <div style={{ fontSize: T.caption, color: C.slate, marginTop: 2, ...fBody }}>package price</div>
               </div>
             </div>
@@ -245,7 +245,7 @@ function PackageBookingSheet({
               <ChevronLeft size={16} color={C.jet} />
             </button>
             <div style={{ textAlign: "center" }}>
-              <div style={{ fontSize: T.caption, fontWeight: 750, color: C.brand, textTransform: "uppercase", letterSpacing: ".7px", ...fBody }}>Select a date</div>
+              <div style={{ fontSize: T.caption, fontWeight: 700, color: C.brand, textTransform: "uppercase", letterSpacing: ".7px", ...fBody }}>Select a date</div>
               <div style={{ marginTop: 2, fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>{monthLabel}</div>
             </div>
             <button
@@ -440,7 +440,7 @@ const summaryRail = (
         <div>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Star size={16} fill={C.brand} color={C.brand} />
-            <span style={{ fontSize: T.heading, fontWeight: 800, color: C.jet, ...fDisplay }}>{coach.rating.toFixed(1)}</span>
+            <span style={{ fontSize: T.heading, fontWeight: 700, color: C.jet, ...fDisplay }}>{coach.rating.toFixed(1)}</span>
             <span style={{ fontSize: 16, color: C.slate }}>({coach.reviews} reviews)</span>
           </div>
           <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 6, marginTop: 8 }}>
@@ -451,7 +451,7 @@ const summaryRail = (
 
         <div style={{ borderTop: `1px solid ${C.border}`, marginTop: 16, paddingTop: 16 }}>
           <div style={{ fontSize: 16, color: C.slate, ...fBody }}>Starting from</div>
-          <div style={{ fontSize: 28, fontWeight: 800, color: C.jet, lineHeight: 1.1, marginTop: 2, ...fDisplay }}>
+          <div style={{ fontSize: 28, fontWeight: 700, color: C.jet, lineHeight: 1.1, marginTop: 2, ...fDisplay }}>
             {startingPrice != null ? `$${startingPrice}` : "—"}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 8, fontSize: 16, color: C.slate, ...fBody }}>
@@ -583,12 +583,12 @@ const summaryRail = (
                           <SportIcon sport={p.sport || coach.sport} size={isDesktop ? 20 : 18} color={isInactive ? C.slateLight : C.brand} />
                         </div>
                         <div style={{ minWidth: 0, flex: 1 }}>
-                          <div style={{ fontSize: isDesktop ? 17 : T.subtitle, fontWeight: 750, color: C.jet, lineHeight: 1.25, ...fDisplay }}>{p.name}</div>
+                          <div style={{ fontSize: isDesktop ? 17 : T.subtitle, fontWeight: 700, color: C.jet, lineHeight: 1.25, ...fDisplay }}>{p.name}</div>
                           <div style={{ fontSize: isDesktop ? 13.5 : 12, color: C.slate, marginTop: 3, ...fBody }}>{p.sport || coach.sport} · {p.packageType || p.type || "Coaching session"}</div>
                         </div>
                       </div>
                       <div style={{ flexShrink: 0, textAlign: "right" }}>
-                        <div style={{ fontSize: isDesktop ? 22 : T.title, fontWeight: 800, color: C.jet, ...fDisplay }}>${p.price}</div>
+                        <div style={{ fontSize: isDesktop ? 22 : T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>${p.price}</div>
                         <div style={{ fontSize: T.tiny, color: C.slateLight, marginTop: 1, ...fBody }}>package</div>
                       </div>
                     </div>
@@ -662,7 +662,7 @@ const summaryRail = (
             <div style={{ display: "grid", gridTemplateColumns: isDesktop ? "220px 1fr" : "1fr", gap: isDesktop ? 32 : 18, alignItems: "center" }}>
               {/* Overall Score */}
               <div style={{ textAlign: isDesktop ? "left" : "center", borderRight: isDesktop ? `1px solid ${C.border}` : "none", paddingRight: isDesktop ? 24 : 0, borderBottom: !isDesktop ? `1px solid ${C.border}` : "none", paddingBottom: !isDesktop ? 16 : 0 }}>
-                <div style={{ fontSize: 44, fontWeight: 800, color: C.jet, lineHeight: 1, letterSpacing: "-1px", ...fDisplay }}>
+                <div style={{ fontSize: 44, fontWeight: 700, color: C.jet, lineHeight: 1, letterSpacing: "-1px", ...fDisplay }}>
                   {(coach.rating || 4.9).toFixed(1)}
                 </div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: isDesktop ? "flex-start" : "center", gap: 3, margin: "8px 0 4px" }}>
@@ -986,14 +986,14 @@ const summaryRail = (
                     <SportIcon sport={pkg.sport || coach.sport} size={18} color={C.brand} />
                   </div>
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ fontSize: T.body, fontWeight: 750, color: C.jet, ...fDisplay }}>{pkg.name}</div>
+                    <div style={{ fontSize: T.body, fontWeight: 700, color: C.jet, ...fDisplay }}>{pkg.name}</div>
                     <div style={{ fontSize: T.captionLg, color: C.slate, marginTop: 2, ...fBody }}>
                       {pkg.durationMinutes || pkg.duration || 60} min · {pkg.mode || pkg.locationType || "In-person"}
                     </div>
                   </div>
                 </div>
                 <div style={{ textAlign: "right", flexShrink: 0 }}>
-                  <div style={{ fontSize: T.title, fontWeight: 800, color: C.jet, ...fDisplay }}>${pkg.price}</div>
+                  <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>${pkg.price}</div>
                   <div style={{ fontSize: 11, color: C.slateLight, ...fBody }}>package</div>
                 </div>
               </Card>

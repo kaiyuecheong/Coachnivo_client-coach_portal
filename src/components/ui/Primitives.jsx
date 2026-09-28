@@ -1127,7 +1127,7 @@ export function EmptyState({ icon: Icon, title, body, ctaLabel, onCta, large }) 
       }}>
         <Icon aria-hidden="true" size={large ? 30 : 22} color={large ? C.brand : C.slateLight} />
       </div>
-      <div style={{ fontSize: large ? T.display : undefined, fontWeight: 600, color: C.jet, marginBottom: large ? 10 : 4, ...fDisplay }}>{title}</div>
+      <div style={{ fontSize: large ? T.display : undefined, fontWeight: 700, color: C.jet, marginBottom: large ? 10 : 4, ...fDisplay }}>{title}</div>
       <div style={{ fontSize: large ? T.bodyLg : T.body, lineHeight: large ? 1.6 : 1.5, maxWidth: large ? 300 : undefined, marginLeft: "auto", marginRight: "auto" }}>{body}</div>
       {ctaLabel && onCta && (
         <div style={{ marginTop: large ? 24 : 18, ...(large ? {} : { display: "inline-block" }) }}>
@@ -1640,6 +1640,7 @@ export function BottomSheet({ open, onClose, title, children, footer, heightPct 
     >
       <button
         type="button"
+        className="cl-backdrop"
         aria-label="Dismiss dialog"
         onClick={onClose}
         style={{
@@ -1707,6 +1708,7 @@ export function BottomSheet({ open, onClose, title, children, footer, heightPct 
             </div>
             <button
               type="button"
+              className="cl-close-btn"
               aria-label="Close dialog"
               onClick={onClose}
               style={{
@@ -1721,10 +1723,7 @@ export function BottomSheet({ open, onClose, title, children, footer, heightPct 
                 justifyContent: "center",
                 cursor: "pointer",
                 color: C.slate,
-                transition: "all 0.15s ease",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.color = C.jet; e.currentTarget.style.background = C.border; }}
-              onMouseLeave={(e) => { e.currentTarget.style.color = C.slate; e.currentTarget.style.background = C.fog; }}
             >
               <X size={16} />
             </button>
@@ -1732,6 +1731,7 @@ export function BottomSheet({ open, onClose, title, children, footer, heightPct 
         ) : (
           <button
             type="button"
+            className="cl-close-btn"
             aria-label="Close dialog"
             onClick={onClose}
             style={{

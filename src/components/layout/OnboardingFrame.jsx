@@ -49,7 +49,7 @@ function StepRail({ step, total, steps }) {
                 background: done ? C.brand : active ? C.brandTint : C.fog,
                 border: `1.5px solid ${done || active ? C.brand : C.border}`,
                 color: done ? C.white : active ? C.brand : C.slateLight,
-                fontWeight: 800, fontSize: 12,
+                fontWeight: 700, fontSize: 12,
               }}>
                 {done ? <Check size={13} strokeWidth={3} /> : i}
               </span>

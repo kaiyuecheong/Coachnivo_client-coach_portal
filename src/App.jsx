@@ -412,7 +412,7 @@ function PortalShell() {
           <button type="button" aria-label="View notifications" onClick={() => { setNotifOpen((v) => !v); }} style={{ ...iconBtn, border: "none", background: "transparent" }}>
             <Bell size={20} color={C.jet} />
             {unread > 0 && (
-              <span style={{ position: "absolute", top: -2, right: -2, minWidth: 15, height: 15, borderRadius: 99, background: C.brand, color: "#FFFFFF", fontSize: 9, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 2px" }}>
+              <span style={{ position: "absolute", top: -2, right: -2, minWidth: 15, height: 15, borderRadius: 99, background: C.brand, color: "#FFFFFF", fontSize: 9, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 2px" }}>
                 {unread}
               </span>
             )}
@@ -504,7 +504,7 @@ function PortalShell() {
           <button type="button" aria-label="View notifications" onClick={() => setNotifOpen((v) => !v)} style={iconBtn}>
             <Bell size={17} />
             {unread > 0 && (
-              <span style={{ position: "absolute", top: -3, right: -3, minWidth: 16, height: 16, borderRadius: 99, background: C.brand, color: "#FFFFFF", fontSize: 11, fontWeight: 800, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px" }}>
+              <span style={{ position: "absolute", top: -3, right: -3, minWidth: 16, height: 16, borderRadius: 99, background: C.brand, color: "#FFFFFF", fontSize: 11, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 3px" }}>
                 {unread}
               </span>
             )}

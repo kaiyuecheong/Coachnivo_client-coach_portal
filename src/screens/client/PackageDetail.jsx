@@ -103,11 +103,11 @@ export function ScreenPackageDetail({ nav, params }) {
         <SportBadge sport={pkg.sport || coach.sport} compact />
         {pkg.type && <Badge tone="neutral">{pkg.type}</Badge>}
       </div>
-      <h1 style={{ margin: 0, fontSize: isDesktop ? 26 : T.display, fontWeight: 800, color: C.jet, letterSpacing: "-0.3px", ...fDisplay }}>
+      <h1 style={{ margin: 0, fontSize: isDesktop ? 26 : T.display, fontWeight: 700, color: C.jet, letterSpacing: "-0.3px", ...fDisplay }}>
         {pkg.name}
       </h1>
       <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginTop: 8 }}>
-        <span style={{ fontSize: isDesktop ? 28 : T.displayLg, fontWeight: 800, color: C.jet, ...fDisplay }}>
+        <span style={{ fontSize: isDesktop ? 28 : T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>
           ${pkg.price}
         </span>
         <span style={{ fontSize: T.body, color: C.slate, ...fBody }}>/ session</span>

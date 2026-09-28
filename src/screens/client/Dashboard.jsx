@@ -369,7 +369,7 @@ const currentRangeBookings = useMemo(() => {
                     >
                       <ChevronLeft size={16} color={C.jet} />
                     </button>
-                    <span style={{ fontSize: isDesktop ? 17.5 : 16, fontWeight: 750, color: C.jet, ...fDisplay }}>
+                    <span style={{ fontSize: isDesktop ? 17.5 : 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
                       {headerLabel}
                     </span>
                     <button
@@ -587,7 +587,7 @@ const currentRangeBookings = useMemo(() => {
                                         >
                                           <span
                                             style={{
-                                              fontWeight: 800,
+                                              fontWeight: 700,
                                               color: C.brand,
                                               fontSize: 9.5,
                                               flexShrink: 0,
@@ -618,7 +618,7 @@ const currentRangeBookings = useMemo(() => {
                                       <div
                                         style={{
                                           fontSize: 9.5,
-                                          fontWeight: 750,
+                                          fontWeight: 700,
                                           color: C.brand,
                                           paddingLeft: 3,
                                           marginTop: 1,
@@ -862,7 +862,7 @@ const currentRangeBookings = useMemo(() => {
                                           }}
                                         >
                                           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 2 }}>
-                                            <span style={{ fontSize: 9, fontWeight: 800, color: toneText, lineHeight: 1, ...fDisplay }}>
+                                            <span style={{ fontSize: 9, fontWeight: 700, color: toneText, lineHeight: 1, ...fDisplay }}>
                                               {b.time}
                                             </span>
                                             <span
@@ -981,7 +981,7 @@ const currentRangeBookings = useMemo(() => {
                     <CalendarClock size={17} color={C.brand} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 10.5, fontWeight: 750, color: C.brand, textTransform: "uppercase", letterSpacing: 0.4, ...fBody }}>
+                    <div style={{ fontSize: 10.5, fontWeight: 700, color: C.brand, textTransform: "uppercase", letterSpacing: 0.4, ...fBody }}>
                       Next Upcoming Session
                     </div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: C.jet, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", ...fDisplay }}>
@@ -1008,7 +1008,7 @@ const currentRangeBookings = useMemo(() => {
               >
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <h3 style={{ fontSize: isDesktop ? 18 : 16, fontWeight: 750, color: C.jet, margin: 0, ...fDisplay }}>
+                    <h3 style={{ fontSize: isDesktop ? 18 : 16, fontWeight: 700, color: C.jet, margin: 0, ...fDisplay }}>
                       {selectedDate.toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long" })}
                     </h3>
                     <Badge tone={bookingsOnDate(selectedDate).length > 0  ? "orange" : "neutral"}>
@@ -1473,7 +1473,7 @@ function DashboardStats({ pendingCount, upcomingCount, pastCount, C }) {
           <div
             style={{
               fontSize: isDesktop ? 44 : 28,
-              fontWeight: 800,
+              fontWeight: 700,
               color: C.jet,
               marginTop: 6,
               lineHeight: 1.05,
@@ -1689,10 +1689,10 @@ export function ScreenClientBookingDetail({ nav, goBack, params, bookings = [], 
           <Card style={{ marginBottom: 14, padding: 16, background: C.brandTint, border: "none" }}>
             <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12 }}>
               <div>
-                <div style={{ fontSize: T.title, fontWeight: 750, color: C.jet, ...fDisplay }}>Your final price is ready</div>
+                <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>Your final price is ready</div>
                 <div style={{ marginTop: 4, fontSize: T.captionLg, color: C.slate, lineHeight: 1.5, ...fBody }}>{acceptanceCharges.filter((item) => item.kind === ADDITIONAL_CHARGE_KIND.REQUIRED).length} required cost{acceptanceCharges.filter((item) => item.kind === ADDITIONAL_CHARGE_KIND.REQUIRED).length === 1 ? "" : "s"} included · {acceptanceCharges.filter((item) => item.kind === ADDITIONAL_CHARGE_KIND.OPTIONAL).length} optional add-on{acceptanceCharges.filter((item) => item.kind === ADDITIONAL_CHARGE_KIND.OPTIONAL).length === 1 ? "" : "s"}</div>
               </div>
-              <div style={{ fontSize: T.titleLg, fontWeight: 800, color: C.jet, ...fDisplay }}>${requiredCheckoutTotal.toFixed(2)}</div>
+              <div style={{ fontSize: T.titleLg, fontWeight: 700, color: C.jet, ...fDisplay }}>${requiredCheckoutTotal.toFixed(2)}</div>
             </div>
           </Card>
         )}

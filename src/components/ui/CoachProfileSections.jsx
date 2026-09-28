@@ -112,7 +112,7 @@ export function CoachProfileHero({
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
           <div style={{ minWidth: 0, flex: 1 }}>
-            <div style={{ fontSize: isDesktop ? 30 : 25, fontWeight: 750, color: C.jet, lineHeight: 1.15, ...fDisplay }}>{pub.name}</div>
+            <div style={{ fontSize: isDesktop ? 30 : 25, fontWeight: 700, color: C.jet, lineHeight: 1.15, ...fDisplay }}>{pub.name}</div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 6, flexWrap: "wrap" }}>
               <HandleTag handle={pub.handle} size={15} color={C.slateLight} />
               <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 16, color: C.slate, ...fBody }}>
@@ -125,7 +125,7 @@ export function CoachProfileHero({
             </div>
           </div>
           <div style={{ minWidth: 104, flexShrink: 0, display: "flex", flexDirection: "column", alignItems: "flex-end", textAlign: "right", paddingTop: 2 }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 4, fontSize: isDesktop ? 20 : 18, fontWeight: 750, color: C.jet, ...fBody }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 4, fontSize: isDesktop ? 20 : 18, fontWeight: 700, color: C.jet, ...fBody }}>
               <Star size={16} fill={C.brand} color={C.brand} /> {coach.rating.toFixed(1)}
             </div>
             <div style={{ fontSize: 16, color: C.slate, marginTop: 2, ...fBody }}>{coach.reviews} reviews</div>
@@ -145,7 +145,7 @@ export function CoachProfileHero({
                 >
                   <ShieldCheck size={11.5} aria-hidden="true" />
                   Verified
-                  <span style={{ minWidth: 14, height: 14, borderRadius: 99, background: C.brand, color: "#FFFFFF", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 9.5, fontWeight: 800, lineHeight: 1, padding: "0 2px", ...fBody }}>{verificationChecks.length}</span>
+                  <span style={{ minWidth: 14, height: 14, borderRadius: 99, background: C.brand, color: "#FFFFFF", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 9.5, fontWeight: 700, lineHeight: 1, padding: "0 2px", ...fBody }}>{verificationChecks.length}</span>
                 </button>
             )}
           </div>
@@ -156,7 +156,7 @@ export function CoachProfileHero({
             <div key={s.label} style={{ minWidth: 0, background: C.fog, border: `1px solid ${C.border}`, borderRadius: 13, padding: isDesktop ? "12px 8px 10px" : "10px 5px 9px", textAlign: "center" }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
                 <s.icon size={isDesktop ? 16 : 14} color={C.brand} style={{ flexShrink: 0 }} />
-                <span style={{ fontSize: isDesktop ? 20 : 17, fontWeight: 750, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fDisplay }}>{s.value}</span>
+                <span style={{ fontSize: isDesktop ? 20 : 17, fontWeight: 700, color: C.jet, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", ...fDisplay }}>{s.value}</span>
               </div>
               <div style={{ fontSize: isDesktop ? 14 : T.support, color: C.slate, marginTop: 4, lineHeight: 1.2, ...fBody }}>{s.label}</div>
             </div>

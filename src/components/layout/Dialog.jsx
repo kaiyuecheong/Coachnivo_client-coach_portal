@@ -39,6 +39,7 @@ export function Dialog({
     <div style={{ position: "fixed", inset: 0, zIndex: 120, display: "flex", alignItems: "center", justifyContent: "center", padding: "20px 16px" }}>
       <button
         type="button"
+        className="cl-backdrop"
         aria-label="Dismiss dialog"
         onClick={close}
         style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none", background: "rgba(22,24,29,.45)", backdropFilter: "blur(3px)", WebkitBackdropFilter: "blur(3px)", animation: "clBackdropIn .2s ease", cursor: "default", touchAction: "none" }}
@@ -74,9 +75,10 @@ export function Dialog({
           {!hideClose && (
             <button
               type="button"
+              className="cl-close-btn"
               onClick={close}
               aria-label="Close dialog"
-              style={{ width: 36, height: 36, flexShrink: 0, borderRadius: 99, background: darkMode ? "transparent" : C.fog, border: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.slate }}
+              style={{ width: 36, height: 36, flexShrink: 0, borderRadius: 99, background: C.fog, border: `1px solid ${C.border}`, display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: C.slate }}
             >
               <X size={16} />
             </button>

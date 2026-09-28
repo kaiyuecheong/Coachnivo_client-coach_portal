@@ -384,7 +384,7 @@ const closeSheet = () => setSheet(null);
                         <Camera size={13} color="#FFFFFF" />
                       </button>
                     </div>
-                    <div style={{ fontSize: 18, fontWeight: 750, color: C.jet, ...fDisplay }}>{profile.name}</div>
+                    <div style={{ fontSize: 18, fontWeight: 700, color: C.jet, ...fDisplay }}>{profile.name}</div>
                     <div style={{ fontSize: 14, color: C.slate, marginTop: 2, ...fBody }}>{profile.email}</div>
                     <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", justifyContent: "center" }}>
                       <HandleTag handle={clientIdentity.handle} size={13} color={C.brand} />
@@ -479,7 +479,7 @@ const closeSheet = () => setSheet(null);
                 {desktopTab === "personal" && (
                   <div>
                     <div style={{ marginBottom: 20 }}>
-                      <div style={{ fontSize: 22, fontWeight: 800, color: C.jet, ...fDisplay }}>Personal Information</div>
+                      <div style={{ fontSize: 22, fontWeight: 700, color: C.jet, ...fDisplay }}>Personal Information</div>
                       <div style={{ fontSize: 14, color: C.slate, marginTop: 4, ...fBody }}>Update your profile details, handle, and coaching preferences.</div>
                     </div>
 
@@ -598,7 +598,7 @@ const closeSheet = () => setSheet(null);
                   <div>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
                       <div>
-                        <div style={{ fontSize: 22, fontWeight: 800, color: C.jet, ...fDisplay }}>Family & Participants</div>
+                        <div style={{ fontSize: 22, fontWeight: 700, color: C.jet, ...fDisplay }}>Family & Participants</div>
                         <div style={{ fontSize: 14, color: C.slate, marginTop: 4, ...fBody }}>Manage child and athlete profiles to quickly select them when booking sessions.</div>
                       </div>
                       <Btn icon={UserPlus} onClick={openNewChild}>Add family member</Btn>
@@ -622,7 +622,7 @@ const closeSheet = () => setSheet(null);
                                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                                   <Avatar name={child.name || "Child"} size={52} />
                                   <div>
-                                    <div style={{ fontSize: 18, fontWeight: 750, color: C.jet, ...fDisplay }}>{child.name || "Unnamed profile"}</div>
+                                    <div style={{ fontSize: 18, fontWeight: 700, color: C.jet, ...fDisplay }}>{child.name || "Unnamed profile"}</div>
                                     <div style={{ display: "flex", alignItems: "center", gap: 6, marginTop: 4 }}>
                                       <Badge tone="neutral">{child.age ? `Age ${child.age}` : "Age not set"}</Badge>
                                       {child.location && <span style={{ fontSize: 13, color: C.slate }}>· {child.location.suburb || child.location.name}</span>}
@@ -684,7 +684,7 @@ const closeSheet = () => setSheet(null);
                   <div>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
                       <div>
-                        <div style={{ fontSize: 22, fontWeight: 800, color: C.jet, ...fDisplay }}>Payment Methods</div>
+                        <div style={{ fontSize: 22, fontWeight: 700, color: C.jet, ...fDisplay }}>Payment Methods</div>
                         <div style={{ fontSize: 14, color: C.slate, marginTop: 4, ...fBody }}>Manage your saved cards, default payment method, and billing.</div>
                       </div>
                       <Btn icon={Plus} onClick={openAddCard}>Add payment method</Btn>
@@ -744,7 +744,7 @@ const closeSheet = () => setSheet(null);
                               <span
                                 style={{
                                   fontSize: 17,
-                                  fontWeight: 900,
+                                  fontWeight: 700,
                                   letterSpacing: 1.5,
                                   color: "#FFFFFF",
                                   fontStyle: card.brand === "Visa" ? "italic" : "normal",
@@ -766,7 +766,7 @@ const closeSheet = () => setSheet(null);
                                 <span
                                   style={{
                                     fontSize: 11,
-                                    fontWeight: 800,
+                                    fontWeight: 700,
                                     padding: "5px 12px",
                                     borderRadius: 99,
                                     background: "rgba(255,255,255,0.24)",
@@ -849,14 +849,14 @@ const closeSheet = () => setSheet(null);
                           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", position: "relative", zIndex: 2 }}>
                             <div style={{ display: "flex", gap: 24, alignItems: "flex-end" }}>
                               <div>
-                                <div style={{ fontSize: 9.5, fontWeight: 750, color: "rgba(255,255,255,0.75)", textTransform: "uppercase", letterSpacing: 1 }}>Cardholder</div>
-                                <div style={{ fontSize: 13.5, fontWeight: 750, color: "#FFFFFF", marginTop: 3, textTransform: "uppercase", letterSpacing: 0.6, textShadow: "0 1px 2px rgba(0,0,0,0.15)" }}>
+                                <div style={{ fontSize: 9.5, fontWeight: 700, color: "rgba(255,255,255,0.75)", textTransform: "uppercase", letterSpacing: 1 }}>Cardholder</div>
+                                <div style={{ fontSize: 13.5, fontWeight: 700, color: "#FFFFFF", marginTop: 3, textTransform: "uppercase", letterSpacing: 0.6, textShadow: "0 1px 2px rgba(0,0,0,0.15)" }}>
                                   {card.name || profile.name || "Alex Morgan"}
                                 </div>
                               </div>
                               <div>
-                                <div style={{ fontSize: 9.5, fontWeight: 750, color: "rgba(255,255,255,0.75)", textTransform: "uppercase", letterSpacing: 1 }}>Expires</div>
-                                <div style={{ fontSize: 13.5, fontWeight: 750, color: "#FFFFFF", marginTop: 3, letterSpacing: 0.5, textShadow: "0 1px 2px rgba(0,0,0,0.15)" }}>
+                                <div style={{ fontSize: 9.5, fontWeight: 700, color: "rgba(255,255,255,0.75)", textTransform: "uppercase", letterSpacing: 1 }}>Expires</div>
+                                <div style={{ fontSize: 13.5, fontWeight: 700, color: "#FFFFFF", marginTop: 3, letterSpacing: 0.5, textShadow: "0 1px 2px rgba(0,0,0,0.15)" }}>
                                   {card.exp}
                                 </div>
                               </div>
@@ -928,7 +928,7 @@ const closeSheet = () => setSheet(null);
                           <HistoryIcon size={22} />
                         </div>
                         <div>
-                          <div style={{ fontSize: 16, fontWeight: 750, color: C.jet, ...fDisplay }}>Billing & Session Receipts</div>
+                          <div style={{ fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>Billing & Session Receipts</div>
                           <div style={{ fontSize: 13, color: C.slate, marginTop: 2, ...fBody }}>Access your detailed booking invoices, receipt downloads, and transaction history.</div>
                         </div>
                       </div>
@@ -940,12 +940,12 @@ const closeSheet = () => setSheet(null);
                 {desktopTab === "notifications" && (
                   <div>
                     <div style={{ marginBottom: 20 }}>
-                      <div style={{ fontSize: 22, fontWeight: 800, color: C.jet, ...fDisplay }}>Notification Preferences</div>
+                      <div style={{ fontSize: 22, fontWeight: 700, color: C.jet, ...fDisplay }}>Notification Preferences</div>
                       <div style={{ fontSize: 14, color: C.slate, marginTop: 4, ...fBody }}>Choose which updates you receive and how we reach you.</div>
                     </div>
 
                     <Card style={{ padding: 28, borderRadius: 20, marginBottom: 20 }}>
-                      <div style={{ fontSize: 16, fontWeight: 750, color: C.jet, marginBottom: 16, ...fDisplay }}>
+                      <div style={{ fontSize: 16, fontWeight: 700, color: C.jet, marginBottom: 16, ...fDisplay }}>
                         Session & Booking Updates
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -976,7 +976,7 @@ const closeSheet = () => setSheet(null);
                     </Card>
 
                     <Card style={{ padding: 28, borderRadius: 20 }}>
-                      <div style={{ fontSize: 16, fontWeight: 750, color: C.jet, marginBottom: 16, ...fDisplay }}>
+                      <div style={{ fontSize: 16, fontWeight: 700, color: C.jet, marginBottom: 16, ...fDisplay }}>
                         Delivery Channels
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -1019,14 +1019,14 @@ const closeSheet = () => setSheet(null);
                 {desktopTab === "security" && (
                   <div>
                     <div style={{ marginBottom: 20 }}>
-                      <div style={{ fontSize: 22, fontWeight: 800, color: C.jet, ...fDisplay }}>Security & Login</div>
+                      <div style={{ fontSize: 22, fontWeight: 700, color: C.jet, ...fDisplay }}>Security & Login</div>
                       <div style={{ fontSize: 14, color: C.slate, marginTop: 4, ...fBody }}>Manage your credentials, password, and account security.</div>
                     </div>
 
                     <Card style={{ padding: 28, borderRadius: 20, marginBottom: 20 }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
                         <div>
-                          <div style={{ fontSize: 16, fontWeight: 750, color: C.jet, ...fDisplay }}>Login & Contact Details</div>
+                          <div style={{ fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>Login & Contact Details</div>
                           <div style={{ fontSize: 13, color: C.slate, marginTop: 2 }}>Your verified email and mobile phone used for account access and two-factor safety.</div>
                         </div>
                         <Btn size="sm" variant="outline" onClick={() => setSheet("accountDetails")}>Update details</Btn>
@@ -1052,7 +1052,7 @@ const closeSheet = () => setSheet(null);
                     </Card>
 
                     <Card style={{ padding: 28, borderRadius: 20, marginBottom: 20 }}>
-                      <div style={{ fontSize: 16, fontWeight: 750, color: C.jet, marginBottom: 4, ...fDisplay }}>Password & Authentication</div>
+                      <div style={{ fontSize: 16, fontWeight: 700, color: C.jet, marginBottom: 4, ...fDisplay }}>Password & Authentication</div>
                       <div style={{ fontSize: 13, color: C.slate, marginBottom: 16 }}>Ensure your account is using a secure, unique password.</div>
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                         <Field
@@ -1108,7 +1108,7 @@ const closeSheet = () => setSheet(null);
                 {desktopTab === "support" && (
                   <div>
                     <div style={{ marginBottom: 20 }}>
-                      <div style={{ fontSize: 22, fontWeight: 800, color: C.jet, ...fDisplay }}>Support & Legal</div>
+                      <div style={{ fontSize: 22, fontWeight: 700, color: C.jet, ...fDisplay }}>Support & Legal</div>
                       <div style={{ fontSize: 14, color: C.slate, marginTop: 4, ...fBody }}>Get help with your bookings, account settings, and review trust & safety policies.</div>
                     </div>
 
@@ -1118,7 +1118,7 @@ const closeSheet = () => setSheet(null);
                           <div style={{ width: 44, height: 44, borderRadius: 12, background: C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", color: C.brand, marginBottom: 16 }}>
                             <HelpCircle size={22} />
                           </div>
-                          <div style={{ fontSize: 18, fontWeight: 750, color: C.jet, ...fDisplay }}>Help Center & FAQs</div>
+                          <div style={{ fontSize: 18, fontWeight: 700, color: C.jet, ...fDisplay }}>Help Center & FAQs</div>
                           <div style={{ fontSize: 13.5, color: C.slate, marginTop: 6, lineHeight: 1.5 }}>
                             Browse frequently asked questions regarding sessions, payment holds, refunds, and parent guidelines.
                           </div>
@@ -1133,7 +1133,7 @@ const closeSheet = () => setSheet(null);
                           <div style={{ width: 44, height: 44, borderRadius: 12, background: C.fog, display: "flex", alignItems: "center", justifyContent: "center", color: C.slate, marginBottom: 16 }}>
                             <Shield size={22} />
                           </div>
-                          <div style={{ fontSize: 18, fontWeight: 750, color: C.jet, ...fDisplay }}>Privacy & Safety Policy</div>
+                          <div style={{ fontSize: 18, fontWeight: 700, color: C.jet, ...fDisplay }}>Privacy & Safety Policy</div>
                           <div style={{ fontSize: 13.5, color: C.slate, marginTop: 6, lineHeight: 1.5 }}>
                             Learn how your personal details, child participant information, and WWCC safety standards are protected.
                           </div>

@@ -140,7 +140,7 @@ export function ScreenCoachAcceptBooking({ nav, params, coachBookings = [], acce
         <div style={{ marginTop: 3, fontSize: T.captionLg, color: C.slate, lineHeight: 1.45, ...fBody }}>{cost.note}</div>
       </div>
       <div style={{ textAlign: "right", flexShrink: 0 }}>
-        <div style={{ fontSize: T.body, fontWeight: 750, color: C.jet, ...fDisplay }}>${cost.amount.toFixed(2)}</div>
+        <div style={{ fontSize: T.body, fontWeight: 700, color: C.jet, ...fDisplay }}>${cost.amount.toFixed(2)}</div>
         <button type="button" aria-label={`Remove ${cost.reason}`} onClick={() => removeCost(cost.id)} style={{ width: 36, height: 36, marginTop: 2, border: "none", background: "transparent", color: C.slateLight, cursor: "pointer", display: "inline-flex", alignItems: "center", justifyContent: "center", borderRadius: 10 }}><Trash2 size={15} /></button>
       </div>
     </div>
@@ -165,16 +165,16 @@ export function ScreenCoachAcceptBooking({ nav, params, coachBookings = [], acce
         {step === 1 ? (
           <>
             <div style={{ marginBottom: 18 }}>
-              <div style={{ fontSize: T.heading, fontWeight: 760, color: C.jet, letterSpacing: "-.25px", ...fDisplay }}>Everything you need to decide</div>
+              <div style={{ fontSize: T.heading, fontWeight: 700, color: C.jet, letterSpacing: "-.25px", ...fDisplay }}>Everything you need to decide</div>
               <div style={{ marginTop: 5, fontSize: T.body, color: C.slate, lineHeight: 1.55, ...fBody }}>Review the session and client notes before setting the final payment.</div>
             </div>
             <Card style={{ marginBottom: 14, padding: 16 }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 13 }}>
                 <div>
-                  <div style={{ fontSize: T.titleLg, fontWeight: 750, color: C.jet, ...fDisplay }}>{booking.service}</div>
+                  <div style={{ fontSize: T.titleLg, fontWeight: 700, color: C.jet, ...fDisplay }}>{booking.service}</div>
                   <div style={{ marginTop: 4, fontSize: T.captionLg, color: C.slate, ...fBody }}>Requested by {booking.clientName}</div>
                 </div>
-                <div style={{ fontSize: T.titleLg, fontWeight: 780, color: C.jet, ...fDisplay }}>${Number(booking.price).toFixed(2)}</div>
+                <div style={{ fontSize: T.titleLg, fontWeight: 700, color: C.jet, ...fDisplay }}>${Number(booking.price).toFixed(2)}</div>
               </div>
               <Row label="Date" value={booking.date} />
               <Row label="Time" value={booking.time} />
@@ -208,7 +208,7 @@ export function ScreenCoachAcceptBooking({ nav, params, coachBookings = [], acce
         ) : (
           <>
             <div style={{ marginBottom: 18 }}>
-              <div style={{ fontSize: T.heading, fontWeight: 760, color: C.jet, letterSpacing: "-.25px", ...fDisplay }}>Set a clear, final price</div>
+              <div style={{ fontSize: T.heading, fontWeight: 700, color: C.jet, letterSpacing: "-.25px", ...fDisplay }}>Set a clear, final price</div>
               <div style={{ marginTop: 5, fontSize: T.body, color: C.slate, lineHeight: 1.55, ...fBody }}>Required costs are included in checkout. Optional add-ons stay off until the client chooses them.</div>
             </div>
 
@@ -219,7 +219,7 @@ export function ScreenCoachAcceptBooking({ nav, params, coachBookings = [], acce
                   <div style={{ fontSize: T.body, fontWeight: 700, color: C.jet, ...fBody }}>Package price</div>
                   <div style={{ fontSize: T.captionLg, color: C.slate, marginTop: 2, ...fBody }}>{booking.service}</div>
                 </div>
-                <div style={{ fontSize: T.title, fontWeight: 780, color: C.jet, ...fDisplay }}>${Number(booking.price).toFixed(2)}</div>
+                <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>${Number(booking.price).toFixed(2)}</div>
               </div>
             </Card>
 
@@ -246,7 +246,7 @@ export function ScreenCoachAcceptBooking({ nav, params, coachBookings = [], acce
             <Card style={{ marginTop: 20, padding: 16, background: darkMode ? C.white : C.brandTint, border: darkMode ? `1px solid ${C.border}` : "none" }}>
               <div style={{ marginBottom: 10 }}>
                 <div style={{ fontSize: T.captionLg, color: C.slate, ...fBody }}>Required at checkout</div>
-                <div style={{ fontSize: T.headingLg, fontWeight: 800, color: C.jet, marginTop: 2, ...fDisplay }}>${dueNow.toFixed(2)}</div>
+                <div style={{ fontSize: T.headingLg, fontWeight: 700, color: C.jet, marginTop: 2, ...fDisplay }}>${dueNow.toFixed(2)}</div>
               </div>
               <Row label="Package" value={`$${Number(booking.price).toFixed(2)}`} />
               <Row label="Required costs" value={`$${requiredTotal.toFixed(2)}`} />
@@ -263,7 +263,7 @@ export function ScreenCoachAcceptBooking({ nav, params, coachBookings = [], acce
           <>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
               <span style={{ fontSize: T.captionLg, color: C.slate, ...fBody }}>Client must pay</span>
-              <span style={{ fontSize: T.title, fontWeight: 800, color: C.jet, ...fDisplay }}>${dueNow.toFixed(2)}</span>
+              <span style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>${dueNow.toFixed(2)}</span>
             </div>
             <Btn full loading={submitting} loadingText="Sending payment request…" icon={BadgeDollarSign} onClick={accept}>Accept & request payment</Btn>
           </>

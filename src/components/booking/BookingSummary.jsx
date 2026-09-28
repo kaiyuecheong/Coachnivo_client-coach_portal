@@ -67,7 +67,7 @@ export function BookingSummary({
             {total != null && (
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 10, marginTop: 2, borderTop: `1px solid ${C.border}` }}>
                 <span style={{ fontSize: T.bodyLg, fontWeight: 700, color: C.jet, ...({ fontFamily: "'Inter', sans-serif" }) }}>{totalLabel}</span>
-                <span style={{ fontSize: T.heading, fontWeight: 800, color: C.jet, ...({ fontFamily: "'Outfit', sans-serif" }) }}>{total}</span>
+                <span style={{ fontSize: T.heading, fontWeight: 700, color: C.jet, ...({ fontFamily: "'Outfit', sans-serif" }) }}>{total}</span>
               </div>
             )}
           </div>

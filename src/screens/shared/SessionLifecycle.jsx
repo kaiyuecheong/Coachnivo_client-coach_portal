@@ -173,7 +173,7 @@ export function ScreenSessionCompletion({
           }}>
             <HeroIcon size={30} color={completed ? C.success : C.brand} strokeWidth={2} />
           </div>
-          <div style={{ fontSize: T.display, fontWeight: 750, color: C.jet, letterSpacing: "-0.35px", ...fDisplay }}>{heroTitle}</div>
+          <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, letterSpacing: "-0.35px", ...fDisplay }}>{heroTitle}</div>
           <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.55, marginTop: 7, ...fBody }}>{heroBody}</div>
         </div>
 
@@ -187,7 +187,7 @@ export function ScreenSessionCompletion({
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
                     <div style={{ fontSize: T.body, fontWeight: 700, color: C.jet, ...fBody }}>{finalCharge.reason}</div>
-                    <div style={{ fontSize: T.body, fontWeight: 800, color: C.jet, ...fDisplay }}>${Number(finalCharge.amount).toFixed(2)}</div>
+                    <div style={{ fontSize: T.body, fontWeight: 700, color: C.jet, ...fDisplay }}>${Number(finalCharge.amount).toFixed(2)}</div>
                   </div>
                   <div style={{ fontSize: T.captionLg, color: C.slate, lineHeight: 1.5, marginTop: 4, ...fBody }}>
                     {finalPaymentDue ? "Payment completes the session automatically" : "Paid securely and linked to this session"}
@@ -288,7 +288,7 @@ export function ScreenFundsReleaseStatus({ nav, params, role: appRole, bookings 
             {released ? <Banknote size={32} color={C.brand} /> : <Clock3 size={30} color={C.brand} />}
           </div>
           <Badge tone="orange">{released ? "Released" : processing ? "Processing" : "Pending completion"}</Badge>
-          <div style={{ fontSize: T.display, fontWeight: 750, color: C.jet, marginTop: 11, ...fDisplay }}>
+          <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, marginTop: 11, ...fDisplay }}>
             {released
               ? role === "coach" ? "Your payout is on the way" : "Payment released securely"
               : role === "coach" ? "Payout release pending" : "Your payment is still protected"}

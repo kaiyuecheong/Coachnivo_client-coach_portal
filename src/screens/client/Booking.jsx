@@ -284,7 +284,7 @@ export function ScreenBookingParticipants({ nav, params, children = [], addChild
             <div style={{ fontSize: T.subtitleLg, fontWeight: 700, color: C.jet, letterSpacing: "-0.1px", ...fDisplay }}>{pkg.name}</div>
             <div style={{ fontSize: T.labelLg, color: C.slate, marginTop: 2, ...fBody }}>with {pub.name}</div>
           </div>
-          <div style={{ marginLeft: "auto", fontSize: T.title, fontWeight: 800, color: C.jet, whiteSpace: "nowrap", ...fDisplay }}>
+          <div style={{ marginLeft: "auto", fontSize: T.title, fontWeight: 700, color: C.jet, whiteSpace: "nowrap", ...fDisplay }}>
             ${pkg.price}
           </div>
         </Card>
@@ -707,7 +707,7 @@ export function ScreenBookingReview({ nav, goBack, params, draft, setDraft, toas
               <div style={{ fontSize: T.subtitleLg, fontWeight: 700, color: C.jet, ...fDisplay }}>{pkg.name}</div>
               <div style={{ fontSize: T.captionLg, color: C.slate, marginTop: 2, ...fBody }}>with {pub.name} · {pkg.duration} min</div>
             </div>
-            <div style={{ fontSize: T.titleLg, fontWeight: 800, color: C.jet, whiteSpace: "nowrap", ...fDisplay }}>${pkg.price}</div>
+            <div style={{ fontSize: T.titleLg, fontWeight: 700, color: C.jet, whiteSpace: "nowrap", ...fDisplay }}>${pkg.price}</div>
           </div>
           {hasDateTime && (
             <div style={{ display: "flex", alignItems: "center", gap: 8, paddingTop: 12, borderTop: `1px solid ${C.border}` }}>
@@ -1239,10 +1239,10 @@ export function ScreenPayment({ nav, params, draft, bookings = [], additionalCha
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 12, marginBottom: 14 }}>
             <div>
               <div style={{ fontSize: T.captionLg, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".04em", color: C.brand, ...fBody }}>Booking payment</div>
-              <div style={{ fontSize: T.titleLg, fontWeight: 760, color: C.jet, marginTop: 4, ...fDisplay }}>{booking?.service || d.pkg.name}</div>
+              <div style={{ fontSize: T.titleLg, fontWeight: 700, color: C.jet, marginTop: 4, ...fDisplay }}>{booking?.service || d.pkg.name}</div>
               <div style={{ fontSize: T.captionLg, color: C.slate, marginTop: 3, ...fBody }}>{booking?.date || d.day} · {booking?.time || d.time}</div>
             </div>
-            <div style={{ fontSize: T.headingLg, fontWeight: 800, color: C.jet, ...fDisplay }}>${paymentTotal.toFixed(2)}</div>
+            <div style={{ fontSize: T.headingLg, fontWeight: 700, color: C.jet, ...fDisplay }}>${paymentTotal.toFixed(2)}</div>
           </div>
           <Row label="Package" value={`$${basePrice.toFixed(2)}`} />
           {requiredCharges.map((charge) => <Row key={charge.id} label={charge.reason} value={`$${Number(charge.amount).toFixed(2)}`} />)}
@@ -1363,7 +1363,7 @@ export function ScreenBookingConfirmation({ nav, params, draft, bookings = [], t
             <div style={{ width: 68, height: 68, borderRadius: 23, background: C.successTint, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px", boxShadow: `0 14px 28px -22px ${C.success}` }}>
               <CheckCircle2 size={31} color={C.success} />
             </div>
-            <div style={{ fontSize: T.display, fontWeight: 750, color: C.jet, letterSpacing: "-0.35px", ...fDisplay }}>You’re officially booked</div>
+            <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, letterSpacing: "-0.35px", ...fDisplay }}>You’re officially booked</div>
             <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.55, marginTop: 6, ...fBody }}>
               Payment is secured and your session with {pub.name} is confirmed.
             </div>
@@ -1439,7 +1439,7 @@ export function ScreenBookingRequestSent({ nav, params }) {
           <div style={{ width: 60, height: 60, borderRadius: 20, background: C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px" }}>
             <Send size={26} color={C.brand} />
           </div>
-          <div style={{ fontSize: T.headingLg, fontWeight: 600, color: C.jet, ...fDisplay }}>Booking Request Sent</div>
+          <div style={{ fontSize: T.headingLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Booking Request Sent</div>
           <div style={{ fontSize: T.body, color: C.slate, marginTop: 8, lineHeight: 1.6, maxWidth: 300, marginLeft: "auto", marginRight: "auto", ...fBody }}>
             Your booking request has been sent to the coach for review. You'll receive a notification once the coach accepts, requests more information, or declines your request.
           </div>

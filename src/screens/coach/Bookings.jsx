@@ -318,7 +318,7 @@ export function ScreenCoachBookings({ nav, coachBookings }) {
                     >
                       <ChevronLeft size={16} color={C.jet} />
                     </button>
-                    <span style={{ fontSize: isDesktop ? 17.5 : 16, fontWeight: 750, color: C.jet, ...fDisplay }}>
+                    <span style={{ fontSize: isDesktop ? 17.5 : 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
                       {headerLabel}
                     </span>
                     <button
@@ -536,7 +536,7 @@ export function ScreenCoachBookings({ nav, coachBookings }) {
                                         >
                                           <span
                                             style={{
-                                              fontWeight: 800,
+                                              fontWeight: 700,
                                               color: C.brand,
                                               fontSize: 9.5,
                                               flexShrink: 0,
@@ -567,7 +567,7 @@ export function ScreenCoachBookings({ nav, coachBookings }) {
                                       <div
                                         style={{
                                           fontSize: 9.5,
-                                          fontWeight: 750,
+                                          fontWeight: 700,
                                           color: C.brand,
                                           paddingLeft: 3,
                                           marginTop: 1,
@@ -815,7 +815,7 @@ export function ScreenCoachBookings({ nav, coachBookings }) {
                                           }}
                                         >
                                           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 2 }}>
-                                            <span style={{ fontSize: 9, fontWeight: 800, color: toneText, lineHeight: 1, ...fDisplay }}>
+                                            <span style={{ fontSize: 9, fontWeight: 700, color: toneText, lineHeight: 1, ...fDisplay }}>
                                               {b.time}
                                             </span>
                                             <span
@@ -934,7 +934,7 @@ export function ScreenCoachBookings({ nav, coachBookings }) {
                     <CalendarClock size={17} color={C.brand} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 10.5, fontWeight: 750, color: C.brand, textTransform: "uppercase", letterSpacing: 0.4, ...fBody }}>
+                    <div style={{ fontSize: 10.5, fontWeight: 700, color: C.brand, textTransform: "uppercase", letterSpacing: 0.4, ...fBody }}>
                       Next Upcoming Session
                     </div>
                     <div style={{ fontSize: 13, fontWeight: 700, color: C.jet, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", ...fDisplay }}>
@@ -961,7 +961,7 @@ export function ScreenCoachBookings({ nav, coachBookings }) {
               >
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <h3 style={{ fontSize: isDesktop ? 18 : 16, fontWeight: 750, color: C.jet, margin: 0, ...fDisplay }}>
+                    <h3 style={{ fontSize: isDesktop ? 18 : 16, fontWeight: 700, color: C.jet, margin: 0, ...fDisplay }}>
                       {selectedDate.toLocaleDateString(undefined, { weekday: "long", day: "numeric", month: "long" })}
                     </h3>
                     <Badge tone={bookingsOnDate(selectedDate).length > 0  ? "orange" : "neutral"}>
@@ -1144,7 +1144,7 @@ export function ScreenCoachBookingDetail({
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <Avatar name={cn.name} size={54} />
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: T.title, fontWeight: 750, color: C.jet, ...fDisplay }}>{cn.name}</div>
+                  <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>{cn.name}</div>
                   {cn.handle && <HandleTag handle={cn.handle} size={11.5} color={C.slateLight} />}
                   {profile.homeSuburb && profile.homeSuburb !== "-" && (
                     <div style={{ fontSize: T.body, color: C.slate, marginTop: 4, ...fBody }}>📍 {profile.homeSuburb}</div>
@@ -1153,11 +1153,11 @@ export function ScreenCoachBookingDetail({
               </div>
               <div style={{ display: "flex", gap: 32, marginTop: 16, paddingTop: 14, borderTop: `1px solid ${C.border}` }}>
                 <div>
-                  <div style={{ fontSize: T.title, fontWeight: 750, color: C.jet, ...fDisplay }}>{profile.totalSessions}</div>
+                  <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>{profile.totalSessions}</div>
                   <div style={{ fontSize: T.captionLg, color: C.slate, ...fBody }}>Sessions with you</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: T.title, fontWeight: 750, color: C.jet, ...fDisplay }}>{profile.memberSince}</div>
+                  <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>{profile.memberSince}</div>
                   <div style={{ fontSize: T.captionLg, color: C.slate, ...fBody }}>Client since</div>
                 </div>
               </div>
@@ -1223,7 +1223,7 @@ export function ScreenCoachBookingDetail({
                         <div style={{ fontSize: T.bodyLg, fontWeight: 700, color: C.jet, ...fBody }}>Payment sent for review</div>
                         <div style={{ fontSize: T.captionLg, color: C.slate, marginTop: 3, ...fBody }}>{acceptanceCharges.filter((item) => item.kind === ADDITIONAL_CHARGE_KIND.REQUIRED).length} required · {acceptanceCharges.filter((item) => item.kind === ADDITIONAL_CHARGE_KIND.OPTIONAL).length} optional</div>
                       </div>
-                      <div style={{ fontSize: T.title, fontWeight: 780, color: C.jet, ...fDisplay }}>${(Number(booking.price) + requiredAcceptanceTotal).toFixed(2)}</div>
+                      <div style={{ fontSize: T.title, fontWeight: 700, color: C.jet, ...fDisplay }}>${(Number(booking.price) + requiredAcceptanceTotal).toFixed(2)}</div>
                     </div>
                     <div style={{ fontSize: T.caption, color: C.slateLight, lineHeight: 1.45, ...fBody }}>Optional add-ons are added only if the client selects them.</div>
                   </Card>

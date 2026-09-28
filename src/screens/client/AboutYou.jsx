@@ -24,7 +24,7 @@ function StepHeader({ title, subtitle, onBack }) {
     <>
       {onBack && <TopBar title="" onBack={onBack} />}
       <div style={{ padding: "0 18px" }}>
-        <div style={{ fontSize: T.display, fontWeight: 600, color: C.jet, ...fDisplay, marginBottom: 6, marginTop: onBack ? 0 : 4 }}>{title}</div>
+        <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, ...fDisplay, marginBottom: 6, marginTop: onBack ? 0 : 4 }}>{title}</div>
         <div style={{ fontSize: T.body, color: C.slate, ...fBody, marginBottom: 20, lineHeight: 1.5 }}>{subtitle}</div>
       </div>
     </>

@@ -120,16 +120,17 @@ export function ScreenCoachDashboard({
     <div
       style={{
         height: "100%",
+        width: "100%",
+        overflowY: "auto",
         display: "flex",
         flexDirection: "column",
+        padding: isDesktop ? "40px 64px 64px" : "18px 18px 116px",
+        boxSizing: "border-box",
       }}
+      className="cl-hide-scrollbar"
     >
-      <div
-        style={{
-          padding: isDesktop ? "40px 64px 0" : "18px 18px 0",
-        }}
-      >
-        {/* Header with Availability Toggle on Top Right */}
+      {/* Header with Availability Toggle on Top Right */}
+      <div style={{ marginBottom: isDesktop ? 24 : 16 }}>
         <ScreenHeader
           title={`${(coachIdentity.name || "Coach").split(" ")[0]}'s dashboard`}
           subtitle="Bookings, messages and coaching activity."
@@ -181,8 +182,6 @@ export function ScreenCoachDashboard({
           }
         />
       </div>
-
-      <div style={{ flex: 1, overflowY: "auto", width: "100%", padding: isDesktop ? "24px 64px 64px" : "0 18px", paddingBottom: 116 }} className="cl-hide-scrollbar">
         {/* Offline Status */}
         {offline && (
           <div
@@ -237,7 +236,7 @@ export function ScreenCoachDashboard({
             <div
               style={{
                 fontSize: isDesktop ? 44 : 28,
-                fontWeight: 800,
+                fontWeight: 700,
                 color: darkMode ? C.jet : C.white,
                 marginTop: 6,
                 lineHeight: 1.05,
@@ -270,7 +269,7 @@ export function ScreenCoachDashboard({
             <div
               style={{
                 fontSize: isDesktop ? 44 : 28,
-                fontWeight: 800,
+                fontWeight: 700,
                 color: C.jet,
                 marginTop: 6,
                 lineHeight: 1.05,
@@ -301,7 +300,7 @@ export function ScreenCoachDashboard({
             <div
               style={{
                 fontSize: isDesktop ? 44 : 24,
-                fontWeight: 800,
+                fontWeight: 700,
                 color: C.jet,
                 marginTop: 6,
                 lineHeight: 1.05,
@@ -332,7 +331,7 @@ export function ScreenCoachDashboard({
             <div
               style={{
                 fontSize: isDesktop ? 44 : 24,
-                fontWeight: 800,
+                fontWeight: 700,
                 color: C.jet,
                 marginTop: 6,
                 lineHeight: 1.05,
@@ -377,7 +376,7 @@ export function ScreenCoachDashboard({
             <div
               style={{
                 fontSize: isDesktop ? 44 : 24,
-                fontWeight: 800,
+                fontWeight: 700,
                 color: C.jet,
                 marginTop: 6,
                 lineHeight: 1.05,
@@ -493,7 +492,7 @@ export function ScreenCoachDashboard({
                                   {cn.handle && <HandleTag handle={cn.handle} size={10.5} color={C.slateLight} />}
                                 </div>
                               </div>
-                              <div style={{ fontSize: 17, fontWeight: 800, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                              <div style={{ fontSize: 17, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
                                 ${b.price}
                               </div>
                             </div>
@@ -722,7 +721,7 @@ export function ScreenCoachDashboard({
             <div style={{ display: "flex", flexDirection: "column", gap: 24, minWidth: 0 }}>
               {/* Widget 1: Quick Actions & Management Shortcuts */}
               <Card style={{ padding: 22, borderRadius: 20 }}>
-                <h2 style={{ margin: "0 0 14px", fontSize: 17, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                <h2 style={{ margin: "0 0 14px", fontSize: 18, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
                   Quick management
                 </h2>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -780,7 +779,7 @@ export function ScreenCoachDashboard({
 
                         <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
                           {item.badge && (
-                            <span style={{ fontSize: 11, fontWeight: 800, padding: "2px 7px", borderRadius: 99, background: C.brand, color: "#FFFFFF" }}>
+                            <span style={{ fontSize: 11, fontWeight: 700, padding: "2px 7px", borderRadius: 99, background: C.brand, color: "#FFFFFF" }}>
                               {item.badge}
                             </span>
                           )}
@@ -801,7 +800,7 @@ export function ScreenCoachDashboard({
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <Banknote size={18} color={C.brand} />
-                    <h2 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                    <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
                       Payout breakdown
                     </h2>
                   </div>
@@ -833,7 +832,7 @@ export function ScreenCoachDashboard({
               <Card style={{ padding: 22, borderRadius: 20 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <h2 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                    <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
                       Client feedback
                     </h2>
                     <Badge tone="orange">{ratingAvg} ★</Badge>
@@ -1008,7 +1007,7 @@ export function ScreenCoachDashboard({
                                 {cn.handle && <HandleTag handle={cn.handle} size={10} color={C.slateLight} />}
                               </div>
                             </div>
-                            <div style={{ fontSize: 16, fontWeight: 800, color: C.jet, ...fDisplay }}>
+                            <div style={{ fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
                               ${b.price}
                             </div>
                           </div>
@@ -1276,7 +1275,7 @@ export function ScreenCoachDashboard({
                         <div style={{ fontSize: 13.5, fontWeight: 700, color: C.jet, display: "flex", alignItems: "center", justifyContent: "space-between", ...fBody }}>
                           <span>{item.label}</span>
                           {item.badge && (
-                            <span style={{ fontSize: 10, fontWeight: 800, padding: "1px 5px", borderRadius: 99, background: C.brand, color: "#FFFFFF" }}>
+                            <span style={{ fontSize: 10, fontWeight: 700, padding: "1px 5px", borderRadius: 99, background: C.brand, color: "#FFFFFF" }}>
                               {item.badge}
                             </span>
                           )}
@@ -1430,7 +1429,6 @@ export function ScreenCoachDashboard({
             </Card>
           </div>
         )}
-      </div>
 
       {/* Reply to Review Sheet */}
       <BottomSheet open={!!replyTarget} onClose={closeReply} title="Reply to review" heightPct={52}>

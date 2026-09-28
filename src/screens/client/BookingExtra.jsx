@@ -405,7 +405,7 @@ export function ScreenPackageInquiry({ nav, params, toast }) {
         <div style={{ width: 60, height: 60, borderRadius: 20, background: C.successTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
           <Send size={26} color={C.success} />
         </div>
-        <div style={{ fontSize: T.headingLg, fontWeight: 600, color: C.jet, textAlign: "center", ...fDisplay }}>Message sent</div>
+        <div style={{ fontSize: T.headingLg, fontWeight: 700, color: C.jet, textAlign: "center", ...fDisplay }}>Message sent</div>
         <div style={{ fontSize: T.body, color: C.slate, marginTop: 6, textAlign: "center", maxWidth: 280, lineHeight: 1.5, ...fBody }}>
           {pub.name} will receive your question and respond shortly. You'll be notified when they reply.
         </div>
@@ -513,7 +513,7 @@ export function ScreenPackageWaitlist({ nav, params, toast }) {
         </div>
 
         <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <div style={{ fontSize: T.headingLg, fontWeight: 600, color: C.jet, ...fDisplay }}>
+          <div style={{ fontSize: T.headingLg, fontWeight: 700, color: C.jet, ...fDisplay }}>
             {pkg.name} is currently unavailable
           </div>
           <div style={{ fontSize: T.body, color: C.slate, marginTop: 6, lineHeight: 1.6, maxWidth: 300, marginLeft: "auto", marginRight: "auto", ...fBody }}>
@@ -735,7 +735,7 @@ export function ScreenRefundStatus({ nav, params }) {
               : <Clock size={28} color={C.brand} />
             }
           </div>
-          <div style={{ fontSize: T.headingLg, fontWeight: 600, color: C.jet, ...fDisplay }}>
+          <div style={{ fontSize: T.headingLg, fontWeight: 700, color: C.jet, ...fDisplay }}>
             {status === "refunded" ? "Refund complete" : "Refund in progress"}
           </div>
           <div style={{ fontSize: T.body, color: C.slate, marginTop: 4, ...fBody }}>

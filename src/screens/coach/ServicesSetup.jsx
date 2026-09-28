@@ -36,7 +36,7 @@ export function ScreenCoachServicesSetup({ nav, toast, savePackage, removePackag
       <TopBar title="Coaching services" onBack={() => nav("verification-pending")} />
       <div style={{ flex: 1, overflowY: "auto", padding: "16px 18px 24px" }} className="cl-hide-scrollbar">
 
-        <div style={{ fontSize: T.subtitleLg, fontWeight: 600, color: C.jet, marginBottom: 6, ...fDisplay }}>
+        <div style={{ fontSize: T.subtitleLg, fontWeight: 700, color: C.jet, marginBottom: 6, ...fDisplay }}>
           Add coaching services
         </div>
         <div style={{ fontSize: T.body, color: C.slate, marginBottom: 18, lineHeight: 1.5, ...fBody }}>
@@ -47,7 +47,7 @@ export function ScreenCoachServicesSetup({ nav, toast, savePackage, removePackag
           <Card key={s.id} style={{ marginBottom: 10 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
               <div style={{ minWidth: 0 }}>
-                <div style={{ fontSize: T.subtitle, fontWeight: 600, color: C.jet, ...fDisplay }}>{s.name}</div>
+                <div style={{ fontSize: T.subtitle, fontWeight: 700, color: C.jet, ...fDisplay }}>{s.name}</div>
                 <div style={{ marginTop: 6 }}><SportBadge sport={s.sport} compact /></div>
                 <div style={{ fontSize: T.captionLg, color: C.slate, marginTop: 2, ...fBody }}>{packageSummary(s)}</div>
                 {s.venue && (

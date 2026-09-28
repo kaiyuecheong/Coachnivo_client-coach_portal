@@ -266,7 +266,7 @@ export function CoachListCard({ coach, onOpen, unavailable, style }) {
             Starting from
           </div>
           <div style={{ display: "flex", alignItems: "baseline", gap: 3, marginTop: 1 }}>
-            <span style={{ fontSize: isDesktop ? 21 : 19, fontWeight: 800, color: C.jet, lineHeight: 1.1, ...fDisplay }}>
+            <span style={{ fontSize: isDesktop ? 21 : 19, fontWeight: 700, color: C.jet, lineHeight: 1.1, ...fDisplay }}>
               ${coach.packages[0].price}
             </span>
             <span style={{ fontSize: 11.5, color: C.slateLight, fontWeight: 500, ...fBody }}>
@@ -372,7 +372,7 @@ function CoachBannerCard({ coach, onOpen, unavailable, style }) {
         {/* Name & Handle + Right-aligned Rating & Experience */}
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 10, marginTop: 6 }}>
           <div style={{ minWidth: 0, flex: 1 }}>
-            <span style={{ fontWeight: 800, fontSize: isDesktop ? 16 : T.title, color: C.jet, letterSpacing: "-0.2px", ...oneLine, ...fDisplay }}>{pub.name}</span>
+            <span style={{ fontWeight: 700, fontSize: isDesktop ? 16 : T.title, color: C.jet, letterSpacing: "-0.2px", ...oneLine, ...fDisplay }}>{pub.name}</span>
             {pub.handle && <div style={{ marginTop: 3 }}><HandleTag handle={pub.handle} size={isDesktop ? 13 : 12} color={C.slateLight} /></div>}
           </div>
 
@@ -447,7 +447,7 @@ function CoachBannerCard({ coach, onOpen, unavailable, style }) {
           <div style={{ minWidth: 0 }}>
             <div style={{ fontSize: 11, color: C.slateLight, fontWeight: 600, ...fBody }}>Starting from</div>
             <div style={{ display: "flex", alignItems: "baseline", gap: 3 }}>
-              <span style={{ fontSize: isDesktop ? 18 : 17, fontWeight: 800, color: C.jet, ...fDisplay }}>${coach.packages[0]?.price || 85}</span>
+              <span style={{ fontSize: isDesktop ? 18 : 17, fontWeight: 700, color: C.jet, ...fDisplay }}>${coach.packages[0]?.price || 85}</span>
               <span style={{ fontSize: 11, color: C.slate, fontWeight: 500, ...fBody }}>/ session</span>
             </div>
           </div>
@@ -516,7 +516,7 @@ function TopRecommendationCard({ coach, onOpen }) {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 12, paddingTop: 8, borderTop: `1px solid ${C.border}` }}>
         <div>
           <div style={{ fontSize: T.micro, color: C.slateLight, lineHeight: 1, ...fBody }}>Starting</div>
-          <div style={{ marginTop: 3, fontSize: T.bodyLg, fontWeight: 800, color: C.jet, lineHeight: 1, ...fDisplay }}>${coach.packages[0]?.price}</div>
+          <div style={{ marginTop: 3, fontSize: T.bodyLg, fontWeight: 700, color: C.jet, lineHeight: 1, ...fDisplay }}>${coach.packages[0]?.price}</div>
         </div>
         <Badge tone={availabilityStatus.tone} icon={availabilityStatus.icon} style={{ padding: "3px 6px", fontSize: T.micro, whiteSpace: "nowrap" }}>
           {availabilityStatus.label}
@@ -628,7 +628,7 @@ export function PostSignupGuideModal({ open, onClose, onFindCoaches }) {
           <Icon size={34} color={C.brand} style={{ flexShrink: 0 }} />
         </div>
 
-        <div style={{ fontSize: T.displayLg, fontWeight: 600, color: C.jet, ...fDisplay }}>{current.header}</div>
+        <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>{current.header}</div>
         <div style={{ fontSize: T.subtitleLg, color: C.slate, marginTop: 16, lineHeight: 1.65, ...fBody }}>{current.description}</div>
 
         <div style={{ width: "100%", marginTop: 24, display: "flex", flexDirection: "column", alignItems: "center", gap: 12, flexShrink: 0 }}>
@@ -1214,7 +1214,7 @@ export function ScreenClientHome({ nav, params = {}, favorites = [], toggleFav, 
           <div style={{ width: 72, height: 72, borderRadius: 22, background: C.brandTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18 }}>
             <Sparkles size={30} color={C.brand} />
           </div>
-          <div style={{ fontSize: T.display, fontWeight: 600, color: C.jet, ...fDisplay }}>Let's Find Your Perfect Coach</div>
+          <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, ...fDisplay }}>Let's Find Your Perfect Coach</div>
           <div style={{ fontSize: T.bodyLg, color: C.slate, marginTop: 10, lineHeight: 1.6, maxWidth: 300, ...fBody }}>
             Answer a few quick questions about what you're looking for, and we'll curate coach recommendations based on your interests, goals, and location.
           </div>
@@ -1278,7 +1278,7 @@ export function ScreenClientHome({ nav, params = {}, favorites = [], toggleFav, 
                 <button type="button" aria-pressed={hasActiveFilters} onClick={openFilters} style={{ minHeight: 44, display: "flex", alignItems: "center", gap: 9, padding: "0 14px", borderRadius: 12, border: `1px solid ${hasActiveFilters ? C.brand : C.border}`, background: C.white, color: hasActiveFilters ? C.brand : C.jet, cursor: "pointer", textAlign: "left" }}>
                   <SlidersHorizontal size={15} color={hasActiveFilters ? C.brand : C.slate} aria-hidden="true" />
                   <span style={{ fontSize: T.body, fontWeight: 700, ...fBody }}>Filters</span>
-                  {hasActiveFilters && <span aria-label={`${activeFilterCount} active filter categories`} style={{ minWidth: 22, height: 22, padding: "0 6px", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: C.brand, color: "#FFFFFF", fontSize: T.caption, fontWeight: 800, ...fBody }}>{activeFilterCount}</span>}
+                  {hasActiveFilters && <span aria-label={`${activeFilterCount} active filter categories`} style={{ minWidth: 22, height: 22, padding: "0 6px", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: C.brand, color: "#FFFFFF", fontSize: T.caption, fontWeight: 700, ...fBody }}>{activeFilterCount}</span>}
                 </button>
               </div>
             )}
@@ -1338,7 +1338,7 @@ export function ScreenClientHome({ nav, params = {}, favorites = [], toggleFav, 
           <button type="button" aria-pressed={hasActiveFilters} onClick={openFilters} style={{ minWidth: 0, minHeight: 44, display: "flex", alignItems: "center", gap: 9, padding: "0 12px", borderRadius: 12, border: "none", background: hasActiveFilters ? C.brandTint : C.fog, color: hasActiveFilters ? C.brand : C.jet, cursor: "pointer", textAlign: "left" }}>
             <SlidersHorizontal size={15} aria-hidden="true" />
             <span style={{ flex: 1, fontSize: T.body, fontWeight: 700, ...fBody }}>Filters</span>
-            {hasActiveFilters && <span aria-label={`${activeFilterCount} active filter categories`} style={{ minWidth: 22, height: 22, padding: "0 6px", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: C.brand, color: "#FFFFFF", fontSize: T.caption, fontWeight: 800, ...fBody }}>{activeFilterCount}</span>}
+            {hasActiveFilters && <span aria-label={`${activeFilterCount} active filter categories`} style={{ minWidth: 22, height: 22, padding: "0 6px", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: C.brand, color: "#FFFFFF", fontSize: T.caption, fontWeight: 700, ...fBody }}>{activeFilterCount}</span>}
           </button>
           </div>
         </div>

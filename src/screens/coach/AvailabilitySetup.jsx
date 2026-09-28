@@ -104,7 +104,7 @@ export function ScreenCoachAvailabilitySetup({ nav, toast }) {
       <TopBar title="Availability setup" onBack={() => nav("coach-services-setup")} />
       <div style={{ flex: 1, overflowY: "auto", padding: "16px 18px 24px" }} className="cl-hide-scrollbar">
 
-        <div style={{ fontSize: T.subtitleLg, fontWeight: 600, color: C.jet, marginBottom: 6, ...fDisplay }}>
+        <div style={{ fontSize: T.subtitleLg, fontWeight: 700, color: C.jet, marginBottom: 6, ...fDisplay }}>
           Availability Setup
         </div>
         <div style={{ fontSize: T.body, color: C.slate, marginBottom: 18, lineHeight: 1.5, ...fBody }}>

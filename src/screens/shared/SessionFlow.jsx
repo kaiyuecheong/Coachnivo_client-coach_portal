@@ -200,7 +200,7 @@ export function ScreenClientSessionStart({
           <div style={{ width: 66, height: 66, borderRadius: 22, background: C.black, margin: "0 auto 14px", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <PlayCircle size={30} color={C.white} strokeWidth={2} />
           </div>
-          <div style={{ fontSize: T.display, fontWeight: 750, color: C.jet, letterSpacing: "-0.35px", ...fDisplay }}>Meet your coach</div>
+          <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, letterSpacing: "-0.35px", ...fDisplay }}>Meet your coach</div>
           <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.55, marginTop: 7, ...fBody }}>
             When you're together, show {person.split(" ")[0]} your check-in PIN to begin the session.
           </div>
@@ -387,7 +387,7 @@ export function ScreenClientSessionCode({
           <div style={{ width: 92, height: 92, borderRadius: 30, background: darkMode ? C.fog : C.black, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20, animation: "clPopIn .35s cubic-bezier(.22,1,.36,1)" }}>
             <CheckCircle2 size={44} color={darkMode ? C.success : C.white} />
           </div>
-          <div style={{ fontSize: T.displayLg, fontWeight: 750, color: C.jet, ...fDisplay }}>Check-in confirmed</div>
+          <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Check-in confirmed</div>
           <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.55, marginTop: 8, textAlign: "center", ...fBody }}>
             {shortName} confirmed the PIN. Your session is starting…
           </div>
@@ -623,7 +623,7 @@ export function ScreenCoachSessionStart({
           <div style={{ width: 92, height: 92, borderRadius: 30, background: C.successTint, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20, animation: "clPopIn .35s cubic-bezier(.22,1,.36,1)" }}>
             <CheckCircle2 size={44} color={C.success} />
           </div>
-          <div style={{ fontSize: T.displayLg, fontWeight: 750, color: C.jet, ...fDisplay }}>Session started!</div>
+          <div style={{ fontSize: T.displayLg, fontWeight: 700, color: C.jet, ...fDisplay }}>Session started!</div>
           <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.55, marginTop: 8, textAlign: "center", ...fBody }}>
             Code verified — {booking.service} with {client.split(" ")[0]} is now live.
           </div>
@@ -635,7 +635,7 @@ export function ScreenCoachSessionStart({
           <div style={{ width: 66, height: 66, borderRadius: 22, background: C.brandTint, margin: "0 auto 14px", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <KeyRound size={30} color={C.brand} strokeWidth={2} />
           </div>
-          <div style={{ fontSize: T.display, fontWeight: 750, color: C.jet, letterSpacing: "-0.35px", ...fDisplay }}>
+          <div style={{ fontSize: T.display, fontWeight: 700, color: C.jet, letterSpacing: "-0.35px", ...fDisplay }}>
             {hasCode ? "Enter the client's code" : "Waiting for a code"}
           </div>
           <div style={{ fontSize: T.body, color: C.slate, lineHeight: 1.55, marginTop: 7, ...fBody }}>
@@ -827,7 +827,7 @@ export function ScreenSessionProgress({
                 <span style={{ width: 7, height: 7, borderRadius: 99, background: C.live, animation: "clPulse 1.2s infinite" }} />
                 <span style={{ fontSize: T.label, fontWeight: 700, color: C.success, ...fBody }}>Session in progress</span>
               </div>
-              <div style={{ fontSize: T.hero, fontWeight: 800, color: C.white, letterSpacing: "-0.5px", marginTop: 10, ...fDisplay }}>{mmss(seconds)}</div>
+              <div style={{ fontSize: T.hero, fontWeight: 700, color: C.white, letterSpacing: "-0.5px", marginTop: 10, ...fDisplay }}>{mmss(seconds)}</div>
               <div style={{ fontSize: T.captionLg, color: C.onDarkMuted, marginTop: 3, ...fBody }}>
                 {booking.sessionStartedAt ? `Started ${booking.sessionStartedAt}` : `Started just now`} · keep going!
               </div>
@@ -840,7 +840,7 @@ export function ScreenSessionProgress({
                   {completed ? "Session completed" : "Session ended"}
                 </span>
               </div>
-              <div style={{ fontSize: T.heading, fontWeight: 750, color: C.jet, marginTop: 10, ...fDisplay }}>
+              <div style={{ fontSize: T.heading, fontWeight: 700, color: C.jet, marginTop: 10, ...fDisplay }}>
                 {completed ? "Great work today" : "Wrapping up"}
               </div>
               <div style={{ fontSize: T.captionLg, color: C.slate, marginTop: 4, lineHeight: 1.5, ...fBody }}>
