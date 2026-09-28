@@ -217,6 +217,8 @@ export function ScreenCoachDashboard({
         >
           {/* Row 1 / Card 1: This week's earnings */}
           <Card
+            onClick={() => nav("coach-earnings")}
+            ariaLabel="View earnings and payouts"
             style={{
               gridColumn: isDesktop ? "auto" : "span 3",
               padding: isDesktop ? 32 : 16,
@@ -226,6 +228,7 @@ export function ScreenCoachDashboard({
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
+              cursor: "pointer",
             }}
           >
             <div style={{ fontSize: isDesktop ? 15 : T.caption, color: darkMode ? C.slate : C.onDarkMuted, ...fBody }}>
@@ -356,6 +359,8 @@ export function ScreenCoachDashboard({
 
           {/* Row 2 / Card 5: Next payout */}
           <Card
+            onClick={() => nav("coach-earnings")}
+            ariaLabel="View earnings and payouts"
             style={{
               gridColumn: isDesktop ? "auto" : "span 2",
               padding: isDesktop ? 32 : "14px 10px",
@@ -363,6 +368,7 @@ export function ScreenCoachDashboard({
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-between",
+              cursor: "pointer",
             }}
           >
             <div style={{ fontSize: isDesktop ? 15 : 12, lineHeight: 1.2, color: C.slate, fontWeight: 600, ...fBody }}>
@@ -787,12 +793,19 @@ export function ScreenCoachDashboard({
               </Card>
 
               {/* Widget 2: Earnings & Automated Payout Summary (Moved above Client feedback) */}
-              <Card style={{ padding: 22, borderRadius: 20 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                  <Banknote size={18} color={C.brand} />
-                  <h2 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
-                    Payout breakdown
-                  </h2>
+              <Card
+                onClick={() => nav("coach-earnings")}
+                ariaLabel="View earnings and payouts"
+                style={{ padding: 22, borderRadius: 20, cursor: "pointer" }}
+              >
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <Banknote size={18} color={C.brand} />
+                    <h2 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: C.jet, fontFamily: "'Outfit', sans-serif" }}>
+                      Payout breakdown
+                    </h2>
+                  </div>
+                  <ChevronRight size={16} color={C.slateLight} />
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -1279,12 +1292,19 @@ export function ScreenCoachDashboard({
             </Card>
 
             {/* 4. Payout Breakdown (Moved above Client Feedback on Mobile) */}
-            <Card style={{ padding: 16, borderRadius: 18 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-                <Banknote size={17} color={C.brand} />
-                <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
-                  Payout breakdown
-                </h2>
+            <Card
+              onClick={() => nav("coach-earnings")}
+              ariaLabel="View earnings and payouts"
+              style={{ padding: 16, borderRadius: 18, cursor: "pointer" }}
+            >
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <Banknote size={17} color={C.brand} />
+                  <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700, color: C.jet, ...fDisplay }}>
+                    Payout breakdown
+                  </h2>
+                </div>
+                <ChevronRight size={15} color={C.slateLight} />
               </div>
 
               <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
